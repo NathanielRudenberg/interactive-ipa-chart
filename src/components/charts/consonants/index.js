@@ -4,7 +4,8 @@ import './consonants.scss';
 export default function ConsonantChart() {
     return (
         <div class='consonant-chart'>
-            <p>Pulmonic consonants</p>
+            <h4>Pulmonic consonants</h4>
+            For each pair, the symbol on the right represents the voiced counterpart.
             <table class="tg">
                 <tbody>
                     <tr>
