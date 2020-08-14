@@ -2,6 +2,10 @@
     margin: 8px;
 }
 
+.no-right-border {
+    border-right-color: rgba(255, 255, 255, 0) !important;
+}
+
 .impossible {
     background-color: #AAA;
 }
@@ -16,7 +20,7 @@
     border-style: solid;
     border-width: 2px;
     // font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     overflow: hidden;
     padding: 16px 20px;
     word-break: normal;
