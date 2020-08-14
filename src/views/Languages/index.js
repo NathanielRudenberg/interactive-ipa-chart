@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class Home extends Component{
+export default class Languages extends Component{
     render() {
         return (
             <div className="App">
-              <p>Hello, world!</p>
+              <p>Charts specific to language varieties go here</p>
             </div>
           );
     }
