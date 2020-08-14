@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import ConsonantChart from '../../components/charts/consonants';
 
 export default class Home extends Component{
     render() {
         return (
-            <div className="App">
-              <p>Hello, world!</p>
-            </div>
+            <ConsonantChart />
           );
     }
 };
