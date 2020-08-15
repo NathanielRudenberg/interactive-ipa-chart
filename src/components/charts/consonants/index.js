@@ -5,7 +5,7 @@ export default function ConsonantChart() {
     return (
         <div class='consonant-chart'>
             <h4>Pulmonic consonants</h4>
-            For each pair, the symbol on the right represents the voiced counterpart.
+            For each pair, the symbol on the right represents the cons counterpart.
             <table class="tg">
                 <tbody>
                     <tr>
@@ -26,53 +26,53 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Plosive</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">p</div>
-                                <div class="voiced">b</div>
+                                <div class="cons">p</div>
+                                <div class="cons">b</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless">t</div>
-                                <div class="voiced">d</div>
+                                <div class="cons">t</div>
+                                <div class="cons">d</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ʈ</div>
-                                <div class="voiced">ɖ</div>
+                                <div class="cons">ʈ</div>
+                                <div class="cons">ɖ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">c</div>
-                                <div class="voiced">ɟ</div>
+                                <div class="cons">c</div>
+                                <div class="cons">ɟ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">k</div>
-                                <div class="voiced">g</div>
+                                <div class="cons">k</div>
+                                <div class="cons">g</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">q</div>
-                                <div class="voiced">ɢ</div>
+                                <div class="cons">q</div>
+                                <div class="cons">ɢ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiceless impossible"></div>
+                                <div class="empty cons"></div>
+                                <div class="empty cons impossible"></div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ʔ</div>
-                                <div class="voiced impossible"></div>
+                                <div class="cons">ʔ</div>
+                                <div class="empty cons impossible"></div>
                             </div>
                         </td>
                     </tr>
@@ -80,46 +80,46 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Nasal</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">m</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">m</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɱ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɱ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">n</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">n</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɳ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɳ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɲ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɲ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ŋ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ŋ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɴ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɴ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad impossible"></td>
@@ -129,16 +129,16 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Trill</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ʙ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ʙ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">r</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">r</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -147,8 +147,8 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad impossible"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ʀ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ʀ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -159,22 +159,22 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ⱱ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ⱱ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɾ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɾ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɽ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɽ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -187,68 +187,68 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Fricative</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ɸ</div>
-                                <div class="voiced">β</div>
+                                <div class="cons">ɸ</div>
+                                <div class="cons">β</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">f</div>
-                                <div class="voiced">v</div>
+                                <div class="cons">f</div>
+                                <div class="cons">v</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">θ</div>
-                                <div class="voiced">ð</div>
+                                <div class="cons">θ</div>
+                                <div class="cons">ð</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">s</div>
-                                <div class="voiced">z</div>
+                                <div class="cons">s</div>
+                                <div class="cons">z</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ʃ</div>
-                                <div class="voiced">ʒ</div>
+                                <div class="cons">ʃ</div>
+                                <div class="cons">ʒ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ʂ</div>
-                                <div class="voiced">ʐ</div>
+                                <div class="cons">ʂ</div>
+                                <div class="cons">ʐ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ç</div>
-                                <div class="voiced">ʝ</div>
+                                <div class="cons">ç</div>
+                                <div class="cons">ʝ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">x</div>
-                                <div class="voiced">ɣ</div>
+                                <div class="cons">x</div>
+                                <div class="cons">ɣ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">χ</div>
-                                <div class="voiced">ʁ</div>
+                                <div class="cons">χ</div>
+                                <div class="cons">ʁ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ħ</div>
-                                <div class="voiced">ʕ</div>
+                                <div class="cons">ħ</div>
+                                <div class="cons">ʕ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless">h</div>
-                                <div class="voiced">ɦ</div>
+                                <div class="cons">h</div>
+                                <div class="cons">ɦ</div>
                             </div>
                         </td>
                     </tr>
@@ -259,8 +259,8 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless">ɬ</div>
-                                <div class="voiced">ɮ</div>
+                                <div class="cons">ɬ</div>
+                                <div class="cons">ɮ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -276,34 +276,34 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ʋ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ʋ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɹ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɹ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɻ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɻ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">j</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">j</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɰ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɰ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -317,27 +317,27 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">l</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">l</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ɭ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ɭ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ʎ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ʎ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="voiceless"></div>
-                                <div class="voiced">ʟ</div>
+                                <div class="empty cons"></div>
+                                <div class="cons">ʟ</div>
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>

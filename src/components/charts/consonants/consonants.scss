@@ -9,6 +9,7 @@
 .no-pad {
     font-weight: 500;
     padding: 0 !important;
+    font-size: 1rem !important;
 }
 
 .impossible {
@@ -25,17 +26,22 @@
     display: flex;
 }
 
-.voiceless {
+.cons {
+    display: flex;
     flex: 1;
+    align-items: center;
+    justify-content: center;
 }
 
-
-.voiced {
-    flex: 1;
+.cons:not(.empty):hover {
+    background-color: #0B0;
+    cursor: pointer;
 }
+
 .tg {
     border-collapse: collapse;
     border-spacing: 0;
+    width: 100%;
 }
 
 .tg td {
@@ -43,24 +49,23 @@
     border-style: solid;
     border-width: 2px;
     // font-family: Arial, sans-serif;
-    font-size: 20px;
+    font-size: 0.8rem;
     overflow: hidden;
-    padding: 12px 16px;
+    padding: 12px 8px;
     word-break: normal;
 }
 
 .tg .tg-0lax {
     position: relative;
     text-align: left;
-    vertical-align:top
 }
 
 .top {
-    width: 120px;
-    padding: 8px !important;
+    width: 80px;
+    padding: 4px !important;
     text-align: center !important;
 }
 
 .lat-ap {
-    width: 190px !important;
+    width: 120px !important;
 }
