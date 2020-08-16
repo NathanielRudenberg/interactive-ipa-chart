@@ -4,8 +4,6 @@ import './consonants.scss';
 export default function ConsonantChart() {
     return (
         <div class='consonant-chart'>
-            <h4>Pulmonic consonants</h4>
-            For each pair, the symbol on the right represents the cons counterpart.
             <table class="tg">
                 <tbody>
                     <tr>
@@ -346,7 +344,6 @@ export default function ConsonantChart() {
                     </tr>
                 </tbody>
             </table>
-            Shaded areas represent sounds thought to be impossible to produce.
         </div>
     )
 }

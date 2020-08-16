@@ -1,5 +1,6 @@
 .consonant-chart {
     margin: 8px;
+    overflow: auto;
 }
 
 .no-right-border {
@@ -61,11 +62,11 @@
 }
 
 .top {
-    width: 80px;
+    min-width: 72px;
     padding: 4px !important;
     text-align: center !important;
 }
 
 .lat-ap {
-    width: 120px !important;
+    min-width: 120px !important;
 }

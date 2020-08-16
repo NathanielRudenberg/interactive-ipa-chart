@@ -6,7 +6,10 @@ export default class Home extends Component {
     return (
       <>
         <h1>Interactive IPA Chart</h1>
+        <h4>Pulmonic consonants</h4>
+        For each pair, the symbol on the right represents the voiceless counterpart.
         <ConsonantChart />
+        Shaded areas represent sounds thought to be impossible to produce.
       </>
     );
   }
