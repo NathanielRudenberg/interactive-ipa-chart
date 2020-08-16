@@ -1,4 +1,5 @@
 import React from 'react';
+import Consonant from './Consonant';
 import './consonants.scss';
 
 export default function ConsonantChart() {
@@ -24,53 +25,92 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Plosive</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">p</div>
-                                <div class="cons">b</div>
+                                <Consonant
+                                    symbol='p'
+                                    name='VL_bilabial_plosive'
+                                />
+                                <Consonant
+                                    symbol='b'
+                                    name='V_bilabial_plosive'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="cons">t</div>
-                                <div class="cons">d</div>
+                                <Consonant
+                                    symbol='t'
+                                    name='VL_alveolar_plosive'
+                                />
+                                <Consonant
+                                    symbol='d'
+                                    name='voice_alveolar_plosive'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ʈ</div>
-                                <div class="cons">ɖ</div>
+                                <Consonant
+                                    symbol='ʈ'
+                                    name='VL_retroflex_plosive'
+                                />
+                                <Consonant
+                                    symbol='ɖ'
+                                    name='V_retroflex_plosive'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">c</div>
-                                <div class="cons">ɟ</div>
+                                <Consonant
+                                    symbol='c'
+                                    name='VL_palatal_plosive'
+                                />
+                                <Consonant
+                                    symbol='ɟ'
+                                    name='V_palatal_plosive'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">k</div>
-                                <div class="cons">g</div>
+                                <Consonant
+                                    symbol='k'
+                                    name='VL_velar_plosive'
+                                />
+                                <Consonant
+                                    symbol='g'
+                                    name='V_velar_plosive'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">q</div>
-                                <div class="cons">ɢ</div>
+                                <Consonant
+                                    symbol='q'
+                                    name='VL_uvular_plosive'
+                                />
+                                <Consonant
+                                    symbol='ɢ'
+                                    name='V_uvular_plosive'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="empty cons impossible"></div>
+                                <Consonant empty />
+                                <Consonant empty impossible />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ʔ</div>
-                                <div class="empty cons impossible"></div>
+                                <Consonant
+                                    symbol='ʔ'
+                                    name='VL_glottal_plosive'
+                                />
+                                <Consonant empty impossible />
                             </div>
                         </td>
                     </tr>
@@ -78,46 +118,68 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Nasal</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">m</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='m'
+                                    name='V_bilabial_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɱ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɱ'
+                                    name='V_labiodental_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">n</div>
+                                <Consonant empty />
+                                <Consonant
+                                    empty
+                                    symbol='n'
+                                    name='V_alveolar_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɳ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɳ'
+                                    name='V_retroflex_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɲ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɲ'
+                                    name='V_palatal_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ŋ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ŋ'
+                                    name='V_velar_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɴ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɴ'
+                                    name='V_uvular_nasal'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad impossible"></td>
@@ -127,16 +189,22 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Trill</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ʙ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ʙ'
+                                    name='V_bilabial_trill'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">r</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='r'
+                                    name='V_alveolar_trill'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -145,8 +213,11 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad impossible"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ʀ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ʀ'
+                                    name='V_uvular_trill'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -157,22 +228,31 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ⱱ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ⱱ'
+                                    name='V_labiodental_flap'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɾ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɾ'
+                                    name='V_alveolar_tap'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɽ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɽ'
+                                    name='V_retroflex_tap'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -185,68 +265,134 @@ export default function ConsonantChart() {
                         <td class="tg-0lax">Fricative</td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ɸ</div>
-                                <div class="cons">β</div>
+                                <Consonant
+                                    symbol='ɸ'
+                                    name='V_bilabial_fricative'
+                                />
+                                <Consonant
+                                    symbol='β'
+                                    name='VL_bilabial_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">f</div>
-                                <div class="cons">v</div>
+                                <Consonant
+                                    symbol='f'
+                                    name='VL_labiodental_fricative'
+                                />
+                                <Consonant
+                                    symbol='v'
+                                    name='V_labiodental_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">θ</div>
-                                <div class="cons">ð</div>
+                                <Consonant
+                                    symbol='θ'
+                                    name='VL_dental_fricative'
+                                />
+                                <Consonant
+                                    symbol='ð'
+                                    name='V_dental_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">s</div>
-                                <div class="cons">z</div>
+                                <Consonant
+                                    symbol='s'
+                                    name='VL_alveolar_fricative'
+                                />
+                                <Consonant
+                                    symbol='z'
+                                    name='V_alveolar_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ʃ</div>
-                                <div class="cons">ʒ</div>
+                                <Consonant
+                                    symbol='ʃ'
+                                    name='VL_postalveolar_fricative'
+                                />
+                                <Consonant
+                                    symbol='ʒ'
+                                    name='V_postalveolar_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ʂ</div>
-                                <div class="cons">ʐ</div>
+                                <Consonant
+                                    symbol='ʂ'
+                                    name='VL_retroflex_fricative'
+                                />
+                                <Consonant
+                                    symbol='ʐ'
+                                    name='V_retroflex_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ç</div>
-                                <div class="cons">ʝ</div>
+                                <Consonant
+                                    symbol='ç'
+                                    name='VL_palatal_fricative'
+                                />
+                                <Consonant
+                                    symbol='ʝ'
+                                    name='V_palatal_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">x</div>
-                                <div class="cons">ɣ</div>
+                                <Consonant
+                                    symbol='x'
+                                    name='VL_velar_fricative'
+                                />
+                                <Consonant
+                                    symbol='ɣ'
+                                    name='V_velar_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">χ</div>
-                                <div class="cons">ʁ</div>
+                                <Consonant
+                                    symbol='χ'
+                                    name='VL_uvular_fricative'
+                                />
+                                <Consonant
+                                    symbol='ʁ'
+                                    name='V_uvular_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">ħ</div>
-                                <div class="cons">ʕ</div>
+                                <Consonant
+                                    symbol='ħ'
+                                    name='VL_pharyngeal_fricative'
+                                />
+                                <Consonant
+                                    symbol='ʕ'
+                                    name='V_pharyngeal_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="cons">h</div>
-                                <div class="cons">ɦ</div>
+                                <Consonant
+                                    symbol='h'
+                                    name='VL_glottal_fricative'
+                                />
+                                <Consonant
+                                    symbol='ɦ'
+                                    name='V_glottal_fricative'
+                                />
                             </div>
                         </td>
                     </tr>
@@ -257,8 +403,14 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="cons">ɬ</div>
-                                <div class="cons">ɮ</div>
+                                <Consonant
+                                    symbol='ɬ'
+                                    name='VL_alveolar_lateral_fricative'
+                                />
+                                <Consonant
+                                    symbol='ɮ'
+                                    name='V_alveolar_lateral_fricative'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -274,34 +426,49 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ʋ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ʋ'
+                                    name='V_bilabial_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɹ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɹ'
+                                    name='V_alveolar_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɻ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɻ'
+                                    name='V_retroflex_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">j</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='j'
+                                    name='V_palatalr_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɰ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɰ'
+                                    name='V_velar_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
@@ -315,27 +482,39 @@ export default function ConsonantChart() {
                         <td class="tg-0lax no-pad no-right-border"></td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">l</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='l'
+                                    name='V_alveolar_lateral_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ɭ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ɭ'
+                                    name='V_retroflex_lateral_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ʎ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ʎ'
+                                    name='V_palatal_lateral_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad">
                             <div class="cons-wrapper">
-                                <div class="empty cons"></div>
-                                <div class="cons">ʟ</div>
+                                <Consonant empty />
+                                <Consonant
+                                    symbol='ʟ'
+                                    name='V_velar_lateral_approximant'
+                                />
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
