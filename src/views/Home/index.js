@@ -9,7 +9,7 @@ export default class Home extends Component {
         <h4>Pulmonic consonants</h4>
         For each pair, the symbol on the right represents the voiced counterpart.
         <ConsonantChart />
-        Shaded areas represent sounds thought to be impossible to produce.
+        Shaded areas represent articulations thought to be impossible to produce.
       </>
     );
   }
