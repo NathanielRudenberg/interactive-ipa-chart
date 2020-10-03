@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ConsonantChart from '../../components/charts/consonants';
+import VowelChart from '../../components/charts/vowels';
 
 export default class Home extends Component {
   render() {
@@ -10,6 +11,11 @@ export default class Home extends Component {
         For each pair, the symbol on the right represents the voiced counterpart.
         <ConsonantChart />
         Shaded areas represent articulations thought to be impossible to produce.
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <VowelChart />
       </>
     );
   }

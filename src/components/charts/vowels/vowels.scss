@@ -1,0 +1,72 @@
+.consonant-chart {
+    margin: 8px;
+    overflow: auto;
+}
+
+.no-right-border {
+    border-right-color: rgba(255, 255, 255, 0) !important;
+}
+
+.no-pad {
+    font-weight: 500;
+    padding: 0 !important;
+    font-size: 1rem !important;
+}
+
+.impossible {
+    background-color: #AAA;
+}
+
+.cons-wrapper {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    text-align: center;
+    display: flex;
+}
+
+.cons {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.cons:not(.empty):hover {
+    background-color: #0B0;
+    cursor: pointer;
+}
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.tg td {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    // font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    overflow: hidden;
+    padding: 12px 8px;
+    word-break: normal;
+}
+
+.tg .tg-0lax {
+    position: relative;
+    text-align: left;
+}
+
+.top {
+    min-width: 72px;
+    padding: 4px !important;
+    text-align: center !important;
+}
+
+.lat-ap {
+    min-width: 120px !important;
+}
