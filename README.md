@@ -1,7 +1,7 @@
-# Interactive IPA Chart
-## An International Phonetic Alphabet chart with audio samples and selection of phoneme inventory by language
+## Interactive IPA Chart
+### This project aims to go a step above most online IPA charts by providing charts and recordings for specific language varieties.
 
-### This is a work in progress. Most of the planned functionality has not been implemented yet.
+#### This is a work in progress. Most of the planned functionality has not been implemented yet.
 
 ***
 
