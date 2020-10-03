@@ -45,7 +45,7 @@ export default function ConsonantChart() {
                                 />
                                 <Consonant
                                     symbol='d'
-                                    name='voice_alveolar_plosive'
+                                    name='V_alveolar_plosive'
                                 />
                             </div>
                         </td>
@@ -139,7 +139,6 @@ export default function ConsonantChart() {
                             <div class="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
-                                    empty
                                     symbol='n'
                                     name='V_alveolar_nasal'
                                 />
