@@ -250,7 +250,7 @@ export default function ConsonantChart() {
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɽ'
-                                    name='V_retroflex_tap'
+                                    name='V_retroflex_flap'
                                 />
                             </div>
                         </td>
@@ -428,7 +428,7 @@ export default function ConsonantChart() {
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ʋ'
-                                    name='V_bilabial_approximant'
+                                    name='V_labiodental_approximant'
                                 />
                             </div>
                         </td>
@@ -457,7 +457,7 @@ export default function ConsonantChart() {
                                 <Consonant empty />
                                 <Consonant
                                     symbol='j'
-                                    name='V_palatalr_approximant'
+                                    name='V_palatal_approximant'
                                 />
                             </div>
                         </td>
