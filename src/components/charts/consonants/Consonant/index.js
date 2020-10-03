@@ -6,21 +6,11 @@ export default class Consonant extends Component {
         super(props);
     }
 
-    // componentDidMount() {
-    //     this.audio.load();
-    //     console.log('loading sound');
-    // }
-
     playSound = () => {
-        console.log('playing sound');
-        audio.playSound(this.props.name);
+        if (!this.props.empty && !this.props.impossible) {
+            audio.playSound(this.props.name);
+        }
     };
-
-    // stopSound = () => {
-    //     this.setState({
-    //         playing: Sound.status.STOPPED,
-    //     })
-    // }
 
     render() {
         const {
