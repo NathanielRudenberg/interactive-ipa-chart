@@ -1,17 +1,18 @@
 import React from 'react';
-import Vowel from './Vowel';
 import './vowels.scss';
 
 export default function VowelChart() {
     return (
-            <div id="vowel-container">
-                <div id="vowel-boat" />
-                <div id="top-left" />
-                <div id="top-right" />
-                <div id="mid-left" />
-                <div id="mid-right" />
-                <div id="bottom-left" />
-                <div id="bottom-right" />
+        <div class="vowel-section">
+            <div class="vowel-boat-container">
+                <div id="vowel-boat" class="vowel-boat-section" />
+                <div id="top-left" class="vowel-boat-section" />
+                <div id="top-right" class="vowel-boat-section" />
+                <div id="mid-left" class="vowel-boat-section" />
+                <div id="mid-right" class="vowel-boat-section" />
+                <div id="bottom-left" class="vowel-boat-section" />
+                <div id="bottom-right" class="vowel-boat-section" />
             </div>
+        </div>
     )
 }

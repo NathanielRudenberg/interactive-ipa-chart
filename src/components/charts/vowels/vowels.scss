@@ -1,19 +1,18 @@
 $section-height: 134px;
 
-#vowel-container {
+.vowel-boat-container {
+    display: inline-block;
+    margin: 8px;
     position: relative;
-    height: 418px;
-    width: 0;
 }
 
 #vowel-boat {
-    position: absolute;
     border-top: 418px solid black;
     border-left: 155px solid transparent;
     border-right: 0px solid transparent;
-    height: 0;
+    height: 0px;
     width: 398px;
-  }
+}
 
 #top-left {
     top: 4px;
@@ -23,7 +22,7 @@ $section-height: 134px;
     border-top: $section-height solid white;
     border-left: 50px solid transparent;
     border-right: 0px solid transparent;
-    position: relative;
+    position: absolute;
 }
 
 #top-left:after {
