@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import audio from '../../../../services/audio';
 
 export default class Consonant extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     playSound = () => {
         if (!this.props.empty && !this.props.impossible) {
             audio.playSound(this.props.name);
