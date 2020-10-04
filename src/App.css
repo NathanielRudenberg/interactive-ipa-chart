@@ -3,6 +3,7 @@
     justify-content: center;
     text-align: center;
     min-height: 100vh;
+    margin-bottom: 8px;
 }
 
 .app-main-container {
