@@ -169,7 +169,6 @@ $section-height: 134px;
     border-color:black;
     border-style:solid;
     border-width:1px;
-    // font-family:Arial, sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
     overflow:hidden;
@@ -177,40 +176,8 @@ $section-height: 134px;
     word-break:normal;
 }
 
-// .vowel-table .tg th {
-//     border-color:black;
-//     border-style:solid;
-//     border-width:1px;
-//     font-family:Arial, sans-serif;
-//     font-size:14px;
-//     font-weight:normal;
-//     overflow:hidden;
-//     padding:9px 20px;
-//     word-break:normal;
-// }
-
-.vowel-table .tg .vowel-table .tg-0pky {
-    border-color:inherit;
-    text-align:left;
-    vertical-align:top
-}
-
-@media screen and (max-width: 767px) {
-    .vowel-table .tg {
-        width: auto !important;
-    }
-    .vowel-table .tg col {
-        width: auto !important;
-    }
-    .vowel-table .tg-wrap {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
 
 .vowel {
-    // display: flex;
-    // background: #AAAA;
     width: 41px;
     height: 45px;
 }
@@ -229,31 +196,11 @@ $section-height: 134px;
     position: relative;
     font-weight: 500;
     font-size: 1.2rem;
+    font-family: 'Voces', cursive;
     background-color: white;
-    // &:before {
-    //     content:"";
-    //     z-index: -1;
-    //     left: -0.5em;
-    //     top: 0.2em;
-    //     border-width: 0.5em;
-    //     border-style: solid;
-    //     border-color: white;
-    //     position: absolute;
-    //     width: 75%;
-    // }
+
     &:hover {
         cursor: pointer;
         background-color: #0B0;
     }
-    // &:hover:before {
-    //     content:"";
-    //     z-index: -1;
-    //     left: -0.5em;
-    //     top: 0.2em;
-    //     border-width: 0.5em;
-    //     border-style: solid;
-    //     border-color: green;
-    //     position: absolute;
-    //     width: 75%;
-    // }
 }
