@@ -1,0 +1,183 @@
+$top-close: -20.5px;
+$top-near-close: 47px;
+$top-close-mid: 115px;
+$top-mid: 183.5px;
+$top-open-mid: 252px;
+$top-near-open: 330px;
+$top-open: 390px;
+$left-back-unrounded: 505px;
+$left-back-rounded: 550px;
+
+.close_back_rounded_vowel {
+    position: absolute;
+    top: $top-close;
+    left: $left-back-rounded;
+}
+
+.close_back_unrounded_vowel {
+    position: absolute;
+    top: $top-close;
+    left: $left-back-unrounded
+}
+
+.close_central_rounded_vowel {
+    position: absolute;
+    top: $top-close;
+    left: 285px;
+}
+
+.close_central_unrounded_vowel {
+    position: absolute;
+    top: $top-close;
+    left: 230px;
+}
+
+.close_front_rounded_vowel {
+    position: absolute;
+    top: $top-close;
+    left: 5px;
+}
+
+.close_front_unrounded_vowel {
+    position: absolute;
+    top: $top-close;
+    left: -40px;
+}
+
+.close-mid_back_rounded_vowel {
+    position: absolute;
+    top: $top-close-mid;
+    left: $left-back-rounded;
+}
+
+.close-mid_back_unrounded_vowel {
+    position: absolute;
+    top: $top-close-mid;
+    left: $left-back-unrounded;
+}
+
+.close-mid_central_rounded_vowel {
+    position: absolute;
+    top: $top-close-mid;
+    left: 310px;
+}
+
+.close-mid_central_unrounded_vowel {
+    position: absolute;
+    top: $top-close-mid;
+    left: 260px;
+}
+
+.close-mid_front_rounded_vowel {
+    position: absolute;
+    top: $top-close-mid;
+    left: 55px;
+}
+
+.close-mid_front_unrounded_vowel {
+    position: absolute;
+    top: $top-close-mid;
+    left: 10px;;
+}
+
+.mid-central_vowel {
+    position: absolute;
+    top: $top-mid;
+    left: 280px;
+}
+
+.near-close_near-back_rounded_vowel {
+    position: absolute;
+    top: $top-near-close;
+    left: 450px;
+}
+
+.near-close_near-front_rounded_vowel {
+    position: absolute;
+    top: $top-near-close;
+    left: 160px;
+}
+
+.near-close_near-front_unrounded_vowel {
+    position: absolute;
+    top: $top-near-close;
+    left: 120px;
+}
+
+.near-open_central_unrounded_vowel {
+    position: absolute;
+    top: $top-near-open;
+    left: 310px;
+}
+
+.near-open_front_unrounded_vowel {
+    position: absolute;
+    top: $top-near-open;
+    left: 85px;
+}
+
+.open_back_rounded_vowel {
+    position: absolute;
+    top: $top-open;
+    left: $left-back-rounded;
+}
+
+.open_back_unrounded_vowel {
+    position: absolute;
+    top: $top-open;
+    left: $left-back-unrounded
+}
+
+.open_central_unrounded_vowel {
+    position: absolute;
+    top: $top-open;
+    left: 310px;
+}
+
+.open_front_rounded_vowel {
+    position: absolute;
+    top: $top-open;
+    left: 155px;
+}
+
+.open_front_unrounded_vowel {
+    position: absolute;
+    top: $top-open;
+    left: 110px;
+}
+
+.open-mid_back_rounded_vowel {
+    position: absolute;
+    top: $top-open-mid;
+    left: $left-back-rounded;
+}
+
+.open-mid_back_unrounded_vowel {
+    position: absolute;
+    top: $top-open-mid;
+    left: $left-back-unrounded
+}
+
+.open-mid_central_rounded_vowel {
+    position: absolute;
+    top: $top-open-mid;
+    left: 335px;
+}
+
+.open-mid_central_unrounded_vowel {
+    position: absolute;
+    top: $top-open-mid;
+    left: 285px;
+}
+
+.open-mid_front_rounded_vowel {
+    position: absolute;
+    top: $top-open-mid;
+    left: 105px;
+}
+
+.open-mid_front_unrounded_vowel {
+    position: absolute;
+    top: $top-open-mid;
+    left: 60px;
+}

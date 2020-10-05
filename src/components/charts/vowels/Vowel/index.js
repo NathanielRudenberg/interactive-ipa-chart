@@ -4,18 +4,22 @@ import audio from '../../../../services/audio';
 export default class Vowel extends Component {
     playSound = () => {
         if (!this.props.empty && !this.props.impossible) {
-            // audio.playSound(this.props.name);
+            audio.playVowel(this.props.name);
         }
     };
 
     render() {
-        const {
-            symbol,
-        } = this.props;
+        let {children, className} = this.props;
 
         return (
             <>
-                <div class={'vowel'} onClick={this.playSound}>{symbol}</div>
+                <div class={className}>
+                    <div className="symbol-container">
+                        <div onClick={children ? this.playSound : null} className="symbol">
+                            {children}
+                        </div>
+                    </div>
+                </div>
             </>
         )
     }
