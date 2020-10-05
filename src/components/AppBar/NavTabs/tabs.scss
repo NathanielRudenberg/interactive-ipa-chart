@@ -1,13 +1,3 @@
-.tab-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    height: 100%;
-    padding: 0px 16px;
-}
-
 .react-tabs {
     -webkit-tap-highlight-color: transparent;
 
@@ -16,7 +6,6 @@
         margin: 0 0 0px;
         padding: 0;
         height: 100%;
-        color: white;
     }
 
     &__tab {
@@ -25,6 +14,18 @@
         position: relative;
         list-style: none;
         cursor: pointer;
+        color: white;
+
+        .tab-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+            padding: 0px 16px;
+        }
 
         &:not(&--selected):hover {
             background: #967AA1;
