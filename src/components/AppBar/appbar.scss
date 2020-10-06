@@ -1,8 +1,10 @@
+@import '../../../box-shadows.scss';
+
 .header {
     width: 100%;
     position: absolute;
     display: inline-flex;
     background: #454140;
     height: 72px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    @include mboxshadow(2);
 }

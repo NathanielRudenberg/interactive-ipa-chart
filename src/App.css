@@ -15,5 +15,6 @@
 }
 
 .app-main-container {
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
+    height: 100%;
 }
