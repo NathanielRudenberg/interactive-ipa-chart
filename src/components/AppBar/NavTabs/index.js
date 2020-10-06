@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, } from 'react-tabs';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './tabs.scss';
 
 export default class NavTabs extends Component {
     constructor(props) {
-        super(props);
+        super();
 
         this.state = {
             selectedIndex: 0,
         };
+
+        this.tabIndex = 0;
     }
 
     render() {
+        console.log('rendered!');
+        let { selectedIndex } = this.state;
         return (
-            <Tabs>
+            <Tabs selectedIndex={-1}>
                 <TabList>
                     <Tab>
-                        <Link to='/' className='tab-link'>
+                        <NavLink exact to='/' className='tab-link' activeClassName='tab-link--selected'>
                             Home
-                        </Link >
+                        </NavLink >
                     </Tab>
                     <Tab>
-                        <Link to='/languages' className='tab-link'>
+                        <NavLink to='/languages' className='tab-link' activeClassName='tab-link--selected'>
                             Languages
-                        </Link >
+                        </NavLink >
                     </Tab>
                     <Tab>
-                        <Link to='/about' className='tab-link'>
+                        <NavLink exact to='/about' className='tab-link' activeClassName='tab-link--selected'>
                             About
-                        </Link >
+                        </NavLink >
                     </Tab>
                 </TabList>
             </Tabs>
