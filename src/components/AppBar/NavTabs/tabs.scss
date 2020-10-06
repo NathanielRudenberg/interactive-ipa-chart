@@ -25,17 +25,16 @@
             color: inherit;
             height: 100%;
             padding: 0px 16px;
+
+            &--selected {
+                background: #CBD4C2;
+                color: black;
+            }
         }
 
-        &:not(&--selected):hover {
+        &:hover {
             background: #967AA1;
             color: white;
-        }
-
-        &--selected {
-            background: #CBD4C2;
-            border-color: #aaa;
-            color: black;
         }
 
         &--disabled {
