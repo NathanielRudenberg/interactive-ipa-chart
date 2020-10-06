@@ -2,6 +2,12 @@
 
 $section-height: 134px;
 
+.vowel-section {
+    margin: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 .vowel-boat-container {
     display: inline-block;
     margin: 8px;
