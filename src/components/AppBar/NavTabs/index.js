@@ -15,7 +15,6 @@ export default class NavTabs extends Component {
     }
 
     render() {
-        console.log('rendered!');
         let { selectedIndex } = this.state;
         return (
             <Tabs selectedIndex={-1}>
