@@ -26,9 +26,9 @@ class App extends React.Component {
                     path={route.path}
                     exact={route.exact}
                     render={props => (
-                      <div className='app-main-container'>
+                      // <div className='app-main-container'>
                         <route.component {...props} />
-                      </div>
+                      // </div>
                     )}
                   />
                 ))}

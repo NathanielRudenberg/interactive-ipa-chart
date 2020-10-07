@@ -11,7 +11,7 @@
     text-align: center;
     width: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .app-main-container {
