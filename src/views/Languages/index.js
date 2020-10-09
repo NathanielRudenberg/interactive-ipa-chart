@@ -27,19 +27,16 @@ export default class Languages extends Component {
     let langSelectContainerClass = 'language-selector-container';
     if (languageSelected) langSelectContainerClass += " language-selector-container--retracted";
 
-    let chartDisplay = languageSelected ? <IPAChart/> : <></>;
-
     return (
       <div class='languages-container'>
         <div className={langSelectContainerClass}>
           <LanguageSelector />
-
-          <Button variant='outlined' onClick={this.toggleSpacing}>
+          {/* <Button variant='outlined' onClick={this.toggleSpacing}>
             Toggle Spacing
-          </Button>
+          </Button> */}
         </div>
         <div class={'chart-container'} >
-          {chartDisplay}
+          <IPAChart/>
         </div>
       </div>
     );

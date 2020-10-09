@@ -1,4 +1,5 @@
 @import '../../../box-shadows.scss';
+@import '../../../screen.scss';
 
 .languages-container {
     height: 100%;
@@ -11,7 +12,19 @@
     height: 100%;
     @include mboxshadow(1);
 
+    + .chart-container {
+        display: none;
+    }
+
     &--retracted {
         height: 8%;
+
+        @include breakpoint(sm-max) {
+            height: 15%;
+        }
+
+        + .chart-container {
+            display: block;
+        }
     }
 }
