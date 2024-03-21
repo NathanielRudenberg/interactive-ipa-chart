@@ -1,0 +1,5 @@
+@import '../../../box-shadows.scss';
+
+.MuiButtonGroup-root {
+    @include mboxshadow(1);
+}

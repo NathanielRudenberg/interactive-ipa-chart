@@ -16,12 +16,13 @@ export default [
     },
     {
         name: 'Language Profile',
-        path: '/language/:lang',
+        path: '/languages/:lang',
         component: Languages
     },
     {
         name: 'Languages',
         path: '/languages',
+        exact: true,
         component: Languages
-    }
+    },
 ]

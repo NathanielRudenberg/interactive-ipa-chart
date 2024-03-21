@@ -266,11 +266,11 @@ export default function ConsonantChart() {
                             <div class="cons-wrapper">
                                 <Consonant
                                     symbol='ɸ'
-                                    name='V_bilabial_fricative'
+                                    name='VL_bilabial_fricative'
                                 />
                                 <Consonant
                                     symbol='β'
-                                    name='VL_bilabial_fricative'
+                                    name='V_bilabial_fricative'
                                 />
                             </div>
                         </td>

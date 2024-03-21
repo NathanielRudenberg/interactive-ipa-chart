@@ -1,0 +1,17 @@
+@import '../../../box-shadows.scss';
+
+.languages-container {
+    height: 100%;
+}
+
+.language-selector-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    @include mboxshadow(1);
+
+    &--retracted {
+        height: 8%;
+    }
+}
