@@ -1,0 +1,20 @@
+@mixin breakpoint($point) {
+    @if $point == sm-max {
+      @media (max-width: 460px) { @content; }
+    }
+    @else if $point == md-max {
+      @media (max-width: 800px) { @content; }
+    }
+    @else if $point == lg-max {
+      @media (max-width: 1024px)  { @content; }
+    }
+    @else if $point == sm-min {
+      @media (min-width: 320px) { @content; }
+    }
+    @else if $point == md-min {
+      @media (min-width: 768px) { @content; }
+    }
+    @else if $point == lg-min {
+      @media (min-width: 960px)  { @content; }
+    }
+  }

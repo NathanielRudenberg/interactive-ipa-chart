@@ -8,6 +8,7 @@ export default class Home extends Component {
         return (
             <div className='ipa-chart'>
                 <h1>Interactive IPA Chart</h1>
+                <h2>{this.props.title}</h2>
                 <h4>Pulmonic consonants</h4>
                 For each pair, the symbol on the right represents the voiced counterpart.
                 <ConsonantChart />

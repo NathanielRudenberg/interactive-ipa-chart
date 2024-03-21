@@ -15,7 +15,7 @@ export default class NavTabs extends Component {
     }
 
     render() {
-        let { selectedIndex } = this.state;
+        // let { selectedIndex } = this.state;
         return (
             <Tabs selectedIndex={-1}>
                 <TabList>

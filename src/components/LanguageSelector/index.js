@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import DropMenuItem from '../DropMenuItem';
+import DropMenu from '../DropMenu';
 import './language-selector.scss';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIosRounded';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 
 export default class LanguageSelector extends Component {
     constructor(props) {
         super();
 
         this.state = {
+            langFam: null,
+            langVar: null,
             langFamButton: null,
             langVarButton: null,
             menuOpen: false,
-            languageSelected: false,
         }
     }
 
@@ -33,40 +38,80 @@ export default class LanguageSelector extends Component {
         this.setState({ langVarButton: null });
     }
 
+    handleSelectLangFam = item => {
+        this.setState((prevState) => {
+            this.handleCloseLangFam();
+            return {
+                ...prevState,
+                langFam: item,
+            }
+        });
+    }
+
+    handleSelectLangVar = item => {
+        this.setState((prevState) => {
+            this.handleCloseLangVar();
+            return {
+                ...prevState,
+                langVar: item,
+            }
+        });
+    }
+
     render() {
         return (
             <>
                 <ButtonGroup color="primary" aria-label="outlined primary button group">
-                    <Button aria-controls="language-family-menu" aria-haspopup="true" onClick={this.handleClickLangFam}>
-                        Language Family
+                    <Button aria-controls="language-family-menu" aria-haspopup="true" onClick={this.handleClickLangFam} endIcon={<ExpandMoreRoundedIcon className='expand-more' />}>
+                        {this.state.langFam || 'Language Family'}
                     </Button>
-                    <Button aria-controls="language-variant-menu" aria-haspopup="true" onClick={this.handleClickLangVar}>
-                        Language Variant
+                    <Button aria-controls="language-variant-menu" aria-haspopup="true" onClick={this.handleClickLangVar} endIcon={<ExpandMoreRoundedIcon />}>
+                        {this.state.langVar || 'Language Variant'}
                     </Button> 
+                    <Button variant='contained' onClick={() => {this.props.retract()}}>
+                        <ArrowForwardIcon/>
+                    </Button>
                 </ButtonGroup>
 
                 <Menu
                     id="language-family-menu"
                     anchorEl={this.state.langFamButton}
+                    // getContentAnchorEl={null}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
                     keepMounted
                     open={Boolean(this.state.langFamButton)}
                     onClose={this.handleCloseLangFam}
                 >
-                    <MenuItem onClick={this.handleCloseLangFam}>Germanic</MenuItem>
-                    <MenuItem onClick={this.handleCloseLangFam}>Romance</MenuItem>
-                    <MenuItem onClick={this.handleCloseLangFam}>Sinitic</MenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangFam}>Germanic</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangFam}>Romance</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangFam}>Sinitic</DropMenuItem>
                 </Menu>
 
                 <Menu
                     id="language-variant-menu"
                     anchorEl={this.state.langVarButton}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
                     keepMounted
                     open={Boolean(this.state.langVarButton)}
                     onClose={this.handleCloseLangVar}
                 >
-                    <MenuItem onClick={this.handleCloseLangVar}>French</MenuItem>
-                    <MenuItem onClick={this.handleCloseLangVar}>General American English</MenuItem>
-                    <MenuItem onClick={this.handleCloseLangVar}>Haitian Creole</MenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar}>French</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar}>General American English</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar}>Haitian Creole</DropMenuItem>
                 </Menu>
             </>
         );

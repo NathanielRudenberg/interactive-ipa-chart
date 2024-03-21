@@ -15,6 +15,7 @@
         list-style: none;
         cursor: pointer;
         color: white;
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
         .tab-link {
             display: flex;

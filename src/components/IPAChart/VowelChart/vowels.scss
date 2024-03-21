@@ -204,9 +204,11 @@ $section-height: 134px;
     font-family: 'DejaVu Sans', sans-serif;
     font-style: normal;
     background-color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
     &:hover {
-        cursor: pointer;
+        width: 75%;
         background-color: #0B0;
     }
 }

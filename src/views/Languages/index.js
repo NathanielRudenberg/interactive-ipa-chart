@@ -13,8 +13,8 @@ export default class Languages extends Component {
     }
   }
 
-  toggleSpacing = () => {
-    this.setState({languageSelected: !this.state.languageSelected});
+  retractSelector = () => {
+    this.setState({languageSelected: true});
   }
 
   componentDidMount() {
@@ -27,19 +27,13 @@ export default class Languages extends Component {
     let langSelectContainerClass = 'language-selector-container';
     if (languageSelected) langSelectContainerClass += " language-selector-container--retracted";
 
-    let chartDisplay = languageSelected ? <IPAChart/> : <></>;
-
     return (
       <div class='languages-container'>
         <div className={langSelectContainerClass}>
-          <LanguageSelector />
-
-          <Button variant='outlined' onClick={this.toggleSpacing}>
-            Toggle Spacing
-          </Button>
+          <LanguageSelector retract={this.retractSelector}/>
         </div>
         <div class={'chart-container'} >
-          {chartDisplay}
+          <IPAChart/>
         </div>
       </div>
     );
