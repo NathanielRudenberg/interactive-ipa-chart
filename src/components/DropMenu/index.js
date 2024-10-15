@@ -1,6 +1,6 @@
 import React from 'react';
-import Menu from '@material-ui/core/Menu';
-import { withStyles } from '@material-ui/core/styles';
+import Menu from '@mui/material/Menu';
+import { withStyles } from '@mui/styles';
 
 function DropMenu(props) {
     return (

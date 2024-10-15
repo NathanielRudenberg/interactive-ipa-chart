@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import LanguageSelector from '../../components/LanguageSelector';
 import IPAChart from '../../components/IPAChart';
 import './languages.scss';

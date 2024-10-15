@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@mui/material/MenuItem';
+import { withStyles } from '@mui/styles';
 
 function DropMenuItem(props) {
     const { classes, className, children, onSelect, ...other } = props;

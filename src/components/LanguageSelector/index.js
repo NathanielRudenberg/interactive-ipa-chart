@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 import DropMenuItem from '../DropMenuItem';
 import DropMenu from '../DropMenu';
 import './language-selector.scss';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIosRounded';
-import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 
 export default class LanguageSelector extends Component {
     constructor(props) {
