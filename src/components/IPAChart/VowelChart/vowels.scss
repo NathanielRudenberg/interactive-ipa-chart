@@ -70,7 +70,7 @@ $section-height: 134px;
 
 #mid-left {
     top: $section-height + 8px;
-    left: ($section-height + 8px) / 2.5;
+    left: calc(($section-height + 8px) / 2.5);
     height: 0;
     width: 30px;
     border-top: $section-height solid white;
@@ -116,7 +116,7 @@ $section-height: 134px;
 
 #bottom-left {
     top: ($section-height * 2) + 12px;
-    left: (($section-height * 2) + 2px) / 2.5;
+    left: calc((($section-height * 2) + 2px) / 2.5);
     height: 0;
     width: 30px;
     border-top: $section-height solid white;
