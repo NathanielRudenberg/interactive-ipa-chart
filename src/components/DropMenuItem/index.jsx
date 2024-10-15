@@ -4,11 +4,11 @@ import MenuItem from '@mui/material/MenuItem';
 import { withStyles } from '@mui/styles';
 
 function DropMenuItem(props) {
-    const { classes, className, children, onSelect, ...other } = props;
+    const { classes, className, children, onSelect, value, ...other } = props;
     return (
         <MenuItem
             className={clsx(classes.root, className)}
-            onClick={() => {onSelect(children)}}
+            onClick={() => {onSelect(children, value)}}
             {...other}
             >
             {children}

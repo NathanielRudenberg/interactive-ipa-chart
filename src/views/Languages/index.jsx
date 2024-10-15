@@ -10,6 +10,7 @@ export default class Languages extends Component {
 
     this.state = {
       languageSelected: false,
+      selectedLanguage: undefined,
     }
   }
 
@@ -22,6 +23,10 @@ export default class Languages extends Component {
     if ((/^\/languages\/.+/).test(currentPath)) this.setState({languageSelected: true});
   }
 
+  updateSelectedLanguage = (language) => {
+    this.setState({selectedLanguage: language})
+  }
+
   render() {
     let { languageSelected } = this.state;
     let langSelectContainerClass = 'language-selector-container';
@@ -30,10 +35,10 @@ export default class Languages extends Component {
     return (
       <div class='languages-container'>
         <div className={langSelectContainerClass}>
-          <LanguageSelector retract={this.retractSelector}/>
+          <LanguageSelector retract={this.retractSelector} updateLanguage={this.updateSelectedLanguage}/>
         </div>
         <div class={'chart-container'} >
-          <IPAChart/>
+          <IPAChart default={false} language={this.state.selectedLanguage}/>
         </div>
       </div>
     );

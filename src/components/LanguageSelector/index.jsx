@@ -48,9 +48,11 @@ export default class LanguageSelector extends Component {
         });
     }
 
-    handleSelectLangVar = item => {
+    handleSelectLangVar = (item, value) => {
+        let updateLanguage = this.props.updateLanguage;
         this.setState((prevState) => {
             this.handleCloseLangVar();
+            updateLanguage(value);
             return {
                 ...prevState,
                 langVar: item,
@@ -109,9 +111,10 @@ export default class LanguageSelector extends Component {
                     open={Boolean(this.state.langVarButton)}
                     onClose={this.handleCloseLangVar}
                 >
-                    <DropMenuItem onSelect={this.handleSelectLangVar}>French</DropMenuItem>
-                    <DropMenuItem onSelect={this.handleSelectLangVar}>General American English</DropMenuItem>
-                    <DropMenuItem onSelect={this.handleSelectLangVar}>Haitian Creole</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="french">French</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="general-american-english">General American English</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="haitian-creole">Haitian Creole</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="icelandic">Icelandic</DropMenuItem>
                 </Menu>
             </>
         );

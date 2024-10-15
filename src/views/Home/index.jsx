@@ -4,7 +4,7 @@ import IPAChart from '../../components/IPAChart';
 export default class Home extends Component {
   render() {
     return (
-        <IPAChart />
+        <IPAChart default/>
     );
   }
 };
