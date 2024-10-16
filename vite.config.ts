@@ -8,7 +8,15 @@ export default defineConfig({
     build: {
         outDir: 'build'
     },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                api: 'modern-compiler',
+            }
+        }
+    },
     server: {
+        host: true,
         open: true,
         port: 3000,
         watch: {
