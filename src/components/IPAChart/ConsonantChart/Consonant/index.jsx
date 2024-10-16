@@ -18,9 +18,9 @@ export default class Consonant extends Component {
         if (this.props.impossible) className = className.concat(' impossible');
 
         return (
-            <>
+            this.props.visible || this.props.empty ? <>
                 <div class={className} onClick={this.playSound}>{symbol}</div>
-            </>
+            </> : <></>
         )
     }
 }
