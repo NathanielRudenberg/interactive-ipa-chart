@@ -43,7 +43,20 @@ export default function ConsonantChart(props) {
                             </div>
                         </td>
                         <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
+                        <td class="tg-0lax no-pad no-right-border">
+                            <div class="cons-wrapper">
+                                <Consonant 
+                                    symbol='t'
+                                    name='VL_dental_plosive'
+                                    visible={consonants[names.VL_DENTAL_PLOSIVE]}
+                                 />
+                                <Consonant 
+                                    symbol='d'
+                                    name='V_dental_plosive'
+                                    visible={consonants[names.V_DENTAL_PLOSIVE]}
+                                 />
+                            </div>
+                        </td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
                                 <Consonant
@@ -155,7 +168,16 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
+                        <td class="tg-0lax no-pad no-right-border">
+                        <div class="cons-wrapper">
+                            <Consonant empty />
+                            <Consonant 
+                                symbol='n'
+                                name='V_dental_nasal'
+                                visible={consonants[names.V_DENTAL_NASAL]}
+                            />
+                            </div>
+                        </td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
                                 <Consonant empty />
@@ -545,7 +567,16 @@ export default function ConsonantChart(props) {
                         <td class="tg-0lax lat-ap">Lateral approximant</td>
                         <td class="tg-0lax no-pad impossible"></td>
                         <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
+                        <td class="tg-0lax no-pad no-right-border">
+                        <div class="cons-wrapper">
+                            <Consonant empty />
+                            <Consonant 
+                                symbol='l'
+                                name='V_dental_lateral_approximant'
+                                visible={consonants[names.V_DENTAL_LATERAL_APPROXIMANT]}
+                            />
+                        </div>
+                        </td>
                         <td class="tg-0lax no-pad no-right-border">
                             <div class="cons-wrapper">
                                 <Consonant empty />

@@ -11,11 +11,14 @@ let V_BILABIAL_NASAL = "V_bilabial_nasal";
 let V_BILABIAL_PLOSIVE = "V_bilabial_plosive";
 let V_BILABIAL_TRILL = "V_bilabial_trill";
 let V_DENTAL_FRICATIVE = "V_dental_fricative";
+let V_DENTAL_LATERAL_APPROXIMANT = "V_dental_lateral_approximant";
+let V_DENTAL_NASAL = "V_dental_nasal";
 let V_GLOTTAL_FRICATIVE = "V_glottal_fricative";
 let V_LABIODENTAL_APPROXIMANT = "V_labiodental_approximant";
 let V_LABIODENTAL_FLAP = "V_labiodental_flap";
 let V_LABIODENTAL_FRICATIVE = "V_labiodental_fricative";
 let V_LABIODENTAL_NASAL = "V_labiodental_nasal";
+let V_DENTAL_PLOSIVE = 'V_labiodental_plosive';
 let V_PALATAL_APPROXIMANT = "V_palatal_approximant";
 let V_PALATAL_FRICATIVE = "V_palatal_fricative";
 let V_PALATAL_LATERAL_APPROXIMANT = "V_palatal_lateral_approximant";
@@ -47,6 +50,7 @@ let VL_DENTAL_FRICATIVE = "VL_dental_fricative";
 let VL_GLOTTAL_FRICATIVE = "VL_glottal_fricative";
 let VL_GLOTTAL_PLOSIVE = "VL_glottal_plosive";
 let VL_LABIODENTAL_FRICATIVE = "VL_labiodental_fricative";
+let VL_DENTAL_PLOSIVE = 'VL_labiodental_plosive';
 let VL_PALATAL_FRICATIVE = "VL_palatal_fricative";
 let VL_PALATAL_PLOSIVE = "VL_palatal_plosive";
 let VL_PHARYNGEAL_FRICATIVE = "VL_pharyngeal_fricative";
@@ -654,7 +658,24 @@ let specs = {
         ]
     },
     "spanish": {
-        consonants: [],
+        consonants: {
+            [VL_BILABIAL_PLOSIVE]: true,
+            [V_BILABIAL_PLOSIVE]: true,
+            [V_BILABIAL_NASAL]: true,
+            [V_DENTAL_NASAL]: true,
+            [V_DENTAL_LATERAL_APPROXIMANT]: true,
+            [VL_LABIODENTAL_FRICATIVE]: true,
+            [VL_DENTAL_PLOSIVE]: true,
+            [V_DENTAL_PLOSIVE]: true,
+            [V_ALVEOLAR_TAP]: true,
+            [VL_ALVEOLAR_FRICATIVE]: true,
+            [V_ALVEOLAR_TRILL]: true,
+            [V_PALATAL_NASAL]: true,
+            [V_PALATAL_FRICATIVE]: true,
+            [VL_VELAR_PLOSIVE]: true,
+            [V_VELAR_PLOSIVE]: true,
+            [VL_VELAR_FRICATIVE]: true,
+        },
         vowels: [
             { name: [CLOSE_BACK_ROUNDED_VOWEL], include: true },
             { name: [CLOSE_BACK_UNROUNDED_VOWEL], include: false },
@@ -676,9 +697,9 @@ let specs = {
             { name: [NEAR_OPEN_FRONT_UNROUNDED_VOWEL], include: false },
             { name: [OPEN_BACK_ROUNDED_VOWEL], include: false },
             { name: [OPEN_BACK_UNROUNDED_VOWEL], include: false },
-            { name: [OPEN_CENTRAL_UNROUNDED_VOWEL], include: false },
+            { name: [OPEN_CENTRAL_UNROUNDED_VOWEL], include: true },
             { name: [OPEN_FRONT_ROUNDED_VOWEL], include: false },
-            { name: [OPEN_FRONT_UNROUNDED_VOWEL], include: true },
+            { name: [OPEN_FRONT_UNROUNDED_VOWEL], include: false },
             { name: [OPEN_MID_BACK_ROUNDED_VOWEL], include: false },
             { name: [OPEN_MID_BACK_UNROUNDED_VOWEL], include: false },
             { name: [OPEN_MID_CENTRAL_ROUNDED_VOWEL], include: false },
@@ -703,11 +724,14 @@ let names = {
     V_BILABIAL_PLOSIVE,
     V_BILABIAL_TRILL,
     V_DENTAL_FRICATIVE,
+    V_DENTAL_LATERAL_APPROXIMANT,
+    V_DENTAL_NASAL,
     V_GLOTTAL_FRICATIVE,
     V_LABIODENTAL_APPROXIMANT,
     V_LABIODENTAL_FLAP,
     V_LABIODENTAL_FRICATIVE,
     V_LABIODENTAL_NASAL,
+    V_DENTAL_PLOSIVE,
     V_PALATAL_APPROXIMANT,
     V_PALATAL_FRICATIVE,
     V_PALATAL_LATERAL_APPROXIMANT,
@@ -739,6 +763,7 @@ let names = {
     VL_GLOTTAL_FRICATIVE,
     VL_GLOTTAL_PLOSIVE,
     VL_LABIODENTAL_FRICATIVE,
+    VL_DENTAL_PLOSIVE,
     VL_PALATAL_FRICATIVE,
     VL_PALATAL_PLOSIVE,
     VL_PHARYNGEAL_FRICATIVE,

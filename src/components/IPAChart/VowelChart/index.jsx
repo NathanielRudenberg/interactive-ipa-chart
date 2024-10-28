@@ -9,7 +9,7 @@ export default function VowelChart(props) {
     let vowelSymbols = symbols.vowels;
 
     let vowels = vowelSpec.map(vowel => (
-        vowel.include && <Vowel key={vowel.name} name={vowel.name} className={vowel.name + " vowel"}>{vowelSymbols[vowel.name]}</Vowel>
+        vowel.include && <Vowel language={languageName} key={vowel.name} name={vowel.name} className={vowel.name + " vowel"}>{vowelSymbols[vowel.name]}</Vowel>
     ));
 
     return (

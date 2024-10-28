@@ -4,7 +4,7 @@ import audio from '../../../../services/audio';
 export default class Vowel extends Component {
     playSound = () => {
         if (!this.props.empty && !this.props.impossible) {
-            audio.playVowel(this.props.name);
+            audio.playVowel(this.props.name, this.props.language);
         }
     };
 
