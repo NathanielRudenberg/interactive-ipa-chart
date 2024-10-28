@@ -14,15 +14,20 @@ export default [
         path: '/about',
         component: About
     },
+    // {
+    //     name: 'Language Profile',
+    //     path: '/languages/:lang',
+    //     component: Languages
+    // },
+    // {
+    //     name: 'Languages',
+    //     path: '/languages',
+    //     exact: true,
+    //     component: Languages
+    // },
     {
-        name: 'Language Profile',
-        path: '/languages/:lang',
-        component: Languages
-    },
-    {
-        name: 'Languages',
-        path: '/languages',
-        exact: true,
-        component: Languages
-    },
+        Name: 'Language Profile',
+        path: '/:lang',
+        component: Home
+    }
 ]

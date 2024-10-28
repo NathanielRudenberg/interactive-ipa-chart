@@ -8,6 +8,7 @@ import DropMenu from '../DropMenu';
 import './language-selector.scss';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default class LanguageSelector extends Component {
     constructor(props) {
@@ -51,28 +52,33 @@ export default class LanguageSelector extends Component {
     handleSelectLangVar = (item, value) => {
         let updateLanguage = this.props.updateLanguage;
         this.setState((prevState) => {
-            this.handleCloseLangVar();
-            updateLanguage(value);
             return {
                 ...prevState,
                 langVar: item,
             }
         });
+        updateLanguage(value);
+        this.handleCloseLangVar();
+    }
+
+    handleClear = () => {
+        this.setState({langVar: null});
+        this.props.clear();
     }
 
     render() {
         return (
             <>
                 <ButtonGroup color="primary" aria-label="outlined primary button group">
-                    <Button aria-controls="language-family-menu" aria-haspopup="true" onClick={this.handleClickLangFam} endIcon={<ExpandMoreRoundedIcon className='expand-more' />}>
+                    {/* <Button aria-controls="language-family-menu" aria-haspopup="true" onClick={this.handleClickLangFam} endIcon={<ExpandMoreRoundedIcon className='expand-more' />}>
                         {this.state.langFam || 'Language Family'}
-                    </Button>
+                    </Button> */}
                     <Button aria-controls="language-variant-menu" aria-haspopup="true" onClick={this.handleClickLangVar} endIcon={<ExpandMoreRoundedIcon />}>
-                        {this.state.langVar || 'Language Variant'}
+                        {this.state.langVar || 'Select a Language'}
                     </Button> 
-                    <Button variant='contained' onClick={() => {this.props.retract()}}>
-                        <ArrowForwardIcon/>
-                    </Button>
+                    {this.state.langVar && <Button variant='contained' onClick={this.handleClear}>
+                        <CloseIcon/>
+                    </Button>}
                 </ButtonGroup>
 
                 <Menu

@@ -24,11 +24,11 @@ export default class NavTabs extends Component {
                             Home
                         </NavLink >
                     </Tab>
-                    <Tab>
+                    {/* <Tab>
                         <NavLink to='/languages' className='tab-link' activeClassName='tab-link--selected'>
                             Languages
                         </NavLink >
-                    </Tab>
+                    </Tab> */}
                     <Tab>
                         <NavLink exact to='/about' className='tab-link' activeClassName='tab-link--selected'>
                             About
