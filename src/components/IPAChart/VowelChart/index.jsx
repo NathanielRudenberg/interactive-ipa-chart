@@ -13,15 +13,15 @@ export default function VowelChart(props) {
     ));
 
     return (
-        <div class="vowel-section">
-            <div class="vowel-boat-container">
-                <div id="vowel-boat" class="vowel-boat-section" />
-                <div id="top-left" class="vowel-boat-section" />
-                <div id="top-right" class="vowel-boat-section" />
-                <div id="mid-left" class="vowel-boat-section" />
-                <div id="mid-right" class="vowel-boat-section" />
-                <div id="bottom-left" class="vowel-boat-section" />
-                <div id="bottom-right" class="vowel-boat-section" />
+        <div className="vowel-section">
+            <div className="vowel-boat-container">
+                <div id="vowel-boat" className="vowel-boat-section" />
+                <div id="top-left" className="vowel-boat-section" />
+                <div id="top-right" className="vowel-boat-section" />
+                <div id="mid-left" className="vowel-boat-section" />
+                <div id="mid-right" className="vowel-boat-section" />
+                <div id="bottom-left" className="vowel-boat-section" />
+                <div id="bottom-right" className="vowel-boat-section" />
 
                 {vowels}
             </div>

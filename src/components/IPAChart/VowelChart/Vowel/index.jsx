@@ -13,7 +13,7 @@ export default class Vowel extends Component {
 
         return (
             <>
-                <div class={className}>
+                <div className={className}>
                     <div className="symbol-container">
                         <div onClick={children ? this.playSound : null} className="symbol">
                             {children}

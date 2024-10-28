@@ -21,12 +21,12 @@ export default class Consonant extends Component {
         if (impossible) className = className.concat(' impossible');
 
         if (!visible) {
-            return (<><div class={className}></div></>)
+            return (<><div className={className}></div></>)
         }
 
         return (
             <>
-                <div class={className} onClick={this.playSound}>{symbol}</div>
+                <div className={className} onClick={this.playSound}>{symbol}</div>
             </>
         )
     }

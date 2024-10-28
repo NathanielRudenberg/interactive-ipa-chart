@@ -8,28 +8,28 @@ export default function ConsonantChart(props) {
     let consonants = specs[languageName].consonants;
 
     return (
-        <div class='consonant-chart'>
-            <table class="tg">
+        <div className='consonant-chart'>
+            <table className="tg">
                 <tbody>
                     <tr>
-                        <td class="top tg-0lax"></td>
-                        <td class="top tg-0lax">Bilabial</td>
-                        <td class="top tg-0lax">Labiodental</td>
-                        <td class="top tg-0lax">Dental</td>
-                        <td class="top tg-0lax">Alveolar</td>
-                        <td class="top tg-0lax">Postalveolar</td>
-                        <td class="top tg-0lax">Retroflex</td>
-                        <td class="top tg-0lax">Palatal</td>
-                        <td class="top tg-0lax">Velar</td>
-                        <td class="top tg-0lax">Uvular</td>
-                        <td class="top tg-0lax">Pharyngeal</td>
-                        <td class="top tg-0lax">Glottal</td>
+                        <td className="top tg-0lax"></td>
+                        <td className="top tg-0lax">Bilabial</td>
+                        <td className="top tg-0lax">Labiodental</td>
+                        <td className="top tg-0lax">Dental</td>
+                        <td className="top tg-0lax">Alveolar</td>
+                        <td className="top tg-0lax">Postalveolar</td>
+                        <td className="top tg-0lax">Retroflex</td>
+                        <td className="top tg-0lax">Palatal</td>
+                        <td className="top tg-0lax">Velar</td>
+                        <td className="top tg-0lax">Uvular</td>
+                        <td className="top tg-0lax">Pharyngeal</td>
+                        <td className="top tg-0lax">Glottal</td>
                     </tr>
                     <tr>
                         {/* Plosives */}
-                        <td class="tg-0lax">Plosive</td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Plosive</td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='p'
                                     name='VL_bilabial_plosive'
@@ -42,9 +42,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant 
                                     symbol='t'
                                     name='VL_dental_plosive'
@@ -57,8 +57,8 @@ export default function ConsonantChart(props) {
                                  />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='t'
                                     name='VL_alveolar_plosive'
@@ -71,9 +71,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ʈ'
                                     name='VL_retroflex_plosive'
@@ -86,8 +86,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='c'
                                     name='VL_palatal_plosive'
@@ -100,8 +100,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='k'
                                     name='VL_velar_plosive'
@@ -114,8 +114,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='q'
                                     name='VL_uvular_plosive'
@@ -128,14 +128,14 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant empty impossible />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ʔ'
                                     name='VL_glottal_plosive'
@@ -147,9 +147,9 @@ export default function ConsonantChart(props) {
                     </tr>
                     <tr>
                         {/* Nasals */}
-                        <td class="tg-0lax">Nasal</td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Nasal</td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='m'
@@ -158,8 +158,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɱ'
@@ -168,8 +168,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border">
-                        <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad no-right-border">
+                        <div className="cons-wrapper">
                             <Consonant empty />
                             <Consonant 
                                 symbol='n'
@@ -178,8 +178,8 @@ export default function ConsonantChart(props) {
                             />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='n'
@@ -188,9 +188,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɳ'
@@ -199,8 +199,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɲ'
@@ -209,8 +209,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ŋ'
@@ -219,8 +219,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɴ'
@@ -229,14 +229,14 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
                     </tr>
                     <tr>
                         {/* Trills */}
-                        <td class="tg-0lax">Trill</td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Trill</td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ʙ'
@@ -245,10 +245,10 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad no-right-border"></td>
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='r'
@@ -257,12 +257,12 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ʀ'
@@ -271,15 +271,15 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
                     </tr>
                     <tr>
                         {/* Flaps */}
-                        <td class="tg-0lax">Tap / flap</td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Tap / flap</td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ⱱ'
@@ -288,9 +288,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad no-right-border"></td>
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɾ'
@@ -299,9 +299,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɽ'
@@ -310,17 +310,17 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
                     </tr>
                     <tr>
                         {/* Fricatives */}
-                        <td class="tg-0lax">Fricative</td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Fricative</td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ɸ'
                                     name='VL_bilabial_fricative'
@@ -333,8 +333,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='f'
                                     name='VL_labiodental_fricative'
@@ -347,8 +347,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='θ'
                                     name='VL_dental_fricative'
@@ -361,8 +361,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='s'
                                     name='VL_alveolar_fricative'
@@ -375,8 +375,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ʃ'
                                     name='VL_postalveolar_fricative'
@@ -389,8 +389,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ʂ'
                                     name='VL_retroflex_fricative'
@@ -403,8 +403,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ç'
                                     name='VL_palatal_fricative'
@@ -417,8 +417,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='x'
                                     name='VL_velar_fricative'
@@ -431,8 +431,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='χ'
                                     name='VL_uvular_fricative'
@@ -445,8 +445,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ħ'
                                     name='VL_pharyngeal_fricative'
@@ -459,8 +459,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='h'
                                     name='VL_glottal_fricative'
@@ -476,12 +476,12 @@ export default function ConsonantChart(props) {
                     </tr>
                     <tr>
                         {/* Lateral fricatives */}
-                        <td class="tg-0lax">Lateral fricative</td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Lateral fricative</td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad no-right-border"></td>
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant
                                     symbol='ɬ'
                                     name='VL_alveolar_lateral_fricative'
@@ -494,20 +494,20 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
                     </tr>
                     <tr>
                         {/* Approximants */}
-                        <td class="tg-0lax">Approximant</td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax">Approximant</td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ʋ'
@@ -516,9 +516,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border"></td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad no-right-border"></td>
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɹ'
@@ -527,9 +527,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɻ'
@@ -538,8 +538,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='j'
@@ -548,8 +548,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɰ'
@@ -558,17 +558,17 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
                     </tr>
                     <tr>
                         {/* Lateral approximants */}
-                        <td class="tg-0lax lat-ap">Lateral approximant</td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad no-right-border">
-                        <div class="cons-wrapper">
+                        <td className="tg-0lax lat-ap">Lateral approximant</td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad no-right-border">
+                        <div className="cons-wrapper">
                             <Consonant empty />
                             <Consonant 
                                 symbol='l'
@@ -577,8 +577,8 @@ export default function ConsonantChart(props) {
                             />
                         </div>
                         </td>
-                        <td class="tg-0lax no-pad no-right-border">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad no-right-border">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='l'
@@ -587,9 +587,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ɭ'
@@ -598,8 +598,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ʎ'
@@ -608,8 +608,8 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad">
-                            <div class="cons-wrapper">
+                        <td className="tg-0lax no-pad">
+                            <div className="cons-wrapper">
                                 <Consonant empty />
                                 <Consonant
                                     symbol='ʟ'
@@ -618,9 +618,9 @@ export default function ConsonantChart(props) {
                                 />
                             </div>
                         </td>
-                        <td class="tg-0lax no-pad"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
-                        <td class="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
+                        <td className="tg-0lax no-pad impossible"></td>
                     </tr>
                 </tbody>
             </table>
