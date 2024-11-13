@@ -8,7 +8,7 @@ import DropMenu from '../DropMenu';
 import './language-selector.scss';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
-import CloseIcon from '@mui/icons-material/Close';
+import UndoIcon from '@mui/icons-material/Undo';
 
 export default class LanguageSelector extends Component {
     constructor(props) {
@@ -77,7 +77,7 @@ export default class LanguageSelector extends Component {
                         {this.state.langVar || 'Select a Language'}
                     </Button> 
                     {this.state.langVar && <Button variant='contained' onClick={this.handleClear}>
-                        <CloseIcon/>
+                        <UndoIcon/> <span style={{paddingLeft: '8px'}}>Clear</span>
                     </Button>}
                 </ButtonGroup>
 
