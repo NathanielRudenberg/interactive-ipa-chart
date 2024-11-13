@@ -1,5 +1,5 @@
 const playConsonant = (filename, language = 'default') => {
-    let audio = new Audio(`/audio/default/consonants/${filename}.ogg`);
+    let audio = new Audio(`/audio/${language}/consonants/${filename}.ogg`);
     audio.play();
 }
 

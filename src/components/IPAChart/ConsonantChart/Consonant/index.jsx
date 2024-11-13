@@ -4,7 +4,7 @@ import audio from '../../../../services/audio';
 export default class Consonant extends Component {
     playSound = () => {
         if (!this.props.empty && !this.props.impossible) {
-            audio.playConsonant(this.props.name);
+            audio.playConsonant(this.props.name, this.props.language);
         }
     };
 
