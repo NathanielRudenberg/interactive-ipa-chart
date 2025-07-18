@@ -1,30 +1,27 @@
 ## Interactive IPA Chart
 ### This project aims to go a step above most online IPA charts by providing charts and recordings for specific language varieties.
 
-#### This is a work in progress. Most of the planned functionality has not been implemented yet.
+| General Chart  | Language Specific |
+| ------------- | ------------- |
+| <img width="3835" height="2020" alt="Screenshot 2025-07-18 120813" src="https://github.com/user-attachments/assets/3d2d10b0-711f-4feb-a7de-71875b655c92" /> | <img width="3839" height="2022" alt="Screenshot 2025-07-18 120852" src="https://github.com/user-attachments/assets/b17d344d-e272-4c37-a100-2147771f4316" /> |
 
-***
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installing
 
-In the project directory, you can run:
+Clone the repo to your computer.
 
-### `npm start`
+ssh: `git@github.com:NathanielRudenberg/interactive-ipa-chart.git`
 
-Runs the app in the development mode.<br />
+https: `https://github.com/NathanielRudenberg/interactive-ipa-chart.git`
+
+## Running
+
+The project uses Node v16.17.0. Once this is installed, run
+`npm i`
+and then
+`npm run start`.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
