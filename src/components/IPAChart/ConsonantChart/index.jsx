@@ -531,7 +531,7 @@ export default function ConsonantChart(props) {
                                 <Consonant language={languageName}
                                     symbol='ɹ'
                                     name='V_alveolar_approximant'
-                                    phonemes={getFilteredPhonemes({alveolar: true, voiced: true, approximant: true})}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: false, voiced: true, approximant: true})}
                                 />
                             </div>
                         </td>
@@ -542,7 +542,7 @@ export default function ConsonantChart(props) {
                                 <Consonant language={languageName}
                                     symbol='ɻ'
                                     name='V_retroflex_approximant'
-                                    phonemes={getFilteredPhonemes({retroflex: true, approximant: true, voiced: true})}
+                                    phonemes={getFilteredPhonemes({retroflex: true, lateral: false, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -552,7 +552,7 @@ export default function ConsonantChart(props) {
                                 <Consonant language={languageName}
                                     symbol='j'
                                     name='V_palatal_approximant'
-                                    phonemes={getFilteredPhonemes({palatal: true, approximant: true, voiced: true})}
+                                    phonemes={getFilteredPhonemes({palatal: true, lateral: false, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
