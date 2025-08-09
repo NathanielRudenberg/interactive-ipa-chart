@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Phoneme from '../../Phoneme';
 import audio from '../../../../services/audio';
 
 export default class Consonant extends Component {
@@ -12,15 +13,15 @@ export default class Consonant extends Component {
         const {
             empty,
             impossible,
-            visible,
             phonemes
         } = this.props;
 
+        let visible = phonemes?.length > 0;
         let className = 'cons';
         if (empty || !visible) className = className.concat(' empty');
         if (impossible) className = className.concat(' impossible');
 
-        console.log("Specific phonemes", phonemes)
+        // console.log("Specific phonemes", phonemes)
 
         if (!visible) {
             return (<><div className={className}></div></>)
@@ -29,7 +30,13 @@ export default class Consonant extends Component {
         let symbol;
         
         if (phonemes?.length == 1) {
-            symbol = phonemes[0].symbol;
+            return (
+                <Phoneme language={this.props.language}
+                    symbol={phonemes[0].symbol}
+                    name={this.props.name}
+                    visible={visible}
+                />
+            )
         } else {
             symbol = this.props.symbol;
         }
