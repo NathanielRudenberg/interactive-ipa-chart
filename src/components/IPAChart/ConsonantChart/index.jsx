@@ -7,6 +7,15 @@ export default function ConsonantChart(props) {
     let languageName = props.language ? props.language : 'default';
     let consonants = specs[languageName].consonants;
 
+    let cons = specs[languageName].phonemes.filter(phone =>
+        Object.entries({consonant: true}).every(([key, value]) => phone[key] === value)
+    )
+
+    let getFilteredPhonemes = features => 
+        cons.filter(phone =>
+            Object.entries(features).every(([key, value]) => phone[key] === value)
+        )
+
     return (
         <div className='consonant-chart'>
             <table className="tg">
@@ -34,11 +43,13 @@ export default function ConsonantChart(props) {
                                     symbol='p'
                                     name='VL_bilabial_plosive'
                                     visible={consonants[names.VL_BILABIAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({consonant: true, bilabial: true, stop: true, voiced: false, })}
                                 />
                                 <Consonant language={languageName}
                                     symbol='b'
                                     name='V_bilabial_plosive'
                                     visible={consonants[names.V_BILABIAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({consonant: true, bilabial: true, stop: true, voiced: true, })}
                                 />
                             </div>
                         </td>

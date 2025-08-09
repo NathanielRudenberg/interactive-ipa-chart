@@ -1,3 +1,5 @@
+import Phone from "../components/IPAChart/phone";
+
 let V_ALVEOLAR_APPROXIMANT = "V_alveolar_approximant";
 let V_ALVEOLAR_FRICATIVE = "V_alveolar_fricative";
 let V_ALVEOLAR_LATERAL_APPROXIMANT = "V_alveolar_lateral_approximant";
@@ -187,7 +189,24 @@ let symbols = {
 };
 
 let specs = {
+    "test": {
+        phonemes: [
+            new Phone({consonant: true, bilabial: true, aspirated: true}),
+            // new Phoneme(consonant = true, bilabial = true, weaklyaspirated = true),
+            // new Phoneme(consonant = true, bilabial = true, unaspirated = true),
+            new Phone({consonant: true, bilabial: true, voiced: true}),
+        ],
+        consonants: {[V_ALVEOLAR_APPROXIMANT]: true,},
+        vowels: [{ name: [CLOSE_BACK_ROUNDED_VOWEL], include: true }],
+    },
     "default": {
+        phonemes: [
+            // new Phone({consonant: true, bilabial: true, stop: true, aspirated: true, symbol: "pʰ"}),
+            new Phone({consonant: true, bilabial: true, stop: true, weaklyaspirated: true, symbol: "p͉ʰ"}),
+            // new Phoneme(consonant: true, bilabial: true, weaklyaspirated: true),
+            // new Phoneme(consonant: true, bilabial: true, unaspirated: true),
+            new Phone({consonant: true, bilabial: true, stop: true, voiced: true, symbol: "b"}),
+        ],
         consonants: {
             [V_ALVEOLAR_APPROXIMANT]: true,
             [V_ALVEOLAR_FRICATIVE]: true,

@@ -10,18 +10,28 @@ export default class Consonant extends Component {
 
     render() {
         const {
-            symbol,
             empty,
             impossible,
-            visible
+            visible,
+            phonemes
         } = this.props;
 
         let className = 'cons';
         if (empty || !visible) className = className.concat(' empty');
         if (impossible) className = className.concat(' impossible');
 
+        console.log("Specific phonemes", phonemes)
+
         if (!visible) {
             return (<><div className={className}></div></>)
+        }
+
+        let symbol;
+        
+        if (phonemes?.length == 1) {
+            symbol = phonemes[0].symbol;
+        } else {
+            symbol = this.props.symbol;
         }
 
         return (
