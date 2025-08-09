@@ -119,7 +119,7 @@ export default function ConsonantChart(props) {
                                 <Consonant language={languageName}
                                     symbol='g'
                                     name='V_velar_plosive'
-                                    phonemes={getFilteredPhonemes({velar: true, nasal: true, voiced: true})}
+                                    phonemes={getFilteredPhonemes({velar: true, stop: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -374,7 +374,7 @@ export default function ConsonantChart(props) {
                                 <Consonant language={languageName}
                                     symbol='s'
                                     name='VL_alveolar_fricative'
-                                    phonemes={getFilteredPhonemes({alveolar: true, fricative: true, voiced: false})}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: false, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
                                     symbol='z'
@@ -562,7 +562,7 @@ export default function ConsonantChart(props) {
                                 <Consonant language={languageName}
                                     symbol='ɰ'
                                     name='V_velar_approximant'
-                                    phonemes={getFilteredPhonemes({velar: true, approximant: true, voiced: true})}
+                                    phonemes={getFilteredPhonemes({velar: true, lateral: false, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>

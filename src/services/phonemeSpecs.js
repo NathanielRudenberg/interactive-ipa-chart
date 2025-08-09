@@ -244,7 +244,7 @@ let specs = {
             new Phone({consonant: true, velar: true, fricative: true, voiced: true, symbol: "ɣ"}),
             new Phone({consonant: true, velar: true, lateral: true, approximant: true, voiced: true, symbol: "ʟ"}),
             new Phone({consonant: true, velar: true, nasal: true, voiced: true, symbol: "ŋ"}),
-            new Phone({consonant: true, velar: true, nasal: true, voiced: true, symbol: "g"}),
+            new Phone({consonant: true, velar: true, stop: true, voiced: true, symbol: "g"}),
             new Phone({consonant: true, alveolar: true, fricative: true, voiced: false, symbol: "s"}),
             new Phone({consonant: true, alveolar: true, lateral: true, fricative: true, voiced: false, symbol: "ɬ"}),
             new Phone({consonant: true, alveolar: true, stop: true, voiced: false, symbol: "t"}),
