@@ -39,6 +39,7 @@ export default class Phone {
         velopharyngealfricative = false, whistled = false, lenis = false,
         sandhi = false, quasiresonant = false, semiresonant = false,
         raspberry = false, transition = false, spirant = false,
+        nearhigh = false, nearlow = false, nearfront = false, nearback = false,
         symbol = '',
     }) {
         this.diacritic = diacritic;
@@ -97,6 +98,10 @@ export default class Phone {
         this.trill = trill;
         this.ejective = ejective;
         this.nasal = nasal;
+        this.nearback = nearback;
+        this.nearfront = nearfront;
+        this.nearhigh = nearhigh;
+        this.nearlow = nearlow;
         this.oral = oral;
         this.prenasalized = prenasalized;
         this.strident = strident;
