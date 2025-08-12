@@ -45,6 +45,9 @@ export default function Consonant({empty, impossible, name, language, phonemes, 
             />
         )
     } else {
+        if (phonemes?.length > 1) {
+            className = className.concat(' multiple');
+        }
         instances = phonemes.map(phoneme => (
             <Phoneme language={language}
                 symbol={phoneme.symbol}
@@ -63,7 +66,7 @@ export default function Consonant({empty, impossible, name, language, phonemes, 
                 onMouseEnter={handleShowList}
                 onMouseLeave={handleHideList}
             >
-                {symbol}2
+                {symbol}
                 <Popper
                     open={showList}
                     placement="top"
