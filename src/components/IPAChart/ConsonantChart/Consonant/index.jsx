@@ -1,33 +1,86 @@
-import React, { Component } from 'react';
+import React, { useState, useRef } from 'react';
+import Phoneme from '../../Phoneme';
+import Box from '@mui/material/Box';
+import Popper from '@mui/material/Popper';
 import audio from '../../../../services/audio';
 
-export default class Consonant extends Component {
-    playSound = () => {
-        if (!this.props.empty && !this.props.impossible) {
-            audio.playConsonant(this.props.name, this.props.language);
+export default function Consonant({empty, impossible, name, language, phonemes, defaultSymbol}) {
+    const [showList, setShowList] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null)
+
+    let playSound = () => {
+        if (!empty && !impossible) {
+            audio.playConsonant(name, language);
         }
     };
 
-    render() {
-        const {
-            symbol,
-            empty,
-            impossible,
-            visible
-        } = this.props;
+    let handleShowList = event => {
+        setShowList(true);
+        setAnchorEl(event.currentTarget);
+    };
 
-        let className = 'cons';
-        if (empty || !visible) className = className.concat(' empty');
-        if (impossible) className = className.concat(' impossible');
+    let handleHideList = event => {
+        setShowList(false);
+        setAnchorEl(null);
+    };
 
-        if (!visible) {
-            return (<><div className={className}></div></>)
-        }
+    let visible = phonemes?.length > 0;
+    let className = 'cons';
+    if (empty || !visible) className = className.concat(' empty');
+    if (impossible) className = className.concat(' impossible');
 
-        return (
-            <>
-                <div className={className} onClick={this.playSound}>{symbol}</div>
-            </>
-        )
+    if (!visible) {
+        return (<><div className={className}></div></>)
     }
+
+    let symbol;
+    let instances;
+    
+    if (phonemes?.length == 1) {
+        return (
+            <Phoneme language={language}
+                symbol={phonemes[0].symbol}
+                name={name}
+                visible={visible}
+            />
+        )
+    } else {
+        if (phonemes?.length > 1) {
+            className = className.concat(' multiple');
+        }
+        instances = phonemes.map(phoneme => (
+            <Phoneme language={language}
+                symbol={phoneme.symbol}
+                name={name}
+                visible={visible}
+            />
+        ));
+        symbol = defaultSymbol;
+    }
+
+    return (
+        <>
+            <div
+                className={className}
+                onClick={playSound}
+                onMouseEnter={handleShowList}
+                onMouseLeave={handleHideList}
+            >
+                {symbol}
+                <Popper
+                    open={showList}
+                    placement="top"
+                    anchorEl={anchorEl}
+                    modifiers={[
+                        {
+                        },
+                    ]}
+                >
+                    <Box sx={{ border: 0, bgcolor: 'background.paper', display: 'flex', flexDirection: 'row', boxShadow: 4, }}>
+                        {instances}
+                    </Box>
+                </Popper>
+            </div>
+        </>
+    )
 }

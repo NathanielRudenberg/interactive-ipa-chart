@@ -5,7 +5,15 @@ import './consonants.scss';
 
 export default function ConsonantChart(props) {
     let languageName = props.language ? props.language : 'default';
-    let consonants = specs[languageName].consonants;
+
+    let consonants = specs[languageName].phonemes.filter(phone =>
+        Object.entries({consonant: true}).every(([key, value]) => phone[key] === value)
+    )
+
+    let getFilteredPhonemes = features => 
+        consonants.filter(phone =>
+            Object.entries(features).every(([key, value]) => phone[key] === value)
+        )
 
     return (
         <div className='consonant-chart'>
@@ -31,14 +39,14 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='p'
+                                    defaultSymbol='p'
                                     name='VL_bilabial_plosive'
-                                    visible={consonants[names.VL_BILABIAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({bilabial: true, stop: true, voiced: false, })}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='b'
+                                    defaultSymbol='b'
                                     name='V_bilabial_plosive'
-                                    visible={consonants[names.V_BILABIAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({bilabial: true, stop: true, voiced: true, })}
                                 />
                             </div>
                         </td>
@@ -46,28 +54,28 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad no-right-border">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} 
-                                    symbol='t'
+                                    defaultSymbol='t'
                                     name='VL_dental_plosive'
-                                    visible={consonants[names.VL_DENTAL_PLOSIVE]}
+                                    // phonemes={getFilteredPhonemes({dental: true, stop: true, })}
                                  />
                                 <Consonant language={languageName} 
-                                    symbol='d'
+                                    defaultSymbol='d'
                                     name='V_dental_plosive'
-                                    visible={consonants[names.V_DENTAL_PLOSIVE]}
+                                    // phonemes={getFilteredPhonemes({dental: true, stop: true, voiced: true, })}
                                  />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad no-right-border">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='t'
+                                    defaultSymbol='t'
                                     name='VL_alveolar_plosive'
-                                    visible={consonants[names.VL_ALVEOLAR_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, stop: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='d'
+                                    defaultSymbol='d'
                                     name='V_alveolar_plosive'
-                                    visible={consonants[names.V_ALVEOLAR_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, stop: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -75,56 +83,56 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ʈ'
+                                    defaultSymbol='ʈ'
                                     name='VL_retroflex_plosive'
-                                    visible={consonants[names.VL_RETROFLEX_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, stop: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ɖ'
+                                    defaultSymbol='ɖ'
                                     name='V_retroflex_plosive'
-                                    visible={consonants[names.V_RETROFLEX_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, stop: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='c'
+                                    defaultSymbol='c'
                                     name='VL_palatal_plosive'
-                                    visible={consonants[names.VL_PALATAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({palatal: true, stop: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ɟ'
+                                    defaultSymbol='ɟ'
                                     name='V_palatal_plosive'
-                                    visible={consonants[names.V_PALATAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({palatal: true, stop: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='k'
+                                    defaultSymbol='k'
                                     name='VL_velar_plosive'
-                                    visible={consonants[names.VL_VELAR_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({velar: true, stop: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='g'
+                                    defaultSymbol='g'
                                     name='V_velar_plosive'
-                                    visible={consonants[names.V_VELAR_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({velar: true, stop: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='q'
+                                    defaultSymbol='q'
                                     name='VL_uvular_plosive'
-                                    visible={consonants[names.VL_UVULAR_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({uvular: true, stop: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ɢ'
+                                    defaultSymbol='ɢ'
                                     name='V_uvular_plosive'
-                                    visible={consonants[names.V_UVULAR_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({uvular: true, stop: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -137,9 +145,9 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ʔ'
+                                    defaultSymbol='ʔ'
                                     name='VL_glottal_plosive'
-                                    visible={consonants[names.VL_GLOTTAL_PLOSIVE]}
+                                    phonemes={getFilteredPhonemes({laryngeal: true, stop: true, voiced: false})}
                                 />
                                 <Consonant language={languageName} empty impossible />
                             </div>
@@ -150,11 +158,15 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax">Nasal</td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
-                                <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='m'
+                                    defaultSymbol='m̥'
+                                    name='VL_bilabial_nasal'
+                                    phonemes={getFilteredPhonemes({bilabial: true, nasal: true, voiced: false})}
+                                />
+                                <Consonant language={languageName}
+                                    defaultSymbol='m'
                                     name='V_bilabial_nasal'
-                                    visible={consonants[names.V_BILABIAL_NASAL]}
+                                    phonemes={getFilteredPhonemes({bilabial: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -162,9 +174,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɱ'
+                                    defaultSymbol='ɱ'
                                     name='V_labiodental_nasal'
-                                    visible={consonants[names.V_LABIODENTAL_NASAL]}
+                                    phonemes={getFilteredPhonemes({labiodental: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -172,19 +184,22 @@ export default function ConsonantChart(props) {
                         <div className="cons-wrapper">
                             <Consonant language={languageName} empty />
                             <Consonant language={languageName} 
-                                symbol='n'
+                                defaultSymbol='n'
                                 name='V_dental_nasal'
-                                visible={consonants[names.V_DENTAL_NASAL]}
                             />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad no-right-border">
                             <div className="cons-wrapper">
-                                <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='n'
+                                    defaultSymbol="n̥"
+                                    name="VL_alveolar_nasal"
+                                    phonemes={getFilteredPhonemes({alveolar: true, nasal: true, voiced: false})}
+                                />
+                                <Consonant language={languageName}
+                                    defaultSymbol='n'
                                     name='V_alveolar_nasal'
-                                    visible={consonants[names.V_ALVEOLAR_NASAL]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -193,29 +208,37 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɳ'
+                                    defaultSymbol='ɳ'
                                     name='V_retroflex_nasal'
-                                    visible={consonants[names.V_RETROFLEX_NASAL]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
-                                <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɲ'
+                                    defaultSymbol='ɲ̊'
+                                    name='VL_palatal_nasal'
+                                    phonemes={getFilteredPhonemes({palatal: true, nasal: true, voiced: false})}
+                                />
+                                <Consonant language={languageName}
+                                    defaultSymbol='ɲ'
                                     name='V_palatal_nasal'
-                                    visible={consonants[names.V_PALATAL_NASAL]}
+                                    phonemes={getFilteredPhonemes({palatal: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
-                                <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ŋ'
+                                    defaultSymbol='ŋ̊'
+                                    name='VL_velar_nasal'
+                                    phonemes={getFilteredPhonemes({velar: true, nasal: true, voiced: false})}
+                                />
+                                <Consonant language={languageName}
+                                    defaultSymbol='ŋ'
                                     name='V_velar_nasal'
-                                    visible={consonants[names.V_VELAR_NASAL]}
+                                    phonemes={getFilteredPhonemes({velar: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -223,9 +246,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɴ'
+                                    defaultSymbol='ɴ'
                                     name='V_uvular_nasal'
-                                    visible={consonants[names.V_UVULAR_NASAL]}
+                                    phonemes={getFilteredPhonemes({uvular: true, nasal: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -239,9 +262,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ʙ'
+                                    defaultSymbol='ʙ'
                                     name='V_bilabial_trill'
-                                    visible={consonants[names.V_BILABIAL_TRILL]}
+                                    phonemes={getFilteredPhonemes({bilabial: true, trill: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -249,11 +272,15 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad no-right-border"></td>
                         <td className="tg-0lax no-pad no-right-border">
                             <div className="cons-wrapper">
-                                <Consonant language={languageName} empty />
+                                <Consonant language={languageName} empty
+                                    defaultSymbol='r̥'
+                                    name='VL_alveolar_trill'
+                                    phonemes={getFilteredPhonemes({alveolar: true, trill: true, voiced: false})}
+                                />
                                 <Consonant language={languageName}
-                                    symbol='r'
+                                    defaultSymbol='r'
                                     name='V_alveolar_trill'
-                                    visible={consonants[names.V_ALVEOLAR_TRILL]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, trill: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -265,9 +292,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ʀ'
+                                    defaultSymbol='ʀ'
                                     name='V_uvular_trill'
-                                    visible={consonants[names.V_UVULAR_TRILL]}
+                                    phonemes={getFilteredPhonemes({uvular: true, trill: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -282,9 +309,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ⱱ'
+                                    defaultSymbol='ⱱ'
                                     name='V_labiodental_flap'
-                                    visible={consonants[names.V_LABIODENTAL_FLAP]}
+                                    phonemes={getFilteredPhonemes({labiodental: true, flap: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -293,9 +320,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɾ'
+                                    defaultSymbol='ɾ'
                                     name='V_alveolar_tap'
-                                    visible={consonants[names.V_ALVEOLAR_TAP]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, flap: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -304,9 +331,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɽ'
+                                    defaultSymbol='ɽ'
                                     name='V_retroflex_flap'
-                                    visible={consonants[names.V_RETROFLEX_FLAP]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, flap: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -322,154 +349,154 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ɸ'
+                                    defaultSymbol='ɸ'
                                     name='VL_bilabial_fricative'
-                                    visible={consonants[names.VL_BILABIAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({bilabial: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='β'
+                                    defaultSymbol='β'
                                     name='V_bilabial_fricative'
-                                    visible={consonants[names.V_BILABIAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({bilabial: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='f'
+                                    defaultSymbol='f'
                                     name='VL_labiodental_fricative'
-                                    visible={consonants[names.VL_LABIODENTAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({labiodental: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='v'
+                                    defaultSymbol='v'
                                     name='V_labiodental_fricative'
-                                    visible={consonants[names.V_LABIODENTAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({labiodental: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='θ'
+                                    defaultSymbol='θ'
                                     name='VL_dental_fricative'
-                                    visible={consonants[names.VL_DENTAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({dental: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ð'
+                                    defaultSymbol='ð'
                                     name='V_dental_fricative'
-                                    visible={consonants[names.V_DENTAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({dental: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='s'
+                                    defaultSymbol='s'
                                     name='VL_alveolar_fricative'
-                                    visible={consonants[names.VL_ALVEOLAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: false, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='z'
+                                    defaultSymbol='z'
                                     name='V_alveolar_fricative'
-                                    visible={consonants[names.V_ALVEOLAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, fricative: true, lateral: false, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ʃ'
+                                    defaultSymbol='ʃ'
                                     name='VL_postalveolar_fricative'
-                                    visible={consonants[names.VL_POSTALVEOLAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({alveopalatal: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ʒ'
+                                    defaultSymbol='ʒ'
                                     name='V_postalveolar_fricative'
-                                    visible={consonants[names.V_POSTALVEOLAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({alveopalatal: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ʂ'
+                                    defaultSymbol='ʂ'
                                     name='VL_retroflex_fricative'
-                                    visible={consonants[names.VL_RETROFLEX_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ʐ'
+                                    defaultSymbol='ʐ'
                                     name='V_retroflex_fricative'
-                                    visible={consonants[names.V_RETROFLEX_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ç'
+                                    defaultSymbol='ç'
                                     name='VL_palatal_fricative'
-                                    visible={consonants[names.VL_PALATAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({palatal: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ʝ'
+                                    defaultSymbol='ʝ'
                                     name='V_palatal_fricative'
-                                    visible={consonants[names.V_PALATAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({palatal: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='x'
+                                    defaultSymbol='x'
                                     name='VL_velar_fricative'
-                                    visible={consonants[names.VL_VELAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({velar: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ɣ'
+                                    defaultSymbol='ɣ'
                                     name='V_velar_fricative'
-                                    visible={consonants[names.V_VELAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({velar: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='χ'
+                                    defaultSymbol='χ'
                                     name='VL_uvular_fricative'
-                                    visible={consonants[names.VL_UVULAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({uvular: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ʁ'
+                                    defaultSymbol='ʁ'
                                     name='V_uvular_fricative'
-                                    visible={consonants[names.V_UVULAR_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({uvular: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ħ'
+                                    defaultSymbol='ħ'
                                     name='VL_pharyngeal_fricative'
-                                    visible={consonants[names.VL_PHARYNGEAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({pharyngeal: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ʕ'
+                                    defaultSymbol='ʕ'
                                     name='V_pharyngeal_fricative'
-                                    visible={consonants[names.V_PHARYNGEAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({pharyngeal: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
                         <td className="tg-0lax no-pad">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='h'
+                                    defaultSymbol='h'
                                     name='VL_glottal_fricative'
-                                    visible={consonants[names.VL_GLOTTAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({laryngeal: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ɦ'
+                                    defaultSymbol='ɦ'
                                     name='V_glottal_fricative'
-                                    visible={consonants[names.V_GLOTTAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({laryngeal: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -483,14 +510,14 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad no-right-border">
                             <div className="cons-wrapper">
                                 <Consonant language={languageName}
-                                    symbol='ɬ'
+                                    defaultSymbol='ɬ'
                                     name='VL_alveolar_lateral_fricative'
-                                    visible={consonants[names.VL_ALVEOLAR_LATERAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: true, fricative: true, voiced: false})}
                                 />
                                 <Consonant language={languageName}
-                                    symbol='ɮ'
+                                    defaultSymbol='ɮ'
                                     name='V_alveolar_lateral_fricative'
-                                    visible={consonants[names.V_ALVEOLAR_LATERAL_FRICATIVE]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: true, fricative: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -510,9 +537,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ʋ'
+                                    defaultSymbol='ʋ'
                                     name='V_labiodental_approximant'
-                                    visible={consonants[names.V_LABIODENTAL_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({labiodental: true, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -521,9 +548,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɹ'
+                                    defaultSymbol='ɹ'
                                     name='V_alveolar_approximant'
-                                    visible={consonants[names.V_ALVEOLAR_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: false, voiced: true, approximant: true})}
                                 />
                             </div>
                         </td>
@@ -532,9 +559,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɻ'
+                                    defaultSymbol='ɻ'
                                     name='V_retroflex_approximant'
-                                    visible={consonants[names.V_RETROFLEX_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, lateral: false, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -542,9 +569,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='j'
+                                    defaultSymbol='j'
                                     name='V_palatal_approximant'
-                                    visible={consonants[names.V_PALATAL_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({palatal: true, lateral: false, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -552,9 +579,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɰ'
+                                    defaultSymbol='ɰ'
                                     name='V_velar_approximant'
-                                    visible={consonants[names.V_VELAR_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({velar: true, lateral: false, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -568,22 +595,25 @@ export default function ConsonantChart(props) {
                         <td className="tg-0lax no-pad impossible"></td>
                         <td className="tg-0lax no-pad impossible"></td>
                         <td className="tg-0lax no-pad no-right-border">
-                        <div className="cons-wrapper">
-                            <Consonant language={languageName} empty />
-                            <Consonant language={languageName} 
-                                symbol='l'
-                                name='V_dental_lateral_approximant'
-                                visible={consonants[names.V_DENTAL_LATERAL_APPROXIMANT]}
-                            />
-                        </div>
+                            <div className="cons-wrapper">
+                                <Consonant language={languageName} empty />
+                                <Consonant language={languageName} 
+                                    defaultSymbol='l'
+                                    name='V_dental_lateral_approximant'
+                                />
+                            </div>
                         </td>
                         <td className="tg-0lax no-pad no-right-border">
                             <div className="cons-wrapper">
-                                <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='l'
+                                    defaultSymbol='l̥'
+                                    name='VL_alveolar_lateral_approximant'
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: true, approximant: true, voiced: false})}
+                                />
+                                <Consonant language={languageName}
+                                    defaultSymbol='l'
                                     name='V_alveolar_lateral_approximant'
-                                    visible={consonants[names.V_ALVEOLAR_LATERAL_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({alveolar: true, lateral: true, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -592,9 +622,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ɭ'
+                                    defaultSymbol='ɭ'
                                     name='V_retroflex_lateral_approximant'
-                                    visible={consonants[names.V_RETROFLEX_LATERAL_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({retroflex: true, lateral: true, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -602,9 +632,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ʎ'
+                                    defaultSymbol='ʎ'
                                     name='V_palatal_lateral_approximant'
-                                    visible={consonants[names.V_PALATAL_LATERAL_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({palatal: true, lateral: true, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
@@ -612,9 +642,9 @@ export default function ConsonantChart(props) {
                             <div className="cons-wrapper">
                                 <Consonant language={languageName} empty />
                                 <Consonant language={languageName}
-                                    symbol='ʟ'
+                                    defaultSymbol='ʟ'
                                     name='V_velar_lateral_approximant'
-                                    visible={consonants[names.V_VELAR_LATERAL_APPROXIMANT]}
+                                    phonemes={getFilteredPhonemes({velar: true, lateral: true, approximant: true, voiced: true})}
                                 />
                             </div>
                         </td>
