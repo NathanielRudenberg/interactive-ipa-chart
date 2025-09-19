@@ -686,7 +686,7 @@ let specs = {
             new Phone({ consonant: true, palatal: true, fricative: true, voiced: true, symbol: "ʝ" }),
             new Phone({ consonant: true, velar: true, stop: true, symbol: "k" }),
             new Phone({ consonant: true, velar: true, stop: true, voiced: true, symbol: "g" }),
-            new Phone({ consonant: true, velar: true, fricative: true, symbol: "x" }),
+            // new Phone({ consonant: true, velar: true, fricative: true, symbol: "x" }),
             new Phone({ vowel: true, high: true, back: true, rounded: true, symbol: "u" }),
             new Phone({ vowel: true, high: true, front: true, unrounded: true, symbol: "i" }),
             new Phone({ vowel: true, mid: true, back: true, rounded: true, symbol: "o" }),
@@ -701,6 +701,33 @@ let specs = {
             { name: [OPEN_CENTRAL_UNROUNDED_VOWEL], include: true },
         ]
     },
+    "korean": {
+        phonemes: [
+            new Phone({ consonant: true, bilabial: true, stop: true, plain: true, symbol: "p" }),
+            new Phone({ consonant: true, bilabial: true, stop: true, aspirated: true, symbol: "pʰ" }),
+            new Phone({ consonant: true, bilabial: true, stop: true, tense: true, symbol: "p͈" }),
+            new Phone({ consonant: true, bilabial: true, nasal: true, voiced: true, symbol: "m" }),
+            new Phone({ consonant: true, alveolar: true, stop: true, plain: true, symbol: "t" }),
+            new Phone({ consonant: true, alveolar: true, stop: true, aspirated: true, symbol: "tʰ" }),
+            new Phone({ consonant: true, alveolar: true, stop: true, tense: true, symbol: "t͈" }),
+            new Phone({ consonant: true, alveolar: true, nasal: true, voiced: true, symbol: "n" }),
+            new Phone({ consonant: true, alveolar: true, liquid: true, lateral: true, approximant: true, voiced: true, symbol: "l" }),
+            new Phone({ consonant: true, velar: true, stop: true, plain: true, symbol: "k" }),
+            new Phone({ consonant: true, velar: true, stop: true, aspirated: true, symbol: "kʰ" }),
+            new Phone({ consonant: true, velar: true, stop: true, tense: true, symbol: "k͈" }),
+            new Phone({ consonant: true, velar: true, nasal: true, voiced: true, symbol: "ŋ" }),
+            new Phone({ consonant: true, laryngeal: true, fricative: true, plain: true, symbol: "h" }),
+            new Phone({ consonant: true, alveolar: true, fricative: true, tense: true, symbol: "s͈" }),
+            new Phone({ consonant: true, alveolar: true, fricative: true, plain: true, symbol: "s" }),
+            new Phone({ consonant: true, bilabial: true, approximant: true, symbol: "w" }),
+            new Phone({ consonant: true, palatal: true, approximant: true, voiced: true, symbol: "j" }),
+            new Phone({ consonant: true, alveopalatal: true, affricate: true, plain: true, symbol: "tɕ" }),
+            new Phone({ consonant: true, alveopalatal: true, affricate: true, tense: true, symbol: "tɕ͈" }),
+            new Phone({ consonant: true, alveopalatal: true, affricate: true, aspirated: true, symbol: "tɕʰ" }),
+            new Phone({ consonant: true, velar: true, approximant: true, voiced: true, symbol: "ɰ" }),
+        ],
+        vowels: []
+    }
 }
 
 let names = {
