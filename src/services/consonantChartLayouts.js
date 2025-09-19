@@ -1,63 +1,92 @@
+// Places of articulation
+const BILABIAL = "bilabial";
+const LABIODENTAL = "labiodental";
+const DENTAL = "dental";
+const ALVEOLAR = "alveolar";
+const POSTALVEOLAR = "postalveolar";
+const RETROFLEX = "retroflex";
+const PALATAL = "palatal";
+const VELAR = "velar";
+const UVULAR = "uvular";
+const PHARYNGEAL = "pharyngeal";
+const LARYNGEAL = "laryngeal";
+const LABIAL = "labial";
+const CORONAL = "coronal";
+
+// Manners of articulation
+const STOP = "stop";
+const NASAL = "nasal";
+const TRILL = "trill";
+const TAP = "tap";
+const FRICATIVE = "fricative";
+const LATERAL_FRICATIVE = "lateral_fricative";
+const APPROXIMANT = "approximant";
+const LATERAL_APPROXIMANT = "lateral_approximant";
+const SIBILANT_CONTINUANT = "sibilant-continuant";
+const NON_SIBILANT_CONTINUANT = "non-sibilant-continuant";
+const LATERAL = "lateral";
+const RHOTIC = "rhotic";
+
 const defaultLayout = {
     columns: [
-        { key: "bilabial", label: "Bilabial" },
-        { key: "labiodental", label: "Labiodental" },
-        { key: "dental", label: "Dental" },
-        { key: "alveolar", label: "Alveolar" },
-        { key: "postalveolar", label: "Postalveolar" },
-        { key: "retroflex", label: "Retroflex" },
-        { key: "palatal", label: "Palatal" },
-        { key: "velar", label: "Velar" },
-        { key: "uvular", label: "Uvular" },
-        { key: "pharyngeal", label: "Pharyngeal" },
-        { key: "laryngeal", label: "Glottal" },
+        { key: BILABIAL, label: "Bilabial" },
+        { key: LABIODENTAL, label: "Labiodental" },
+        { key: DENTAL, label: "Dental" },
+        { key: ALVEOLAR, label: "Alveolar" },
+        { key: POSTALVEOLAR, label: "Postalveolar" },
+        { key: RETROFLEX, label: "Retroflex" },
+        { key: PALATAL, label: "Palatal" },
+        { key: VELAR, label: "Velar" },
+        { key: UVULAR, label: "Uvular" },
+        { key: PHARYNGEAL, label: "Pharyngeal" },
+        { key: LARYNGEAL, label: "Glottal" },
     ],
     rows: [
-        { key: "stop", label: "Plosive", filters: {stop: true} },
-        { key: "nasal", label: "Nasal", filters: {nasal: true} },
-        { key: "trill", label: "Trill", filters: {trill: true} },
-        { key: "tap", label: "Tap / Flap", filters: {flap: true} },
-        { key: "fricative", label: "Fricative", filters: {lateral: false, fricative: true} },
-        { key: "lateral_fricative", label: "Lateral Fricative", filters: {lateral: true, fricative: true} },
-        { key: "approximant", label: "Approximant", filters: {approximant: true, lateral: false} },
-        { key: "lateral_approximant", label: "Lateral Approximant", filters: {lateral: true, approximant: true} },
+        { key: STOP, label: "Plosive", filters: { stop: true } },
+        { key: NASAL, label: "Nasal", filters: { nasal: true } },
+        { key: TRILL, label: "Trill", filters: { trill: true } },
+        { key: TAP, label: "Tap / Flap", filters: { flap: true } },
+        { key: FRICATIVE, label: "Fricative", filters: { lateral: false, fricative: true } },
+        { key: LATERAL_FRICATIVE, label: "Lateral Fricative", filters: { lateral: true, fricative: true } },
+        { key: APPROXIMANT, label: "Approximant", filters: { approximant: true, lateral: false } },
+        { key: LATERAL_APPROXIMANT, label: "Lateral Approximant", filters: { lateral: true, approximant: true } },
     ],
     impossible: [
-        { place: "bilabial", manner: "lateral_fricative" }, // Bilabial trill
-        { place: "bilabial", manner: "lateral_approximant" }, // Bilabial lateral approximant
-        { place: "labiodental", manner: "lateral_fricative" }, // Labiodental lateral fricative
-        { place: "labiodental", manner: "lateral_approximant" }, // Labiodental lateral approximant
-        { place: "velar", manner: "trill" }, // Velar trill
-        { place: "velar", manner: "tap" }, // Velar tap
-        { place: "pharyngeal", manner: "stop", voiced: true }, // Pharyngeal plosive
-        { place: "pharyngeal", manner: "nasal" }, // Pharyngeal nasal
-        { place: "pharyngeal", manner: "lateral_fricative" }, // Pharyngeal lateral fricative
-        { place: "pharyngeal", manner: "lateral_approximant" }, // Pharyngeal lateral approximant
-        { place: "laryngeal", manner: "stop", voiced: true }, // Voiced glottal plosive
-        { place: "laryngeal", manner: "nasal" }, // Glottal nasal
-        { place: "laryngeal", manner: "trill" }, // Glottal trill
-        { place: "laryngeal", manner: "tap" }, // Glottal tap
-        { place: "laryngeal", manner: "lateral_fricative" }, // Glottal lateral fricative
-        { place: "laryngeal", manner: "approximant" }, // Glottal approximant
-        { place: "laryngeal", manner: "lateral_approximant" }, // Glottal lateral approximant
+        { place: BILABIAL, manner: LATERAL_FRICATIVE }, // Bilabial trill
+        { place: BILABIAL, manner: LATERAL_APPROXIMANT }, // Bilabial lateral approximant
+        { place: LABIODENTAL, manner: LATERAL_FRICATIVE }, // Labiodental lateral fricative
+        { place: LABIODENTAL, manner: LATERAL_APPROXIMANT }, // Labiodental lateral approximant
+        { place: VELAR, manner: TRILL }, // Velar trill
+        { place: VELAR, manner: TAP }, // Velar tap
+        { place: PHARYNGEAL, manner: STOP, voiced: true }, // Pharyngeal plosive
+        { place: PHARYNGEAL, manner: NASAL }, // Pharyngeal nasal
+        { place: PHARYNGEAL, manner: LATERAL_FRICATIVE }, // Pharyngeal lateral fricative
+        { place: PHARYNGEAL, manner: LATERAL_APPROXIMANT }, // Pharyngeal lateral approximant
+        { place: LARYNGEAL, manner: STOP, voiced: true }, // Voiced glottal plosive
+        { place: LARYNGEAL, manner: NASAL }, // Glottal nasal
+        { place: LARYNGEAL, manner: TRILL }, // Glottal trill
+        { place: LARYNGEAL, manner: TAP }, // Glottal tap
+        { place: LARYNGEAL, manner: LATERAL_FRICATIVE }, // Glottal lateral fricative
+        { place: LARYNGEAL, manner: APPROXIMANT }, // Glottal approximant
+        { place: LARYNGEAL, manner: LATERAL_APPROXIMANT }, // Glottal lateral approximant
     ],
 };
 
 const icelandicLayout = {
     columns: [
-        { key: "labial", label: "Labial" },
-        { key: "coronal", label: "Coronal" },
-        { key: "palatal", label: "Palatal" },
-        { key: "velar", label: "Velar" },
-        { key: "laryngeal", label: "Glottal" },
+        { key: LABIAL, label: "Labial" },
+        { key: CORONAL, label: "Coronal" },
+        { key: PALATAL, label: "Palatal" },
+        { key: VELAR, label: "Velar" },
+        { key: LARYNGEAL, label: "Glottal" },
     ],
     rows: [
-        { key: "nasal", label: "Nasal", filters: {nasal: true} },
-        { key: "stop", label: "Plosive", filters: {stop: true} },
-        { key: "sibilant-continuant", label: "Sibilant Continuant", filters: {continuant: true, sibilant: true} },
-        { key: "non-sibilant-continuant", label: "Non-Sibilant Continuant", filters: {continuant: true, sibilant: false} },
-        { key: "lateral", label: "Lateral", filters: {lateral: true} },
-        { key: "rhotic", label: "Rhotic", filters: {rhotic: true} },
+        { key: NASAL, label: "Nasal", filters: { nasal: true } },
+        { key: STOP, label: "Plosive", filters: { stop: true } },
+        { key: SIBILANT_CONTINUANT, label: "Sibilant Continuant", filters: { continuant: true, sibilant: true } },
+        { key: NON_SIBILANT_CONTINUANT, label: "Non-Sibilant Continuant", filters: { continuant: true, sibilant: false } },
+        { key: LATERAL, label: "Lateral", filters: { lateral: true } },
+        { key: RHOTIC, label: "Rhotic", filters: { rhotic: true } },
     ],
 };
 
