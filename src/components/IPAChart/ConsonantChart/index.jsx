@@ -18,7 +18,6 @@ export default function ConsonantChart(props) {
     let filterPhonemes = (baseFilters, row, layout) => {
         const additionalFilters = row.filters || {};
         const filters = { ...baseFilters, ...additionalFilters };
-        console.log('filters:', filters);
 
         const isImpossible = layout?.impossible?.some(combination =>
             filters[combination.place] &&
