@@ -558,6 +558,7 @@ let specs = {
             new Phone({ consonant: true, dental: true, stop: true, voiced: true, symbol: "d" }),
             new Phone({ consonant: true, alveolar: true, tap: true, symbol: "ɾ" }),
             new Phone({ consonant: true, alveolar: true, fricative: true, symbol: "s" }),
+            new Phone({ consonant: true, alveolar: true, flap: true, voiced: true, symbol: "ɾ" }),
             new Phone({ consonant: true, alveolar: true, trill: true, voiced: true, symbol: "r" }),
             new Phone({ consonant: true, palatal: true, nasal: true, voiced: true, symbol: "ɲ" }),
             new Phone({ consonant: true, palatal: true, fricative: true, voiced: true, symbol: "ʝ" }),

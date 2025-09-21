@@ -118,8 +118,8 @@ const spanishLayout = {
     rows: [
         { key: STOP, label: "Plosive", filters: { stop: true } },
         { key: NASAL, label: "Nasal", filters: { nasal: true } },
-        { key: TRILL, label: "Trill", filters: { trill: true } },
         { key: TAP, label: "Tap / Flap", filters: { flap: true } },
+        { key: TRILL, label: "Trill", filters: { trill: true } },
         { key: FRICATIVE, label: "Fricative", filters: { lateral: false, fricative: true } },
         { key: LATERAL_APPROXIMANT, label: "Lateral Approximant", filters: { lateral: true, approximant: true } },
     ],
