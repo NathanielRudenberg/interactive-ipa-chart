@@ -98,6 +98,15 @@ const icelandicLayout = {
         { key: LATERAL, label: "Lateral", filters: { lateral: true } },
         { key: RHOTIC, label: "Rhotic", filters: { rhotic: true } },
     ],
+    impossible: [
+        { place: LARYNGEAL, manner: NASAL }, // Glottal nasal
+        { place: LARYNGEAL, manner: STOP, voiced: true }, // Voiced glottal plosive
+        { place: LARYNGEAL, manner: SIBILANT_CONTINUANT }, // Glottal sibilant continuant
+        { place: LARYNGEAL, manner: LATERAL }, // Glottal lateral
+        { place: LABIAL, manner: LATERAL }, // Labial lateral
+        { place: LABIAL, manner: SIBILANT_CONTINUANT }, // Labial sibilant
+        { place: VELAR, manner: SIBILANT_CONTINUANT }, // Velar sibilant
+    ],
 };
 
 const koreanLayout = {
@@ -127,11 +136,13 @@ const koreanLayout = {
     // ],
 };
 
-const ConsonantChartLayouts = {};
-ConsonantChartLayouts.default = defaultLayout;
-ConsonantChartLayouts.spanish = defaultLayout;
-ConsonantChartLayouts.icelandic = icelandicLayout;
-ConsonantChartLayouts.korean = koreanLayout;
-ConsonantChartLayouts.test = defaultLayout;
+const consonantChartLayouts = {};
+consonantChartLayouts.default = defaultLayout;
+consonantChartLayouts.spanish = defaultLayout;
+consonantChartLayouts.english = defaultLayout;
+consonantChartLayouts.french = defaultLayout;
+consonantChartLayouts.icelandic = icelandicLayout;
+consonantChartLayouts.korean = koreanLayout;
+consonantChartLayouts.test = defaultLayout;
 
-export default ConsonantChartLayouts;
+export default consonantChartLayouts;

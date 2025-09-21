@@ -40,6 +40,7 @@ export default class Phone {
         sandhi = false, quasiresonant = false, semiresonant = false,
         raspberry = false, transition = false, spirant = false,
         nearhigh = false, nearlow = false, nearfront = false, nearback = false,
+        highmid = false, lowmid = false,
         sibilant = false,
         symbol = '',
     }) {
@@ -183,5 +184,7 @@ export default class Phone {
         this.spirant = spirant;
         this.sibilant = sibilant;
         this.symbol = symbol;
+        this.highmid = highmid;
+        this.lowmid = lowmid;
     }
 }
