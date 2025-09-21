@@ -8,6 +8,7 @@ body {
   letter-spacing: 0.05em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FDF6EC;
 }
 
 code {
