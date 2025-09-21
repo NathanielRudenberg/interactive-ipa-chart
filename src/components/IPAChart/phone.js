@@ -8,6 +8,7 @@ export default class Phone {
         epiglottal = false, dental = false, labiodental = false,
         interdental = false, apical = false, laminal = false, coronal = false,
         lingual = false, anterior = false, posterior = false, alveolar = false,
+        postalveolar = false,
         alveopalatal = false, retroflex = false, distributed = false,
         grooved = false, voiceless = false, voiced = false, aspirated = false,
         plain = false, weaklyaspirated = false, unaspirated = false,
@@ -74,6 +75,7 @@ export default class Phone {
         this.anterior = anterior;
         this.posterior = posterior;
         this.alveolar = alveolar;
+        this.postalveolar = postalveolar;
         this.alveopalatal = alveopalatal;
         this.retroflex = retroflex;
         this.distributed = distributed;
