@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Phoneme from '../../Phoneme';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import audio from '../../../../services/audio';
 
 export default function Consonant({empty, impossible, name, language, phonemes, defaultSymbol}) {
-    const [showList, setShowList] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null)
+    const [showList, setShowList] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null)
 
     let playSound = () => {
         if (!empty && !impossible) {
@@ -50,6 +50,7 @@ export default function Consonant({empty, impossible, name, language, phonemes, 
         }
         instances = phonemes.map(phoneme => (
             <Phoneme language={language}
+                key={name + phoneme.symbol}
                 symbol={phoneme.symbol}
                 name={name}
                 visible={visible}

@@ -119,7 +119,7 @@ export default class LanguageSelector extends Component {
                 >
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="french">French</DropMenuItem> */}
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="general-american-english">General American English</DropMenuItem> */}
-                    {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="haitian-creole">Haitian Creole</DropMenuItem> */}
+                    {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="haitiancreole">Haitian Creole</DropMenuItem> */}
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="icelandic">Icelandic</DropMenuItem> */}
                     <DropMenuItem onSelect={this.handleSelectLangVar} value="spanish">Spanish</DropMenuItem>
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="korean">Korean</DropMenuItem> */}

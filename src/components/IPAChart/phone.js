@@ -8,6 +8,7 @@ export default class Phone {
         epiglottal = false, dental = false, labiodental = false,
         interdental = false, apical = false, laminal = false, coronal = false,
         lingual = false, anterior = false, posterior = false, alveolar = false,
+        postalveolar = false,
         alveopalatal = false, retroflex = false, distributed = false,
         grooved = false, voiceless = false, voiced = false, aspirated = false,
         plain = false, weaklyaspirated = false, unaspirated = false,
@@ -40,6 +41,7 @@ export default class Phone {
         sandhi = false, quasiresonant = false, semiresonant = false,
         raspberry = false, transition = false, spirant = false,
         nearhigh = false, nearlow = false, nearfront = false, nearback = false,
+        highmid = false, lowmid = false,
         sibilant = false,
         symbol = '',
     }) {
@@ -73,6 +75,7 @@ export default class Phone {
         this.anterior = anterior;
         this.posterior = posterior;
         this.alveolar = alveolar;
+        this.postalveolar = postalveolar;
         this.alveopalatal = alveopalatal;
         this.retroflex = retroflex;
         this.distributed = distributed;
@@ -183,5 +186,7 @@ export default class Phone {
         this.spirant = spirant;
         this.sibilant = sibilant;
         this.symbol = symbol;
+        this.highmid = highmid;
+        this.lowmid = lowmid;
     }
 }

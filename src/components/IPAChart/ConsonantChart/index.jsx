@@ -1,19 +1,14 @@
 import React from 'react';
 import Consonant from './Consonant';
 import {specs, names} from '../../../services/phonemeSpecs';
-import ConsonantChartLayouts from '../../../services/consonantChartLayouts';
+import consonantChartLayouts from '../../../services/consonantChartLayouts';
 import './consonants.scss';
 
 export default function ConsonantChart(props) {
     let languageName = props.language ? props.language : 'default';
 
-    const layout = ConsonantChartLayouts[languageName];
+    const layout = consonantChartLayouts[languageName];
     let consonants = specs[languageName].phonemes.filter(phone => phone.consonant)
-
-    let getFilteredPhonemes = features => 
-        consonants.filter(phone =>
-            Object.entries(features).every(([key, value]) => phone[key] === value)
-        )
 
     let filterPhonemes = (baseFilters, row, layout) => {
         const additionalFilters = row.filters || {};
