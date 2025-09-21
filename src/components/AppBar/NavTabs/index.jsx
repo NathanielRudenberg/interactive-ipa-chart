@@ -18,8 +18,8 @@ export default class NavTabs extends Component {
         // let { selectedIndex } = this.state;
         return (
             <Tabs 
-                selectedIndex={-1}
-                onSelect={tabIndex => this.setState({ selectedIndex: tabIndex })}
+                // selectedIndex={this.state.selectedIndex}
+                // onSelect={tabIndex => this.setState({ selectedIndex: tabIndex })}
             >
                 <TabList>
                     <Tab>
