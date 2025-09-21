@@ -8,7 +8,7 @@ import DropMenu from '../DropMenu';
 import './language-selector.scss';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
-import UndoIcon from '@mui/icons-material/Undo';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default class LanguageSelector extends Component {
     constructor(props) {
@@ -77,7 +77,7 @@ export default class LanguageSelector extends Component {
                         {this.state.langVar || 'Select a Language'}
                     </Button> 
                     {this.state.langVar && <Button variant='contained' onClick={this.handleClear}>
-                        <UndoIcon/> <span style={{paddingLeft: '8px'}}>Clear</span>
+                        <CloseIcon/>
                     </Button>}
                 </ButtonGroup>
 
@@ -119,10 +119,10 @@ export default class LanguageSelector extends Component {
                 >
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="french">French</DropMenuItem> */}
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="general-american-english">General American English</DropMenuItem> */}
-                    {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="haitiancreole">Haitian Creole</DropMenuItem> */}
-                    {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="icelandic">Icelandic</DropMenuItem> */}
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="haitiancreole">Haitian Creole</DropMenuItem>
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="icelandic">Icelandic</DropMenuItem>
                     <DropMenuItem onSelect={this.handleSelectLangVar} value="spanish">Spanish</DropMenuItem>
-                    {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="korean">Korean</DropMenuItem> */}
+                    <DropMenuItem onSelect={this.handleSelectLangVar} value="korean">Korean</DropMenuItem>
                     {/* <DropMenuItem onSelect={this.handleSelectLangVar} value="test">TEST</DropMenuItem> */}
                 </Menu>
             </>
