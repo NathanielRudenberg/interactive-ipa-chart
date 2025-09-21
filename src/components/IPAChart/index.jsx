@@ -10,7 +10,7 @@ export default class IPAChart extends Component {
                 <h1>Interactive IPA Chart</h1>
                 <h2>{this.props.title}</h2>
                 <h4>Legend:</h4>
-                <div class='legend'>
+                <div className='legend'>
                     <div id='legend-multiple'/> = multiple phonemes with similar articulation
                 </div>
                 <h4>Pulmonic consonants</h4>

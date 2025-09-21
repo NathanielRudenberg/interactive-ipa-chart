@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tab, Tabs, TabList, } from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel, } from 'react-tabs';
 import { NavLink } from 'react-router-dom';
 import './tabs.scss';
 
@@ -17,7 +17,10 @@ export default class NavTabs extends Component {
     render() {
         // let { selectedIndex } = this.state;
         return (
-            <Tabs selectedIndex={-1}>
+            <Tabs 
+                selectedIndex={-1}
+                onSelect={tabIndex => this.setState({ selectedIndex: tabIndex })}
+            >
                 <TabList>
                     <Tab>
                         <NavLink exact to='/' className='tab-link' activeClassName='tab-link--selected'>
@@ -35,6 +38,8 @@ export default class NavTabs extends Component {
                         </NavLink >
                     </Tab>
                 </TabList>
+                <TabPanel />
+                <TabPanel />
             </Tabs>
         )
     }
