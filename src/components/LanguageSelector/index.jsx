@@ -5,6 +5,7 @@ import Menu from '@mui/material/Menu';
 import DropMenuItem from '../DropMenuItem';;
 import './language-selector.scss';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
+import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import { useLanguage } from '../LanguageProvider';
 
@@ -14,10 +15,12 @@ export default function LanguageSelector() {
         handleCloseDropdown, handleSelectLanguage, handleClear
     } = useLanguage();
 
+    const buttonEndIcon = dropdownButton ? <ExpandLessRoundedIcon /> : <ExpandMoreRoundedIcon />;
+
     return (
         <>
             <ButtonGroup color="primary" aria-label="outlined primary button group">
-                <Button aria-controls="language-variant-menu" aria-haspopup="true" onClick={handleClickDropdown} endIcon={<ExpandMoreRoundedIcon />}>
+                <Button disableRipple aria-controls="language-variant-menu" aria-haspopup="true" onClick={handleClickDropdown} endIcon={buttonEndIcon}>
                     {selectedLanguageMenuItem || 'Select a Language'}
                 </Button>
                 {selectedLanguageMenuItem && <Button variant='contained' onClick={handleClear}>
