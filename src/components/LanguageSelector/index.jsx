@@ -42,10 +42,10 @@ export default function LanguageSelector() {
             >
                 {/* <DropMenuItem onSelect={handleSelectLanguage} value="french">French</DropMenuItem> */}
                 {/* <DropMenuItem onSelect={handleSelectLanguage} value="general-american-english">General American English</DropMenuItem> */}
-                <DropMenuItem onSelect={handleSelectLanguage} value="haitiancreole">Haitian Creole</DropMenuItem>
-                <DropMenuItem onSelect={handleSelectLanguage} value="icelandic">Icelandic</DropMenuItem>
+                {/* <DropMenuItem onSelect={handleSelectLanguage} value="haitiancreole">Haitian Creole</DropMenuItem> */}
+                {/* <DropMenuItem onSelect={handleSelectLanguage} value="icelandic">Icelandic</DropMenuItem> */}
                 <DropMenuItem onSelect={handleSelectLanguage} value="spanish">Spanish</DropMenuItem>
-                <DropMenuItem onSelect={handleSelectLanguage} value="korean">Korean</DropMenuItem>
+                {/* <DropMenuItem onSelect={handleSelectLanguage} value="korean">Korean</DropMenuItem> */}
                 {/* <DropMenuItem onSelect={handleSelectLanguage} value="test">TEST</DropMenuItem> */}
             </Menu>
         </>
