@@ -1,5 +1,17 @@
 @import '../../../box-shadows.scss';
 
 .MuiButtonGroup-root {
-    @include mboxshadow(1);
+    // @include mboxshadow(1);
+    border-radius: 0 !important;
+    background-color: #CBD4C2;
+
+    > .MuiButtonBase-root {
+        border-radius: 0;
+        border: none;
+        color: black;
+    }
+
+    > .MuiButton-contained {
+        background-color: #967AA1;
+    }
 }

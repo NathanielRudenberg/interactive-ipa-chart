@@ -10,14 +10,8 @@ import { useLanguage } from '../../components/LanguageProvider';
 //     if ((/^\/languages\/.+/).test(currentPath)) this.setState({languageSelected: true});
 //   }
 
-    const { updateLanguage, clearSelectedLanguage } = useLanguage();
-    let langSelectContainerClass = 'language-selector-container language-selector-container--retracted';
-
     return (
             <div className='languages-container'>
-                <div className={langSelectContainerClass}>
-                    <LanguageSelector />
-                </div>
                 <div className={'chart-container'} >
                     <IPAChart default={false} />
                 </div>
