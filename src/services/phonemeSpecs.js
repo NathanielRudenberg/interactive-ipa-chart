@@ -544,6 +544,14 @@ let specs = {
             new Phone({consonant: true, velar: true, continuant: true, fricative: true, symbol: "x"}),
             new Phone({consonant: true, velar: true, stop: true, symbol: "k"}),
             new Phone({consonant: true, velar: true, stop: true, symbol: "kʰ"}),
+            new Phone({vowel: true, high: true, back: true, rounded: true, symbol: 'u' }),
+            new Phone({vowel: true, high: true, front: true, unrounded: true, symbol: 'i' }),
+            new Phone({vowel: true, lowmid: true, back: true, rounded: true, symbol: 'ɔ' }),
+            new Phone({vowel: true, lowmid: true, front: true, unrounded: true, symbol: 'ɛ' }),
+            new Phone({vowel: true, lowmid: true, front: true, rounded: true, symbol: 'œ' }),
+            new Phone({vowel: true, low: true, central: true, unrounded: true, symbol: 'ä' }),
+            new Phone({vowel: true, nearhigh: true, nearfront: true, unrounded: true, symbol: 'ɪ' }),
+            new Phone({vowel: true, nearhigh: true, nearfront: true, rounded: true, symbol: 'ʏ' }),
         ]
     },
     "spanish": {
