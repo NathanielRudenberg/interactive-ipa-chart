@@ -15,11 +15,11 @@ export default class IPAChart extends Component {
                 </div>
                 <h4>Pulmonic consonants</h4>
                 For each pair, the symbol on the right represents the voiced counterpart.
-                <ConsonantChart default={this.props.default} language={this.props.language}/>
+                <ConsonantChart />
                 Shaded areas represent articulations thought to be impossible to produce.
                 <br />
                 <h4>Vowels</h4>
-                <VowelChart default={this.props.default} language={this.props.language}/>
+                <VowelChart />
                 {/* <p>The sounds on this page are from the <a href="https://en.wikipedia.org/wiki/IPA_pulmonic_consonant_chart_with_audio">Wikipedia IPA pulmonic chart</a> and are licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</p> */}
             </div>
         );

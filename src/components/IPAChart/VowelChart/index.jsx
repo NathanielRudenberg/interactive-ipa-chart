@@ -2,10 +2,12 @@ import React from 'react';
 import Vowel from './Vowel';
 import {specs, symbols} from '../../../services/phonemeSpecs';
 import vowelChartPositions from '../../../services/vowelChartLayout';
+import { useLanguage } from '../../LanguageProvider';
 import './vowels.scss';
 
-export default function VowelChart(props) {
-    let languageName = props.language ? props.language : 'default';
+export default function VowelChart() {
+    const {language} = useLanguage();
+    let languageName = language ? language : 'default';
     let vowels = specs[languageName].phonemes.filter(phone => phone.vowel);
     let vowelSymbols = symbols.vowels;
 
