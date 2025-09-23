@@ -1,3 +1,5 @@
+@import '../../../colors.scss';
+
 .ipa-chart {
     display: inline-block;
 }
@@ -12,5 +14,5 @@
     width: 20px;
     height: 20px;
     margin-right: 8px;
-    background-color: #0000FF55;
+    background-color: $multiple-phonemes-color;
 }

@@ -1,4 +1,5 @@
 @import './VowelBoat/positions.scss';
+@import '../../../../colors.scss';
 
 $section-height: 134px;
 
@@ -27,7 +28,7 @@ $section-height: 134px;
     left: 6px;
     height: 0;
     width: 30px;
-    border-top: $section-height solid #FDF6EC;
+    border-top: $section-height solid $floral-white;
     border-left: 50px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -36,7 +37,7 @@ $section-height: 134px;
 #top-left:after {
     width: 222px;
     height: 0;
-    border-bottom: $section-height solid #FDF6EC;
+    border-bottom: $section-height solid $floral-white;
     border-left: 0px solid transparent;
     border-right: 25px solid transparent;
     position: absolute;
@@ -50,7 +51,7 @@ $section-height: 134px;
     left: 282px;
     height: 0;
     width: 100px;
-    border-top: $section-height solid #FDF6EC;
+    border-top: $section-height solid $floral-white;
     border-left: 25px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -59,7 +60,7 @@ $section-height: 134px;
 #top-right:after {
     width: 241px;
     height: 0;
-    border-bottom: $section-height solid #FDF6EC;
+    border-bottom: $section-height solid $floral-white;
     border-left: 0px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -73,7 +74,7 @@ $section-height: 134px;
     left: calc(($section-height + 8px) / 2.5);
     height: 0;
     width: 30px;
-    border-top: $section-height solid #FDF6EC;
+    border-top: $section-height solid $floral-white;
     border-left: 50px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -82,7 +83,7 @@ $section-height: 134px;
 #mid-left:after {
     width: 197px;
     height: 0;
-    border-bottom: $section-height solid #FDF6EC;
+    border-bottom: $section-height solid $floral-white;
     border-left: 0px solid transparent;
     border-right: 25px solid transparent;
     position: absolute;
@@ -96,7 +97,7 @@ $section-height: 134px;
     left: 308px;
     height: 0;
     width: 100px;
-    border-top: $section-height solid #FDF6EC;
+    border-top: $section-height solid $floral-white;
     border-left: 25px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -105,7 +106,7 @@ $section-height: 134px;
 #mid-right:after {
     width: 215px;
     height: 0;
-    border-bottom: $section-height solid #FDF6EC;
+    border-bottom: $section-height solid $floral-white;
     border-left: 0px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -119,7 +120,7 @@ $section-height: 134px;
     left: calc((($section-height * 2) + 2px) / 2.5);
     height: 0;
     width: 30px;
-    border-top: $section-height solid #FDF6EC;
+    border-top: $section-height solid $floral-white;
     border-left: 50px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -128,7 +129,7 @@ $section-height: 134px;
 #bottom-left:after {
     width: 172px;
     height: 0;
-    border-bottom: $section-height solid #FDF6EC;
+    border-bottom: $section-height solid $floral-white;
     border-left: 0px solid transparent;
     border-right: 25px solid transparent;
     position: absolute;
@@ -142,7 +143,7 @@ $section-height: 134px;
     left: 334px;
     height: 0;
     width: 100px;
-    border-top: $section-height solid #FDF6EC;
+    border-top: $section-height solid $floral-white;
     border-left: 25px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -151,7 +152,7 @@ $section-height: 134px;
 #bottom-right:after {
     width: 189px;
     height: 0;
-    border-bottom: $section-height solid #FDF6EC;
+    border-bottom: $section-height solid $floral-white;
     border-left: 0px solid transparent;
     border-right: 0px solid transparent;
     position: absolute;
@@ -203,12 +204,12 @@ $section-height: 134px;
     font-size: 1.2rem;
     font-family: 'Noto Sans', sans-serif;
     font-style: normal;
-    background-color: #FDF6EC;
+    background-color: $floral-white;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
     &:hover {
         width: 75%;
-        background-color: #0B0;
+        background-color: $hover-green;
     }
 }

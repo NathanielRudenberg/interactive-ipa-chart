@@ -1,3 +1,5 @@
+@import '../../../../colors.scss';
+
 .react-tabs {
     -webkit-tap-highlight-color: transparent;
 
@@ -28,13 +30,13 @@
             padding: 0px 16px;
 
             &--selected {
-                background: #CBD4C2;
+                background: $ash-gray;
                 color: black;
             }
         }
 
         &:hover {
-            background: #967AA1;
+            background: $mountbatten-pink;
             color: white;
         }
 

@@ -1,3 +1,5 @@
+@import '../../../../colors.scss';
+
 .consonant-chart {
     margin: 8px;
     // overflow: auto;
@@ -17,7 +19,7 @@
 }
 
 .multiple {
-    background-color: #0000FF55;
+    background-color: $multiple-phonemes-color;
 }
 
 .cons-wrapper {
@@ -42,7 +44,7 @@
 }
 
 .cons:not(.empty):hover {
-    background-color: #0B0;
+    background-color: $hover-green;
     cursor: pointer;
 }
 
