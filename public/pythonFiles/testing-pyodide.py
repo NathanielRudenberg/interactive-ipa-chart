@@ -26,7 +26,16 @@ plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
 def draw_spectrogram(spectrogram, dynamic_range=70):
     X, Y = spectrogram.x_grid(), spectrogram.y_grid()
     sg_db = 10 * np.log10(spectrogram.values)
-    plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='Greys')
+
+    vmax = sg_db.max()
+    vmin = vmax - dynamic_range
+
+    # Create the PowerNorm object to apply gamma correction
+    norm = colors.PowerNorm(gamma=0.75, vmin=vmin, vmax=vmax)
+
+    # plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='Greys')
+    plt.pcolormesh(X, Y, sg_db, cmap='Greys', norm=norm, shading='flat')
+    
     plt.ylim([spectrogram.ymin, spectrogram.ymax])
     plt.xlabel("time [s]")
     plt.ylabel("frequency [Hz]")
@@ -35,11 +44,14 @@ print("Loading sound...")
 snd = parselmouth.Sound("/audio/the_north_wind_and_the_sun.wav")
 print("Sound loaded.")
 
-spectrogram_window_length = 0.005  # Window length for spectrogram in seconds (25 ms)
-time_step = 0.002      # Time step for analysis frames
-frequency_step = 20.0  # Frequency step in Hz
-window_shape = parselmouth.SpectralAnalysisWindowShape.GAUSSIAN # Window shape
+duration = snd.get_total_duration()
 maximum_frequency = 5000.0 # Maximum frequency to display (Hz)
+num_time_steps = 1000
+num_freq_steps = 250
+spectrogram_window_length = 0.005  # Window length for spectrogram in seconds (25 ms)
+time_step = duration / num_time_steps  # Time step in seconds
+frequency_step = maximum_frequency / num_freq_steps  # Frequency step in Hz
+window_shape = parselmouth.SpectralAnalysisWindowShape.GAUSSIAN # Window shape
 dynamic_range = 70.0       # Dynamic range in dB for plotting
 
 # Formant extraction parameters
