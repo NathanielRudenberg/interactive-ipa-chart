@@ -1,8 +1,10 @@
 print("Importing packages...")
 
+import math
 import parselmouth
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as colors
 import seaborn as sns
 from js import document
 import os
@@ -24,28 +26,70 @@ plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
 def draw_spectrogram(spectrogram, dynamic_range=70):
     X, Y = spectrogram.x_grid(), spectrogram.y_grid()
     sg_db = 10 * np.log10(spectrogram.values)
-    plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='binary')
+    plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='Greys')
     plt.ylim([spectrogram.ymin, spectrogram.ymax])
     plt.xlabel("time [s]")
     plt.ylabel("frequency [Hz]")
-
-def draw_intensity(intensity):
-    plt.plot(intensity.xs(), intensity.values.T, linewidth=3, color='w')
-    plt.plot(intensity.xs(), intensity.values.T, linewidth=1, color='r')
-    plt.grid(False)
-    plt.ylim(0)
-    plt.ylabel("intensity [dB]")
 
 print("Loading sound...")
 snd = parselmouth.Sound("/audio/the_north_wind_and_the_sun.wav")
 print("Sound loaded.")
 
-intensity = snd.to_intensity()
-spectrogram = snd.to_spectrogram()
-plt.figure()
+spectrogram_window_length = 0.005  # Window length for spectrogram in seconds (25 ms)
+time_step = 0.002      # Time step for analysis frames
+frequency_step = 20.0  # Frequency step in Hz
+window_shape = parselmouth.SpectralAnalysisWindowShape.GAUSSIAN # Window shape
+maximum_frequency = 5000.0 # Maximum frequency to display (Hz)
+dynamic_range = 70.0       # Dynamic range in dB for plotting
+
+# Formant extraction parameters
+window_length = 0.025  # Window length in seconds
+max_number_of_formants = 5.0
+maximum_formant = 5500.0
+pre_emphasis_from = 50.0
+
+def draw_formants(formants):
+    n_formants = math.floor(max_number_of_formants)
+    times = formants.ts()
+
+    for formant_number in range(1, n_formants + 1):
+        # Extract selected formant contour, and
+        # replace unvoiced samples by NaN to not plot
+        f = np.vectorize(lambda x: formants.get_value_at_time(formant_number, x))
+        formant_values = f(times)
+        innerColor = 'w' if formant_number % 2 == 0 else '#f00'
+        outerColor = '#f00' if formant_number % 2 == 0 else 'w'
+        plt.plot(formants.ts(), formant_values, 'o', markersize=3, color=outerColor)
+        plt.plot(formants.ts(), formant_values, 'o', markersize=2, color=innerColor)
+    plt.ylim(0, maximum_frequency)
+    plt.grid(False)
+
+pre_emphasized_snd = snd.copy()
+pre_emphasized_snd.pre_emphasize()
+# spectrogram = snd.to_spectrogram()
+spectrogram = pre_emphasized_snd.to_spectrogram(
+    window_length=spectrogram_window_length,
+    time_step=time_step,
+    frequency_step=frequency_step,
+    window_shape=window_shape,
+    maximum_frequency=maximum_frequency
+)
+
+# Extracting formants
+print("Extracting formants...")
+formants = snd.to_formant_burg(
+    max_number_of_formants=max_number_of_formants,
+    maximum_formant=maximum_formant,
+    window_length=window_length,
+    pre_emphasis_from=pre_emphasis_from)
+
+print("Formants extracted.")
+print("Drawing...")
+
+plt.figure(figsize=(18, 5))
 draw_spectrogram(spectrogram)
-plt.twinx()
-draw_intensity(intensity)
+draw_formants(formants)
 plt.xlim([snd.xmin, snd.xmax])
 plt.show()
 plt.close()
+print("Done.")

@@ -30,7 +30,7 @@ export default function Python() {
             }}
             disabled={!isReady}
         >
-            {isReady? "Pablo" : "Loading..."}
+            {isReady? "Run" : "Loading..."}
         </button>
         </>
     )
