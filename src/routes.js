@@ -15,11 +15,11 @@ export default [
         path: '/about',
         component: About
     },
-    {
-        name: 'Practice',
-        path: '/practice',
-        component: Practice
-    },
+    // {
+    //     name: 'Practice',
+    //     path: '/practice',
+    //     component: Practice
+    // },
     // {
     //     name: 'Language Profile',
     //     path: '/languages/:lang',
