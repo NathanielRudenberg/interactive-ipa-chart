@@ -1,5 +1,6 @@
 import Home from './views/Home';
 import About from './views/About';
+import Practice from './views/Practice';
 import Languages from './views/Languages';
 
 export default [
@@ -15,6 +16,11 @@ export default [
         component: About
     },
     // {
+    //     name: 'Practice',
+    //     path: '/practice',
+    //     component: Practice
+    // },
+    // {
     //     name: 'Language Profile',
     //     path: '/languages/:lang',
     //     component: Languages
@@ -25,9 +31,9 @@ export default [
     //     exact: true,
     //     component: Languages
     // },
-    {
-        Name: 'Language Profile',
-        path: '/:lang',
-        component: Home
-    }
+    // {
+    //     Name: 'Language Profile',
+    //     path: '/:lang',
+    //     component: Home
+    // }
 ]

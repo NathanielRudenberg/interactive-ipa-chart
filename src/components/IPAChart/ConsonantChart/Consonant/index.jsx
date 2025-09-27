@@ -10,7 +10,7 @@ export default function Consonant({empty, impossible, name, language, phonemes, 
 
     let playSound = () => {
         if (!empty && !impossible) {
-            audio.playConsonant(name, language);
+            audio.play(name, language);
         }
     };
 

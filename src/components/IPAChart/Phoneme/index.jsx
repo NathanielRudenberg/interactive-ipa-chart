@@ -4,7 +4,7 @@ import audio from '../../../services/audio';
 export default function Phoneme({name, symbol, language, empty, impossible, visible}) {
     let playSound = () => {
         if (!empty && !impossible) {
-            audio.playConsonant(name, language);
+            audio.play(name, language);
         }
     };
 
