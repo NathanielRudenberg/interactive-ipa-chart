@@ -60,7 +60,7 @@ class AudioPlayer {
     static getInstance() {
         if (!AudioPlayer.instancePromise) {
             // If the creation promise doesn't exist, make one.
-            AudioPlayer.instancePromise = this.create('../../public/audio/manifest.json')
+            AudioPlayer.instancePromise = this.create('/audio/manifest.json')
                 .then(player => {
                     if (!player) {
                         throw new Error("AudioPlayer creation failed.");
