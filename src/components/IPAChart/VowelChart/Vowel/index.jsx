@@ -7,7 +7,7 @@ export default function Vowel({empty, impossible, name, language, phonemes, defa
 
     let playSound = () => {
         if (!empty && !impossible) {
-            audio.playVowel(name, language);
+            audio.play(name, language);
         }
     };
 
