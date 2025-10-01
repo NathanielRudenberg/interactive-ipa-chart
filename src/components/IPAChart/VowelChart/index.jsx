@@ -64,7 +64,7 @@ export default function VowelChart() {
                 }
                 if (phonemes.length > 0) {
                     let vowelElement;
-                    if (languageName === 'default') {
+                    if (languageName === 'default' || formantValues[vowelName] === undefined) {
                         vowelElement = (
                             <Vowel language={languageName} key={vowelName} name={vowelName} className={vowelName + " vowel"}>
                                 {phonemes.length > 0 ? phonemes[0].symbol : vowelSymbols[vowelName]}
