@@ -4,8 +4,7 @@
 class RestApiClient {
   constructor() {
     // Load the base URL from the environment variable
-    // this.baseURL = import.meta.env.VITE_API_BASE_URL;
-    this.baseURL = 'http://localhost:3050';
+    this.baseURL = import.meta.env.VITE_API_BASE_URL;
 
     if (!this.baseURL) {
       console.error("API_BASE_URL not found in environment variables.");
