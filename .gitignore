@@ -27,6 +27,7 @@ yarn-error.log*
 # fonts
 /public/fonts
 
-# scripts
+# backend test files
 *.sh
 public/audio/analyze-formants.py
+*vowel_formants.json
