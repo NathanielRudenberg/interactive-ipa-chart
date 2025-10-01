@@ -1,0 +1,30 @@
+.about-text {
+    /* Base Centering (Applies to all sizes unless overridden) */
+    width: 85%; /* Slightly more space for the text block */
+    margin: 0 auto;
+    max-width: 750px; /* Limits readability width on huge screens */
+    line-height: 1.8;
+}
+
+/* ----------------------------------------------------------------- */
+
+/* --- Tablet / Small Desktop (769px to 1024px) --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .about-text {
+        /* On tablets, let the block widen a bit, but keep it centered. */
+        width: 75%; 
+        padding: 0;
+    }
+}
+
+/* ----------------------------------------------------------------- */
+
+/* --- Mobile (Up to 768px) --- */
+@media (max-width: 768px) {
+    .about-text {
+        /* Ensure max visibility on phones with edge padding */
+        width: 100%; 
+        padding: 0 5%; 
+        box-sizing: border-box; /* Ensures padding is included in the 100% width */
+    }
+}
