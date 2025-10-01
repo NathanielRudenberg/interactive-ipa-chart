@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import audio from '../../../../services/audio';
 
-export default function Vowel({empty, impossible, name, language, phonemes, defaultSymbol, children, className}) {
+export default function Vowel({empty, impossible, name, language, phonemes, defaultSymbol, children, className, style}) {
     const [showList, setShowList] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -23,7 +23,7 @@ export default function Vowel({empty, impossible, name, language, phonemes, defa
 
     return (
         <>
-            <div className={className}>
+            <div className={className} style={style}>
                 <div className="symbol-container">
                     <div onClick={children ? playSound : null} className="symbol">
                         {children}

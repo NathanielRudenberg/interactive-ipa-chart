@@ -1,10 +1,21 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import { apiClient } from '../../services/api';
+
 const LanguageContext = createContext();
 
 const LanguageProvider = ({ children }) => {
     const [language, setLanguage] = useState(null);
     const [selectedLanguageMenuItem, setSelectedLanguageMenuItem] = useState(null);
     const [dropdownButton, setDropdownButton] = useState(null);
+    const [formantValues, setFormantValues] = useState({});
+
+    useEffect(() => {
+        const formants = apiClient.get(`/vowel-formants/${language || 'default'}`);
+        formants.then(data => {
+            setFormantValues(data);
+            // console.log('Formant Values:', data);
+        })
+    }, [language])
 
     const updateLanguage = (newLanguage) => {
         setLanguage(newLanguage);
@@ -34,9 +45,9 @@ const LanguageProvider = ({ children }) => {
     }
 
     return (
-        <LanguageContext.Provider 
+        <LanguageContext.Provider
             value={{
-                language, dropdownButton, selectedLanguageMenuItem,
+                language, formantValues, dropdownButton, selectedLanguageMenuItem,
                 handleClickDropdown, handleCloseDropdown, handleSelectLanguage,
                 handleClear
             }}
