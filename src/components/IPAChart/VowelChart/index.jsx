@@ -11,33 +11,28 @@ export default function VowelChart() {
     let vowels = specs[languageName].phonemes.filter(phone => phone.vowel);
     let vowelSymbols = symbols.vowels;
 
-    const CHART_WIDTH = 590;
-    const CHART_HEIGHT = 410.5;
+    const CHART_WIDTH = 553;
+    const CHART_HEIGHT = 418;
+    const CHART_SECTION_HEIGHT = CHART_HEIGHT / 3;
 
     // Define the fixed bounds for the Z-score grid
     const scaleFactor = 1.5;
-    const NORM_MIN_Z = -scaleFactor; // Corresponds to the most extreme lower/back/centralized vowels
-    const NORM_MAX_Z = scaleFactor;  // Corresponds to the most extreme upper/front/peripheral vowels
+    const NORM_MIN_Z = -scaleFactor;
+    const NORM_MAX_Z = scaleFactor;
     const NORM_RANGE = NORM_MAX_Z - NORM_MIN_Z;
 
-    const getNormalizedCoordinates = (f1_norm, f2_norm) => {        
-        // Calculate distance from the Min boundary
+    const getNormalizedCoordinates = (f1_norm, f2_norm) => {      
         const y_ratio_unflipped = (f1_norm - NORM_MIN_Z) / NORM_RANGE;
-        
-        // We want NORM_MIN_Z (-3.0) at the top, so we use the unflipped ratio:
         const y_pos = CHART_HEIGHT * y_ratio_unflipped;
         
-        // Calculate ratio relative to Min boundary (gives 0 to 1)
         const x_ratio_unflipped = (f2_norm - NORM_MIN_Z) / NORM_RANGE;
-        
-        // Apply the visual inversion: 1 - ratio
         const x_ratio = 1 - x_ratio_unflipped; 
         const x_pos = CHART_WIDTH * x_ratio;
     
         return {
             // Clamping ensures the Z-scores stay within the visible boundaries
             top: Math.max(0, Math.min(CHART_HEIGHT, y_pos)) - 20.5,
-            left: Math.max(0, Math.min(CHART_WIDTH, x_pos)) - 40
+            left: Math.max(0, Math.min(CHART_WIDTH, x_pos))
         };
     };
 
@@ -68,27 +63,88 @@ export default function VowelChart() {
                     style={ position: 'absolute', top: coords.top + 'px', left: coords.left + 'px' }
                 }
                 if (phonemes.length > 0) {
-                    displayedVowels.push(
-                        // <Vowel language={languageName} key={vowelName} name={vowelName} className={vowelName + " vowel"}>
-                        <Vowel language={languageName} key={vowelName} name={vowelName} className={"vowel"} style={style} >
-                            {phonemes.length > 0 ? phonemes[0].symbol : vowelSymbols[vowelName]}
-                        </Vowel>
-                    );
+                    let vowelElement;
+                    if (languageName === 'default') {
+                        vowelElement = (
+                            <Vowel language={languageName} key={vowelName} name={vowelName} className={vowelName + " vowel"}>
+                                {phonemes.length > 0 ? phonemes[0].symbol : vowelSymbols[vowelName]}
+                            </Vowel>
+                        )
+                    } else {
+                        vowelElement = (
+                            <Vowel language={languageName} key={vowelName} name={vowelName} className={"vowel"} style={style} >
+                                {phonemes.length > 0 ? phonemes[0].symbol : vowelSymbols[vowelName]}
+                            </Vowel>
+                        )
+                    }
+                    displayedVowels.push(vowelElement);
                 }
             })
         })
     })
 
+    const STROKE_WIDTH = 4;
+    const INSET = STROKE_WIDTH / 2;
+    const BOTTOM_LEFT_X = 155.5;
+
+    const VOWEL_SECTION_Y1 = CHART_SECTION_HEIGHT;
+    const VOWEL_SECTION_Y2 = CHART_SECTION_HEIGHT * 2;
+
+    // const SLOPE = 2.3866;
+    const SLOPE = (CHART_HEIGHT) / (BOTTOM_LEFT_X);
+    
+    const SECTION_X1 = (VOWEL_SECTION_Y1 / SLOPE);
+    const SECTION_X2 = (VOWEL_SECTION_Y2 / SLOPE);
+
+    // Calculate the start and end X-coordinates for the Central Axis
+    const CENTER_X_TOP = (6 + (CHART_WIDTH)) / 2;
+    const CENTER_X_BOTTOM = ((BOTTOM_LEFT_X + 8) + CHART_WIDTH) / 2;
+
+    const boatPoints = [
+        `${1},${0}`,
+        `${CHART_WIDTH},${0}`,
+        `${CHART_WIDTH},${CHART_HEIGHT}`,
+        `${BOTTOM_LEFT_X},${CHART_HEIGHT}`
+    ].join(" ");
+
     return (
         <div className="vowel-section">
             <div className="vowel-boat-container">
-                <div id="vowel-boat" className="vowel-boat-section" />
-                <div id="top-left" className="vowel-boat-section" />
-                <div id="top-right" className="vowel-boat-section" />
-                <div id="mid-left" className="vowel-boat-section" />
-                <div id="mid-right" className="vowel-boat-section" />
-                <div id="bottom-left" className="vowel-boat-section" />
-                <div id="bottom-right" className="vowel-boat-section" />
+                <svg className="vowel-boat-svg" 
+                     width={CHART_WIDTH} 
+                     height={CHART_HEIGHT} 
+                     viewBox={`${-INSET} ${-INSET} ${CHART_WIDTH + STROKE_WIDTH} ${CHART_HEIGHT + STROKE_WIDTH}`}
+                     preserveAspectRatio="none">
+                    <polygon points={boatPoints} fill="none" stroke="black" strokeWidth="4" />
+                    {/* Close-Mid Boundary */}
+                    <line 
+                        x1={SECTION_X1} 
+                        y1={VOWEL_SECTION_Y1} 
+                        x2={CHART_WIDTH} 
+                        y2={VOWEL_SECTION_Y1} 
+                        stroke="black" 
+                        strokeWidth={STROKE_WIDTH} 
+                    />
+                    {/* Line 2: Mid/Open Boundary */}
+                    <line 
+                        x1={SECTION_X2} 
+                        y1={VOWEL_SECTION_Y2} 
+                        x2={CHART_WIDTH} 
+                        y2={VOWEL_SECTION_Y2} 
+                        stroke="black" 
+                        strokeWidth={STROKE_WIDTH} 
+                    />
+
+                    {/* Optional: Central Axis (F2 Center) Divider */}
+                    <line 
+                        x1={CENTER_X_TOP}
+                        y1={0}
+                        x2={CENTER_X_BOTTOM}
+                        y2={CHART_HEIGHT}
+                        stroke="black"
+                        strokeWidth="4"
+                    />
+                </svg>
 
                 {displayedVowels}
             </div>
