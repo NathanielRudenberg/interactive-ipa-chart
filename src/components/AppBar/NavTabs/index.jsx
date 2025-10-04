@@ -15,28 +15,32 @@ export default class NavTabs extends Component {
         this.tabIndex = 0;
 
         this.tabs = routes.map(route => {
-            return (
-                <Tab key={route.path}>
-                    <NavLink to={route.path} className='tab-link' activeClassName='tab-link--selected' exact={route.exact}>
-                        {route.name}
-                    </NavLink >
-                </Tab>
-            );
+            if (route.path !== '*') {
+                return (
+                    <Tab key={route.path}>
+                        <NavLink to={route.path} className='tab-link' activeClassName='tab-link--selected' exact={route.exact}>
+                            {route.name}
+                        </NavLink >
+                    </Tab>
+                );
+            }
         });
 
         this.tabPanels = routes.map(route => {
-            return (
-                <TabPanel key={route.path}/>
-            );
+            if (route.path !== '*') {
+                return (
+                    <TabPanel key={route.path} />
+                );
+            }
         });
     }
 
     render() {
         // let { selectedIndex } = this.state;
         return (
-            <Tabs 
-                // selectedIndex={this.state.selectedIndex}
-                // onSelect={tabIndex => this.setState({ selectedIndex: tabIndex })}
+            <Tabs
+            // selectedIndex={this.state.selectedIndex}
+            // onSelect={tabIndex => this.setState({ selectedIndex: tabIndex })}
             >
                 <TabList>
                     {this.tabs}

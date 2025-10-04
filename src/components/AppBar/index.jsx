@@ -7,8 +7,8 @@ export default class AppBar extends Component {
     render() {
         return (
             <div className='header'>
-                <NavTabs/>
-                <LanguageSelector/>
+                <NavTabs />
+                <LanguageSelector />
             </div>
         )
     }
