@@ -17,7 +17,7 @@ export const Pyodide = (function () {
 })();
 
 class PythonRunner {
-    constructor(setIsReady) {
+    constructor() {
         this._stdOut = console.log;
         this._stdErr = console.error;
         this._pyodide = null;
