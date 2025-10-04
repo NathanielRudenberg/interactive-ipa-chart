@@ -1,6 +1,7 @@
 import Home from './views/Home';
 import About from './views/About';
 import Practice from './views/Practice';
+import NotFound from './views/NotFound';
 import Languages from './views/Languages';
 
 export default [
@@ -20,6 +21,11 @@ export default [
     //     path: '/practice',
     //     component: Practice
     // },
+    {
+        name: 'Not Found',
+        path: '*',
+        component: NotFound
+    },
     // {
     //     name: 'Language Profile',
     //     path: '/languages/:lang',
