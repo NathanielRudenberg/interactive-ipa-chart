@@ -2,11 +2,11 @@
     display: flex;
     position: relative;
     width: 100%;
+    flex-direction: column;
 }
 
 .app-main {
     height: calc(100vh - 72px);
-    margin-top: 72px;
     justify-content: center;
     text-align: center;
     width: 100%;
