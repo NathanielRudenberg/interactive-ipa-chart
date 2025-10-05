@@ -35,14 +35,14 @@ class PythonRunner {
             const FS = this._pyodide.FS;
 
             try {
-                const response = await fetch('pythonFiles/audio/the_north_wind_and_the_sun.wav');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                const audioTest = await fetch('pythonFiles/audio/the_north_wind_and_the_sun.wav');
+                if (!audioTest.ok) {
+                    throw new Error(`HTTP error! status: ${audioTest.status}`);
                 }
-
-                const data = await response.arrayBuffer();
+                const data = await audioTest.arrayBuffer();
 
                 FS.mkdir('/audio');
+                FS.mkdir('/audio/practiceCalibration');
                 FS.writeFile('/audio/the_north_wind_and_the_sun.wav', new Uint8Array(data));
 
                 await this._pyodide.loadPackage('micropip');
@@ -50,6 +50,7 @@ class PythonRunner {
                 import micropip
                 await micropip.install('matplotlib')
                 await micropip.install('seaborn')
+                await micropip.install('soundfile')
                 await micropip.install('/pythonFiles/praat_parselmouth-0.5.0.dev0-cp313-cp313-pyodide_2025_0_wasm32.whl')
                 
                 print("Ready!")
@@ -66,6 +67,15 @@ class PythonRunner {
                 console.error('Error', error);
             }
         });
+    }
+
+    // fileData needs to be a Uint8Array or ArrayBuffer
+    storeFile(fileName, fileData) {
+        try {
+            this._pyodide.FS.writeFile(fileName, fileData);
+        } catch (Error) {
+            console.error('Error storing file in Pyodide:', Error);
+        }
     }
 
     setStdOut(output) {
