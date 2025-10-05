@@ -5,6 +5,7 @@ export default function Python() {
     const pyodide = Pyodide.getInstance();
     const [pyOutput, setPyOutput] = useState(" ");
     const [isReady, setIsReady] = useState(false);
+    const [isRunning, setIsRunning] = useState(false);
     pyodide.setReady(setIsReady);
 
     // pyodide.setStdOut(text => {
@@ -18,20 +19,22 @@ export default function Python() {
 
     return (
         <>
-        <p>{pyOutput}</p>
-        <button
-            onClick={async () => {
-                try {
-                    const pythonString = await pythonCode();
-                    await pyodide.run(pythonString);
-                } catch (error) {
-                    console.error('Error running Python code:', error);
-                }
-            }}
-            disabled={!isReady}
-        >
-            {isReady? "Run" : "Loading..."}
-        </button>
+            <p>{pyOutput}</p>
+            <button
+                onClick={async () => {
+                    try {
+                        setIsRunning(true);
+                        const pythonString = await pythonCode();
+                        await pyodide.run(pythonString);
+                        setIsRunning(false);
+                    } catch (error) {
+                        console.error('Error running Python code:', error);
+                    }
+                }}
+                disabled={!isReady || isRunning}
+            >
+                {isReady ? "Run" : "Loading..."}
+            </button>
         </>
     )
 }
