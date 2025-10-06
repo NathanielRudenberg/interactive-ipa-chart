@@ -8,7 +8,7 @@ export default function Practice() {
         <>
             <p></p>
             <div id="plot-container" />
-            {/* <Python /> */}
+            <Python />
             <div className="page-text">
                 <h1>Practice Your Pronunciation</h1>
                 <p>

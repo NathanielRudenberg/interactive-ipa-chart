@@ -3,6 +3,7 @@ import { ReactMediaRecorder } from 'react-media-recorder';
 import { Pyodide } from '../../services/pyodide';
 import calibrationScriptUrl from '../../services/user_vowelspace.py?url';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
+import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
 import { fetchFile } from '@ffmpeg/util';
 import coreURL from '@ffmpeg/core?url';
 import wasmURL from '@ffmpeg/core/wasm?url';

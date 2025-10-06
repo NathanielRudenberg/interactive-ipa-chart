@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pyodide } from '../../services/pyodide';
+import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
 
 export default function Python() {
     const pyodide = Pyodide.getInstance();
@@ -15,6 +16,12 @@ export default function Python() {
     const pythonCode = async () => {
         const code = await (await fetch('pythonFiles/testing-pyodide.py')).text();
         return code;
+    }
+
+    if (!isReady || isRunning) {
+        return <Audio
+            color="#CBD4C2"
+        />
     }
 
     return (
