@@ -9,7 +9,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import seaborn as sns
-import os
 
 print("Packages imported.")
 matplotlib.use("Agg")
@@ -115,52 +114,3 @@ img_str = base64.b64encode(buf.read()).decode("utf-8")
 print("Done.")
 
 img_str
-
-# wild idea to help with dynamic range:
-
-# import parselmouth
-
-# # Load a sound file
-# sound = parselmouth.Sound("my_audio.wav")
-
-# # Get intensity object
-# intensity = sound.to_intensity()
-
-# # Get formant object
-# formant = sound.to_formant_burg()
-
-# # Define your dynamic range threshold (e.g., 20 dB)
-# dynamic_range_dB = 20
-
-# # Get the maximum intensity of the sound
-# max_intensity_dB = intensity.get_maximum()
-
-# # Initialize empty lists for filtered formant data
-# filtered_times = []
-# filtered_f1 = []
-# filtered_f2 = []
-
-# # Loop through each frame of the formant object
-# for frame_idx in range(formant.get_number_of_frames()):
-#     t = formant.get_time_from_frame_number(frame_idx + 1)
-
-#     # Get the intensity at the current frame
-#     frame_intensity_dB = intensity.get_value_at_time(t)
-
-#     # Only use the frame if its intensity is within the dynamic range
-#     if frame_intensity_dB >= (max_intensity_dB - dynamic_range_dB):
-#         f1_value = formant.get_value_at_time(1, t)
-#         f2_value = formant.get_value_at_time(2, t)
-
-#         # Avoid NaN values if they still occur
-#         if not (f1_value is None or f2_value is None):
-#             filtered_times.append(t)
-#             filtered_f1.append(f1_value)
-#             filtered_f2.append(f2_value)
-
-# # Now you can use the filtered_times, filtered_f1, and filtered_f2 lists for plotting or analysis
-# # For example, to print the average F1:
-# if filtered_f1:
-#     average_f1 = sum(filtered_f1) / len(filtered_f1)
-#     print(f"Average F1 within the dynamic range: {average_f1} Hz")
-
