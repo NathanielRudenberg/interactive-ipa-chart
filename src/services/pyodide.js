@@ -25,7 +25,6 @@ class PythonRunner {
         let promiseId = 0;
 
         this._worker.onmessage = (event) => {
-            console.log("Service received message from worker:", event.data);
             const { id, ready, result, error, fileStored } = event.data;
             if (ready) {
                 this._isReady = true;

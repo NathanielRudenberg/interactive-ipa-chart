@@ -46,7 +46,6 @@ self.onmessage = async (event) => {
         try {
             await pyodide.loadPackagesFromImports(python);
             const output = await pyodide.runPythonAsync(python);
-            console.log("Python script returned (first 50 chars):", output.substring(0, 50));
             self.postMessage({ id, result: output });
         } catch (error) {
             self.postMessage({ id, error: error.message });

@@ -29,31 +29,31 @@ export default function Python() {
         )
     }
 
-    console.log('image data:', imageData);
-
     return (
         <>
             {imageData && <img src={`data:image/png;base64,${imageData}`} alt="Python Plot" />}
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
-            <button
-                onClick={async () => {
-                    try {
-                        setIsRunning(true);
-                        const pythonString = await pythonCode();
-                        const result = await pyodide.run(pythonString);
-                        setPyOutput(String(result || ''));
-                        setIsRunning(false);
-                        setImageData(result);
-                    } catch (error) {
-                        console.error('Error running Python code:', error);
-                        setIsRunning(false);
-                    }
-                }}
-                disabled={!isReady || isRunning}
-            >
-                {isReady ? "Run" : "Loading..."}
-            </button>
+            <div>
+                <button
+                    onClick={async () => {
+                        try {
+                            setIsRunning(true);
+                            const pythonString = await pythonCode();
+                            const result = await pyodide.run(pythonString);
+                            setPyOutput(String(result || ''));
+                            setIsRunning(false);
+                            setImageData(result);
+                        } catch (error) {
+                            console.error('Error running Python code:', error);
+                            setIsRunning(false);
+                        }
+                    }}
+                    disabled={!isReady || isRunning}
+                >
+                    {isReady ? "Run" : "Loading..."}
+                </button>
+            </div>
         </>
     )
 }
