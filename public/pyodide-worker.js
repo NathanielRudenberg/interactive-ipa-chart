@@ -21,6 +21,7 @@ async function loadPyodideAndPackages() {
 
     // Create directories and write the file
     FS.mkdir('/audio');
+    FS.mkdir('/audio/practiceCalibration');
     FS.writeFile('/audio/the_north_wind_and_the_sun.wav', new Uint8Array(data));
 
     await pyodide.loadPackage("micropip");
@@ -51,6 +52,7 @@ self.onmessage = async (event) => {
             self.postMessage({ id, error: error.message });
         }
     } else if (fileName && fileData) {
+        console.log('Trying to store file in Pyodide FS:', fileName);
         try {
             pyodide.FS.writeFile(fileName, fileData);
             self.postMessage({ fileStored: fileName });

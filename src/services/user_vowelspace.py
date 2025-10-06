@@ -129,6 +129,9 @@ def process_directory(root_dir):
     """
     Walks through a directory tree, analyzing vowel files in each subfolder.
     """
+    print(f"Checking for files in: {root_dir}")
+    print(f"Files found: {os.listdir(root_dir)}")
+
     for dirpath, _, filenames in os.walk(root_dir):
         # This will hold the RAW data for the folder/speaker
         raw_vowel_data = {}

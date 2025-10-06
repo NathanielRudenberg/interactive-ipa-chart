@@ -22,7 +22,6 @@ class PythonRunner {
         this._isReady = false;
         this._readyCallbacks = [];
         this._runPromises = {};
-        let promiseId = 0;
 
         this._worker.onmessage = (event) => {
             const { id, ready, result, error, fileStored } = event.data;
@@ -53,6 +52,7 @@ class PythonRunner {
 
     // fileData needs to be a Uint8Array or ArrayBuffer
     storeFile(fileName, fileData) {
+        console.log('Service is trying to store file in Pyodide FS:', fileName);
         this._worker.postMessage({ fileName, fileData });
     }
 

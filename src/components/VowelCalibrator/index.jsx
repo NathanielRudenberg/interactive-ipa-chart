@@ -3,17 +3,17 @@ import { ReactMediaRecorder } from 'react-media-recorder';
 import { Pyodide } from '../../services/pyodide';
 import calibrationScriptUrl from '../../services/user_vowelspace.py?url';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
 import { fetchFile } from '@ffmpeg/util';
 import coreURL from '@ffmpeg/core?url';
 import wasmURL from '@ffmpeg/core/wasm?url';
+import AudioRecorder from './AudioRecorder';
 
 async function storeFilesInPyodide(recordings) {
     const pyodide = Pyodide.getInstance();
     try {
         for (const name in recordings) {
-            pyodide.storeFile(`/audio/practiceCalibration/${name}.wav`,
-                new Uint8Array(await recordings[name].wavBlob.arrayBuffer()));
+            const fileData = await recordings[name].wavBlob.arrayBuffer();
+            pyodide.storeFile(`/audio/practiceCalibration/${name}.wav`, new Uint8Array(fileData));
         }
     } catch (Error) {
         console.error('Error storing recordings in Pyodide:', Error);
@@ -39,8 +39,12 @@ export default function VowelCalibrator() {
     const [recordings, setRecordings] = useState({});
     const [ffmpeg, setFfmpeg] = useState(null);
     const [ffmpegLoaded, setFfmpegLoaded] = useState(false);
+    const [pyodideReady, setPyodideReady] = useState(false);
 
     useEffect(() => {
+        const pyodide = Pyodide.getInstance();
+        pyodide.setReady(setPyodideReady);
+
         const loadFfmpeg = async () => {
             const ffmpeg = new FFmpeg();
             ffmpeg.on('log', ({ message }) => {
@@ -93,21 +97,31 @@ export default function VowelCalibrator() {
             <ReactMediaRecorder
                 audio
                 onStop={handleStop}
-                render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
-                    <div>
-                        <p>{status}</p>
-                        <button onClick={startRecording}>Start Recording</button>
-                        <button onClick={stopRecording}>Stop Recording</button>
+                render={({ status, startRecording, stopRecording, mediaBlobUrl }) => {
+                    const recordingButton = status === "recording" ? (
+                        <button onClick={stopRecording}>
+                            Stop Recording
+                        </button>
+                    ) : (
+                        <button onClick={startRecording}>
+                            Start Recording
+                        </button>
+                    );
+                    return (
+                        <div>
+                            <p>{status}</p>
+                            {recordingButton}
 
-                        <h2>Saved Recordings:</h2>
-                        {Object.entries(recordings).map(([name, recording]) => (
-                            <div key={name}>
-                                <p>{name}</p>
-                                <audio src={recording.url} controls />
-                            </div>
-                        ))}
-                    </div>
-                )}
+                            <h2>Saved Recordings:</h2>
+                            {Object.entries(recordings).map(([name, recording]) => (
+                                <div key={name}>
+                                    <p>{name}</p>
+                                    <audio src={recording.url} controls />
+                                </div>
+                            ))}
+                        </div>
+                    )
+                }}
             />
             <p> After recording your vowels, load them in:&nbsp;
                 <button
@@ -120,8 +134,9 @@ export default function VowelCalibrator() {
                             console.error('Could not finish storeFilesInPyodide', error);
                         })
                     }}
+                    disabled={!pyodideReady || !ffmpegLoaded}
                 >
-                    Store files
+                    {pyodideReady && ffmpegLoaded ? "Calibrate" : "Loading..."}
                 </button>
             </p>
         </div >
