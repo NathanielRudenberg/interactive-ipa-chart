@@ -1,25 +1,29 @@
-import { useState, useEffect } from 'react';
-import { Pyodide } from '../../services/pyodide';
+import { useState } from 'react';
+import { usePyodide } from '../../hooks/usePyodide';
 import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
 
 export default function Python() {
-    const pyodide = Pyodide.getInstance();
     const [imageData, setImageData] = useState(null);
     const [error, setError] = useState(null);
-    const [pyOutput, setPyOutput] = useState(" ");
-    const [isReady, setIsReady] = useState(false);
     const [isRunning, setIsRunning] = useState(false);
+    const {pyodide, isPyodideReady} = usePyodide();
 
-    useEffect(() => {
-        pyodide.setReady(setIsReady);
-    }, [pyodide]);
+    const runPythonCode = async () => {
+        setIsRunning(true);
+        setError
+        try {
+            const code = await (await fetch('pythonFiles/testing-pyodide.py')).text();
+            const result = await pyodide.run(code);
+            setImageData(result);
+        } catch (err) {
+            console.error('Error running Python code:', err);
+            setError(err.message);
+        } finally {
+            setIsRunning(false);
+        }
+    };
 
-    const pythonCode = async () => {
-        const code = await (await fetch('pythonFiles/testing-pyodide.py')).text();
-        return code;
-    }
-
-    if (!isReady || isRunning) {
+    if (!isPyodideReady || isRunning) {
         return (
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <ThreeCircles
@@ -36,22 +40,10 @@ export default function Python() {
 
             <div>
                 <button
-                    onClick={async () => {
-                        try {
-                            setIsRunning(true);
-                            const pythonString = await pythonCode();
-                            const result = await pyodide.run(pythonString);
-                            setPyOutput(String(result || ''));
-                            setIsRunning(false);
-                            setImageData(result);
-                        } catch (error) {
-                            console.error('Error running Python code:', error);
-                            setIsRunning(false);
-                        }
-                    }}
-                    disabled={!isReady || isRunning}
+                    onClick={runPythonCode}
+                    disabled={!isPyodideReady || isRunning}
                 >
-                    {isReady ? "Run" : "Loading..."}
+                    {isPyodideReady ? "Run" : "Loading..."}
                 </button>
             </div>
         </>
