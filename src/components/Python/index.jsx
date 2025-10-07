@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePyodide } from '../../hooks/usePyodide';
 import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
+import Button from '@mui/material/Button';
 
 export default function Python() {
     const [imageData, setImageData] = useState(null);
@@ -39,12 +40,14 @@ export default function Python() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <div>
-                <button
+                <Button
                     onClick={runPythonCode}
                     disabled={!isPyodideReady || isRunning}
+                    variant="contained"
+                    disableRipple
                 >
                     {isPyodideReady ? "Run" : "Loading..."}
-                </button>
+                </Button>
             </div>
         </>
     )

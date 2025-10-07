@@ -2,6 +2,7 @@ import React from 'react';
 import Python from '../../components/Python';
 import VowelChart from '../../components/IPAChart/VowelChart';
 import VowelCalibrator from '../../components/VowelCalibrator';
+import Button from '@mui/material/Button';
 
 export default function Practice() {
     return (
@@ -23,6 +24,14 @@ export default function Practice() {
                     <strong>æ</strong> (as in <em>cat</em>).
                 </p>
                 <VowelCalibrator />
+                <h3>Plotting Your Own Voice</h3>
+                <p>Now, let's practice nailing those vowels!</p>
+                <Button
+                    variant="contained"
+                    disableRipple
+                >
+                    Pablo
+                </Button>
                 <VowelChart />
             </div>
         </>

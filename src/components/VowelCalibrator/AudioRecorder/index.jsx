@@ -1,12 +1,26 @@
+import Button from '@mui/material/Button';
+import MicIcon from '@mui/icons-material/Mic';
+import StopIcon from '@mui/icons-material/Stop';
+
 const AudioRecorder = ({ status, startRecording, stopRecording, recordings, mediaBlobUrl }) => {
     const recordingButton = status === "recording" ? (
-        <button onClick={stopRecording}>
-            Stop Recording
-        </button>
+        <Button
+            onClick={stopRecording}
+            variant="contained"
+            color="secondary"
+            disableRipple
+        >
+            <StopIcon />
+        </Button>
     ) : (
-        <button onClick={startRecording}>
-            Start Recording
-        </button>
+        <Button
+            onClick={startRecording}
+            variant="contained"
+            color="secondary"
+            disableRipple
+        >
+            <MicIcon />
+        </Button>
     );
     return (
         <div>
