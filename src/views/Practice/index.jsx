@@ -1,10 +1,13 @@
-import React from 'react';
+import { useState } from 'react';
 import Python from '../../components/Python';
 import VowelChart from '../../components/IPAChart/VowelChart';
 import VowelCalibrator from '../../components/VowelCalibrator';
+import UserVowelTester from '../../components/UserVowelTester';
 import Button from '@mui/material/Button';
 
 export default function Practice() {
+    const [userVowels, setUserVowels] = useState([]);
+
     return (
         <>
             <p></p>
@@ -25,14 +28,8 @@ export default function Practice() {
                 </p>
                 <VowelCalibrator />
                 <h3>Plotting Your Own Voice</h3>
-                <p>Now, let's practice nailing those vowels!</p>
-                <Button
-                    variant="contained"
-                    disableRipple
-                >
-                    Pablo
-                </Button>
-                <VowelChart />
+                <UserVowelTester setVowelValue={setUserVowels} />
+                <VowelChart extras={userVowels} />
             </div>
         </>
     );

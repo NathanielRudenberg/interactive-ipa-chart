@@ -41,7 +41,7 @@ const pyodideReadyPromise = loadPyodideAndPackages();
 
 self.onmessage = async (event) => {
     await pyodideReadyPromise;
-    const { id, python, fileName, fileData, name, value } = event.data;
+    const { id, python, fileName, fileData, name, value, mkDirPath } = event.data;
 
     if (python) {
         try {
@@ -52,7 +52,6 @@ self.onmessage = async (event) => {
             self.postMessage({ id, error: error.message });
         }
     } else if (fileName && fileData) {
-        console.log('Trying to store file in Pyodide FS:', fileName);
         try {
             pyodide.FS.writeFile(fileName, fileData);
             self.postMessage({ fileStored: fileName });
@@ -65,6 +64,12 @@ self.onmessage = async (event) => {
             self.postMessage({ id, result: `Global variable ${name} set.` });
         } catch (error) {
             self.postMessage({ id, error: `Setting global variable failed: ${error.message}` });
+        }
+    } else if (mkDirPath) {
+        try {
+            pyodide.FS.mkdir(mkDirPath);
+        } catch (error) {
+            self.postMessage({ id, error: `Directory creation failed: ${error.message}` });
         }
     }
 };

@@ -33,7 +33,6 @@ class PythonRunner {
             }
 
             if (fileStored) {
-                console.log('File stored:', fileStored);
                 return;
             }
 
@@ -50,9 +49,12 @@ class PythonRunner {
         this._setIsReady = () => { };
     }
 
+    mkDir(path) {
+        this._worker.postMessage({ mkDirPath: path });
+    }
+
     // fileData needs to be a Uint8Array or ArrayBuffer
     storeFile(fileName, fileData) {
-        console.log('Service is trying to store file in Pyodide FS:', fileName);
         this._worker.postMessage({ fileName, fileData });
     }
 

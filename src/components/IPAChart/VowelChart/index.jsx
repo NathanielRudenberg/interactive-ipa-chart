@@ -5,7 +5,7 @@ import vowelChartPositions from '../../../services/vowelChartLayout';
 import { useLanguage } from '../../LanguageProvider';
 import './vowels.scss';
 
-export default function VowelChart() {
+export default function VowelChart({ extras }) {
     const { language, formantValues } = useLanguage();
     let languageName = language ? language : 'default';
     let vowels = specs[languageName].phonemes.filter(phone => phone.vowel);
@@ -64,7 +64,7 @@ export default function VowelChart() {
                 }
                 if (phonemes.length > 0) {
                     let vowelElement;
-                    if (languageName === 'default' || formantValues[vowelName] === undefined) {
+                    if (languageName === '' || formantValues[vowelName] === undefined) {
                         vowelElement = (
                             <Vowel language={languageName} key={vowelName} name={vowelName} className={vowelName + " vowel"}>
                                 {phonemes.length > 0 ? phonemes[0].symbol : vowelSymbols[vowelName]}
@@ -81,6 +81,25 @@ export default function VowelChart() {
                 }
             })
         })
+    })
+
+    extras?.forEach(vowel => {
+        const norm_f1 = vowel.formantValues.norm_f1;
+        const norm_f2 = vowel.formantValues.norm_f2;
+
+        const coords = getNormalizedCoordinates(norm_f1, norm_f2);
+        let style = {}
+
+        if (norm_f1 !== undefined) {
+            style = { position: 'absolute', top: coords.top + 'px', left: coords.left + 'px' };
+        }
+
+        const vowelElement = (
+            <Vowel language={languageName} key={'User Vowel'} name={'User Vowel'} className={"vowel"} style={style}>
+                •
+            </Vowel>
+        );
+        displayedVowels.push(vowelElement);
     })
 
     const STROKE_WIDTH = 2;

@@ -1,19 +1,20 @@
+
 import React, { useState } from 'react';
 import { ReactMediaRecorder } from 'react-media-recorder';
-import calibrationScriptUrl from '../../services/user_vowelspace.py?url';
+import pythonCodeUrl from '../../services/get_user_vowel_position.py?url';
 import { fetchFile } from '@ffmpeg/util';
 import { useFFmpeg } from '../../hooks/useFfmpeg';
 import { usePyodide } from '../../hooks/usePyodide';
 import AudioRecorder from '../AudioRecorder';
 import { Button } from '@mui/material';
 
-async function calibrationScript() {
-    const code = await (await fetch(calibrationScriptUrl)).text();
+async function getCode() {
+    const code = await (await fetch(pythonCodeUrl)).text();
     return code;
 }
 
-export default function VowelCalibrator() {
-    const [recordings, setRecordings] = useState({});
+export default function UserVowelTester({ setVowelValue }) {
+    const [recording, setRecording] = useState({});
     const [isRunning, setIsRunning] = useState(false);
     const { ffmpeg, isFFmpegReady } = useFFmpeg();
     const { pyodide, isPyodideReady } = usePyodide();
@@ -21,14 +22,15 @@ export default function VowelCalibrator() {
     const handleCalibrate = async () => {
         try {
             // Store audio files in pyodide's virtual filesystem
-            for (const name in recordings) {
-                const fileData = await recordings[name].wavBlob.arrayBuffer();
-                pyodide.storeFile(`/audio/practiceCalibration/${name}.wav`, new Uint8Array(fileData));
+            for (const name in recording) {
+                const fileData = await recording[name].wavBlob.arrayBuffer();
+                pyodide.mkDir('/audio/userVowels');
+                pyodide.storeFile(`/audio/userVowels/vowel.wav`, new Uint8Array(fileData));
             }
 
             // Load and run the calibration script
             setIsRunning(true);
-            const pythonCode = await calibrationScript();
+            const pythonCode = await getCode();
             const jsonStringResult = await pyodide.run(pythonCode);
 
             // Check if we got a valid string before parsing
@@ -37,15 +39,13 @@ export default function VowelCalibrator() {
             }
 
             const results = JSON.parse(jsonStringResult);
-            console.log('Calibration results:', results);
+            console.log('User\'s formants:', results);
 
-            if (results && results.stats) {
-                pyodide.setGlobal("SPEAKER_STATS", results.stats);
-                console.log('Speaker stats saved to global variable "SPEAKER_STATS"');
-            }
+            const extraVowel = { formantValues: results };
+            setVowelValue([extraVowel])
 
         } catch (Error) {
-            console.error('Calibration failed:', Error);
+            console.error('Analysis failed:', Error);
         } finally {
             setIsRunning(false);
         }
@@ -65,15 +65,13 @@ export default function VowelCalibrator() {
             const wavBlob = new Blob([data.buffer], { type: 'audio/wav' });
             const wavUrl = URL.createObjectURL(wavBlob);
 
-            const newRecordings = {
-                ...recordings,
+            setRecording({
                 [recordingName]: {
                     url: wavUrl,
                     blob: blob,
                     wavBlob: wavBlob,
-                },
-            };
-            setRecordings(newRecordings);
+                }
+            });
         } catch (error) {
             console.error('Error processing recording:', error);
         }
@@ -84,12 +82,20 @@ export default function VowelCalibrator() {
             <ReactMediaRecorder
                 audio
                 onStop={handleStop}
-                render={props => <AudioRecorder {...props} recordings={recordings} />}
+                render={props => <AudioRecorder {...props} recordings={recording} />}
             />
-            <p> After recording your vowels, load them in:&nbsp;
+            <p> Now, let's practice nailing those vowels!&nbsp;
                 <Button
                     onClick={handleCalibrate}
-                    disabled={!isPyodideReady || !isFFmpegReady || isRunning || Object.keys(recordings).length < 4}
+                    disabled={!isPyodideReady || isRunning || Object.keys(recording).length < 1}
+                    variant="contained"
+                    disableRipple
+                >
+                    Pablo
+                </Button>
+                <Button
+                    onClick={handleCalibrate}
+                    disabled={!isPyodideReady || !isFFmpegReady || isRunning || Object.keys(recording).length < 4}
                     variant="contained"
                     disableRipple
                 >

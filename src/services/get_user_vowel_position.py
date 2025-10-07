@@ -4,7 +4,7 @@ import json
 import numpy as np  # Used for mean and standard deviation calculations
 import soundfile as sf  # For reading audio files
 
-AUDIO_ROOT_DIRECTORY = "/audio/practiceCalibration"
+AUDIO_ROOT_DIRECTORY = "/audio/userVowels"
 SPEAKER_METADATA_FILENAME = "speaker.txt"  # File containing 'M', 'F', or 'C'
 # -----------------------------------------------------------------
 
@@ -82,6 +82,7 @@ def analyze_vowel_formants(file_path, maximum_formant):
         print(f"  -> Could not analyze '{os.path.basename(file_path)}'. Error: {e}")
         return None, None
 
+
 def perform_lobanov_normalization(raw_vowel_data):
     """
     Calculates the speaker's mean and std dev, then applies Z-score normalization.
@@ -90,74 +91,49 @@ def perform_lobanov_normalization(raw_vowel_data):
         return {}
 
     # 1. Collect all F1 and F2 data for the speaker
-    f1_values = [data["raw_f1"] for data in raw_vowel_data.values()]
-    f2_values = [data["raw_f2"] for data in raw_vowel_data.values()]
+    f1_value = raw_vowel_data["raw_f1"]
+    f2_value = raw_vowel_data["raw_f2"]
 
-    # 2. Calculate the speaker's mean (mu) and standard deviation (sigma)
-    # np.std uses the default divisor N (population std dev), which is standard for Lobanov.
-    mu_f1 = np.mean(f1_values)
-    sigma_f1 = np.std(f1_values)
-    mu_f2 = np.mean(f2_values)
-    sigma_f2 = np.std(f2_values)
+    if "SPEAKER_STATS" in globals():
+        statsProxy = globals()["SPEAKER_STATS"]
+        stats = statsProxy.to_py()
 
-    # Handle zero division: if sigma is 0, set it to a small number
-    if sigma_f1 == 0:
-        sigma_f1 = 0.001
-    if sigma_f2 == 0:
-        sigma_f2 = 0.001
-
-    normalized_vowel_data = {}
+        mu_f1 = stats["f1"]["mean"]
+        sigma_f1 = stats["f1"]["stdev"]
+        mu_f2 = stats["f2"]["mean"]
+        sigma_f2 = stats["f2"]["stdev"]
+    else:
+        # Throw error if stats are not provided
+        raise ValueError("SPEAKER_STATS not found in globals()")
 
     # 3. Apply the Z-score formula to every vowel: F_norm = (F_raw - mu) / sigma
-    for key, data in raw_vowel_data.items():
-        norm_f1 = (data["raw_f1"] - mu_f1) / sigma_f1
-        norm_f2 = (data["raw_f2"] - mu_f2) / sigma_f2
+    norm_f1 = (f1_value - mu_f1) / sigma_f1
+    norm_f2 = (f2_value - mu_f2) / sigma_f2
 
-        # Store both raw and normalized values in the final output
-        normalized_vowel_data[key] = {
-            "mean_f1": round(data["raw_f1"], 2),
-            "mean_f2": round(data["raw_f2"], 2),
-            "norm_f1": round(norm_f1, 4),
-            "norm_f2": round(norm_f2, 4),
-        }
-
-    speaker_stats = {
-        "f1": {"mean": round(mu_f1, 2), "stdev": round(sigma_f1, 2)},
-        "f2": {"mean": round(mu_f2, 2), "stdev": round(sigma_f2, 2)},
+    # Store both raw and normalized values in the final output
+    return {
+        "mean_f1": round(f1_value, 2),
+        "mean_f2": round(f2_value, 2),
+        "norm_f1": round(norm_f1, 4),
+        "norm_f2": round(norm_f2, 4),
     }
 
-    return {"vowels": normalized_vowel_data, "stats": speaker_stats}
 
-
-def process_directory(root_dir):
+def processAudioFile():
     """
-    Walks through a directory tree, analyzing vowel files in each subfolder.
+    Analyze and normalize the formants in the user's recorded audio
     """
-    print(f"Checking for files in: {root_dir}")
-    print(f"Files found: {os.listdir(root_dir)}")
-
     raw_vowel_data = {}
-
-    if not os.path.exists(root_dir):
-        return None
-
-    for filename in os.listdir(root_dir):
-        # This will hold the RAW data for the folder/speaker
-        if filename.endswith((".wav")):
-            full_path = os.path.join(root_dir, filename)
-            max_f_setting = get_max_formant_setting(root_dir)
-            base_filename, analysis_data = analyze_vowel_formants(
-                full_path, max_f_setting
-            )
-            if base_filename:
-                raw_vowel_data[base_filename] = analysis_data
+    filePath = AUDIO_ROOT_DIRECTORY + "/vowel.wav"
+    maxFormant = get_max_formant_setting(AUDIO_ROOT_DIRECTORY)
+    baseFilename, analysisData = analyze_vowel_formants(filePath, maxFormant)
+    if baseFilename:
+        raw_vowel_data = analysisData
 
     if raw_vowel_data:
-        # 1. Perform normalization on all collected raw data for this speaker
         return perform_lobanov_normalization(raw_vowel_data)
 
-print('I will now process the directory.')
-result = process_directory(AUDIO_ROOT_DIRECTORY)
-json_output = json.dumps(result) if result else "{}"
 
+result = processAudioFile()
+json_output = json.dumps(result) if result else "{}"
 json_output
