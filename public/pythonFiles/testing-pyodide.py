@@ -107,7 +107,7 @@ draw_formants(formants, intensity)
 plt.xlim([snd.xmin, snd.xmax])
 
 buf = io.BytesIO()
-plt.savefig(buf, format="png")
+plt.savefig(buf, format="png", bbox_inches='tight')
 buf.seek(0)
 img_str = base64.b64encode(buf.read()).decode("utf-8")
 
