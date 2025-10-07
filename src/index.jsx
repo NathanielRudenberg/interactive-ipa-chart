@@ -1,13 +1,27 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { createTheme, ThemeProvider } from '@mui/material';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const appTheme = createTheme(({
+    palette: {
+        primary: {
+            main: '#CBD4C2',
+        },
+        secondary: {
+            main: '#967AA1'
+        }
+    }
+}))
+
 const root = createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <App />
+        <ThemeProvider theme={appTheme}>
+            <App />
+        </ThemeProvider>
     </React.StrictMode>
 )
 

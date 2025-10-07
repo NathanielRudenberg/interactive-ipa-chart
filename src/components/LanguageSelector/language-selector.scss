@@ -2,17 +2,8 @@
 @import '../../../colors.scss';
 
 .MuiButtonGroup-root {
-    // @include mboxshadow(1);
-    border-radius: 0 !important;
-    background-color: $ash-gray;
-
     > .MuiButtonBase-root {
-        border-radius: 0;
         border: none;
         color: black;
-    }
-
-    > .MuiButton-contained {
-        background-color: $mountbatten-pink;
     }
 }

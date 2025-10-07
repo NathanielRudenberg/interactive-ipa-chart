@@ -19,11 +19,23 @@ export default function LanguageSelector() {
 
     return (
         <>
-            <ButtonGroup color="primary" aria-label="outlined primary button group">
-                <Button disableRipple aria-controls="language-variant-menu" aria-haspopup="true" onClick={handleClickDropdown} endIcon={buttonEndIcon}>
+            <ButtonGroup color="primary" variant={'contained'} disableElevation aria-label="outlined primary button group">
+                <Button
+                    disableRipple
+                    aria-controls="language-variant-menu"
+                    aria-haspopup="true"
+                    onClick={handleClickDropdown}
+                    endIcon={buttonEndIcon}
+                    sx={{ borderRadius: 0 }}
+                >
                     {selectedLanguageMenuItem || 'Select a Language'}
                 </Button>
-                {selectedLanguageMenuItem && <Button variant='contained' onClick={handleClear}>
+
+                {selectedLanguageMenuItem && <Button
+                    color="secondary"
+                    onClick={handleClear}
+                    sx={{ borderRadius: 0 }}
+                >
                     <CloseIcon />
                 </Button>}
             </ButtonGroup>
