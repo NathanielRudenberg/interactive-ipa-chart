@@ -122,7 +122,12 @@ def perform_lobanov_normalization(raw_vowel_data):
             "norm_f2": round(norm_f2, 4),
         }
 
-    return normalized_vowel_data
+    speaker_stats = {
+        "f1": {"mean": round(mu_f1, 2), "stdev": round(sigma_f1, 2)},
+        "f2": {"mean": round(mu_f2, 2), "stdev": round(sigma_f2, 2)},
+    }
+
+    return {"vowels": normalized_vowel_data, "stats": speaker_stats}
 
 
 def process_directory(root_dir):
@@ -132,46 +137,28 @@ def process_directory(root_dir):
     print(f"Checking for files in: {root_dir}")
     print(f"Files found: {os.listdir(root_dir)}")
 
-    for dirpath, _, filenames in os.walk(root_dir):
+    raw_vowel_data = {}
+
+    if not os.path.exists(root_dir):
+        return None
+
+    for filename in os.listdir(root_dir):
         # This will hold the RAW data for the folder/speaker
-        raw_vowel_data = {}
-
-        max_f_setting = get_max_formant_setting(dirpath)
-
-        for filename in filenames:
-            if True:
-                full_path = os.path.join(dirpath, filename)
-                base_filename, analysis_data = analyze_vowel_formants(
-                    full_path, max_f_setting
-                )
-
-                if base_filename and analysis_data:
-                    # Store RAW data temporarily
-                    raw_vowel_data[base_filename] = analysis_data
-
-        if raw_vowel_data:
-            # 1. Perform normalization on all collected raw data for this speaker
-            final_vowel_data = perform_lobanov_normalization(raw_vowel_data)
-
-            # 2. Save the final JSON
-            json_filename = "vowel_formants.json"
-            json_filepath = os.path.join(dirpath, json_filename)
-
-            print(
-                f"  -> Found {len(raw_vowel_data)} vowel files. Saving normalized results to '{json_filepath}'"
+        if filename.endswith((".wav")):
+            full_path = os.path.join(root_dir, filename)
+            max_f_setting = get_max_formant_setting(root_dir)
+            base_filename, analysis_data = analyze_vowel_formants(
+                full_path, max_f_setting
             )
-            with open(json_filepath, "w") as f:
-                json.dump(final_vowel_data, f, indent=4)
+            if base_filename:
+                raw_vowel_data[base_filename] = analysis_data
 
-            with open(json_filepath, "r") as formantfile:
-                print(f"Showing contents of {json_filepath}:")
-                print(
-                    formantfile.read()
-                )  # Print the contents of the JSON file for verification
+    if raw_vowel_data:
+        # 1. Perform normalization on all collected raw data for this speaker
+        return perform_lobanov_normalization(raw_vowel_data)
 
+print('I will now process the directory.')
+result = process_directory(AUDIO_ROOT_DIRECTORY)
+json_output = json.dumps(result) if result else "{}"
 
-if __name__ == "__main__":
-    # Ensure numpy is installed: pip install numpy
-    # Note: If parselmouth is installed in a virtual environment, numpy often is too.
-    process_directory(AUDIO_ROOT_DIRECTORY)
-    print("\nAnalysis complete. Check 'vowel_formants.json' files for normalized data.")
+json_output

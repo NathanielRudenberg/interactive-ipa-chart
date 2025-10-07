@@ -41,7 +41,7 @@ const pyodideReadyPromise = loadPyodideAndPackages();
 
 self.onmessage = async (event) => {
     await pyodideReadyPromise;
-    const { id, python, fileName, fileData } = event.data;
+    const { id, python, fileName, fileData, name, value } = event.data;
 
     if (python) {
         try {
@@ -58,6 +58,13 @@ self.onmessage = async (event) => {
             self.postMessage({ fileStored: fileName });
         } catch (error) {
             self.postMessage({ id, error: `File storage failed: ${error.message}` });
+        }
+    } else if (name && value !== undefined) {
+        try {
+            pyodide.globals.set(name, value);
+            self.postMessage({ id, result: `Global variable ${name} set.` });
+        } catch (error) {
+            self.postMessage({ id, error: `Setting global variable failed: ${error.message}` });
         }
     }
 };

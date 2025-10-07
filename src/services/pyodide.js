@@ -56,6 +56,10 @@ class PythonRunner {
         this._worker.postMessage({ fileName, fileData });
     }
 
+    setGlobal(name, value) {
+        this._worker.postMessage({ name, value });
+    }
+
     setReady(callback) {
         if (this._isReady) {
             callback(true);
