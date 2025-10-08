@@ -91,15 +91,7 @@ export default function UserVowelTester({ setVowelValue }) {
                     variant="contained"
                     disableRipple
                 >
-                    Pablo
-                </Button>
-                <Button
-                    onClick={handleCalibrate}
-                    disabled={!isPyodideReady || !isFFmpegReady || isRunning || Object.keys(recording).length < 4}
-                    variant="contained"
-                    disableRipple
-                >
-                    {isPyodideReady && isFFmpegReady && !isRunning ? "Calibrate" : "Loading..."}
+                    Placeholder
                 </Button>
             </p>
         </div >
