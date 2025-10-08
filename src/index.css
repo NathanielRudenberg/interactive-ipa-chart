@@ -19,9 +19,9 @@ code {
 
 .page-text {
     /* Base Centering (Applies to all sizes unless overridden) */
-    width: 85%; /* Slightly more space for the text block */
+    width: 85%;
     margin: 0 auto;
-    max-width: 750px; /* Limits readability width on huge screens */
+    max-width: 750px; /* Limits width on large screens */
     line-height: 1.8;
 }
 
