@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ReactMediaRecorder } from 'react-media-recorder';
 import pythonCodeUrl from '../../services/get_user_vowel_position.py?url';
 import { fetchFile } from '@ffmpeg/util';
-import { useFFmpeg } from '../../hooks/useFfmpeg';
+import { useFFmpeg } from '../../hooks/useFFmpeg';
 import { usePyodide } from '../../hooks/usePyodide';
 import AudioRecorder from '../AudioRecorder';
 import { Button } from '@mui/material';
