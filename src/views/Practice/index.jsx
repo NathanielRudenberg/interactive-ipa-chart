@@ -4,13 +4,14 @@ import VowelChart from '../../components/IPAChart/VowelChart';
 import VowelCalibrator from '../../components/VowelCalibrator';
 import UserVowelTester from '../../components/UserVowelTester';
 import Button from '@mui/material/Button';
+import CalibrationModal from '../../components/CalibrationModal';
 
 export default function Practice() {
     const [userVowels, setUserVowels] = useState([]);
 
     return (
         <>
-            <p></p>
+            <CalibrationModal />
             <div id="plot-container" />
             <Python />
             <div className="page-text">
