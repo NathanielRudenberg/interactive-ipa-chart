@@ -19,27 +19,35 @@ const INTRO_STEP = 'intro';
 const RECORD_STEP = 'record';
 const CALIBRATE_STEP = 'calibrate';
 const DONE_STEP = 'done';
+const REQUIRED_RECORDINGS = 4;
+const STEP_CHANGE_DURATION = 200;
 
 const CalibrationModal = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [currentStep, setCurrentStep] = useState(INTRO_STEP);
     const [recordings, setRecordings] = useState({});
     const [isRunning, setIsRunning] = useState(false);
+    const [contentOpacity, setContentOpacity] = useState(1);
+    const [speakerCategory, setSpeakerCategory] = useState(null);
     const [error, setError] = useState(null);
     const { ffmpeg, isFFmpegReady } = useFFmpeg();
     const { pyodide, isPyodideReady } = usePyodide();
 
-    const goToRecord = () => {
-        setCurrentStep(RECORD_STEP);
+    const changeStep = (nextStep) => {
+        setContentOpacity(0);
+        setTimeout(() => {
+            setCurrentStep(nextStep);
+            setContentOpacity(1);
+        }, STEP_CHANGE_DURATION); // This duration should match the CSS transition
     };
 
-    const goToIntro = () => {
-        setCurrentStep(INTRO_STEP);
-    };
+    const goToRecord = () => changeStep(RECORD_STEP);
 
-    const goToCalibration = () => setCurrentStep(CALIBRATE_STEP);
+    const goToIntro = () => changeStep(INTRO_STEP);
 
-    const done = () => setCurrentStep(DONE_STEP)
+    const goToCalibration = () => changeStep(CALIBRATE_STEP);
+
+    const done = () => changeStep(DONE_STEP)
 
     async function getCode() {
         const code = await (await fetch(pythonCodeUrl)).text();
@@ -161,13 +169,39 @@ const CalibrationModal = () => {
         </>
     );
 
+    const numberOfRecordings = Object.keys(recordings).length;
+    const progressDots = (
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+            {[...Array(REQUIRED_RECORDINGS)].map((_, index) => (
+                <div
+                    key={`progress-dot-${index}`}
+                    style={{
+                        width: '15px',
+                        height: '15px',
+                        borderRadius: '50%',
+                        backgroundColor: index < numberOfRecordings ? '#4caf50' : '#f44366',
+                        transition: 'background-color 0.1s ease',
+                        margin: '0 5px'
+                    }}
+                >
+                </div>
+            ))}
+        </div>
+    )
+
     const recordStep = (
         <>
-            <ReactMediaRecorder
-                audio
-                onStop={handleStop}
-                render={props => <AudioRecorder {...props} recordings={recordings} />}
-            />
+            <Typography variant='h5'>Select Your Voice Profile</Typography>
+            <SpeakerTypeSelector type={speakerCategory} setType={setSpeakerCategory} />
+            {speakerCategory && <>
+                <ReactMediaRecorder
+                    audio
+                    onStop={handleStop}
+                    render={props => <AudioRecorder {...props} recordings={recordings} />}
+                />
+                {progressDots}
+            </>
+            }
             <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
                 <Button
                     color="secondary"
@@ -189,7 +223,7 @@ const CalibrationModal = () => {
                     sx={{ marginTop: '8px' }}
                     disableRipple
                     endIcon={<ArrowForwardIcon />}
-                    disabled={Object.keys(recordings).length < 4}
+                    disabled={Object.keys(recordings).length < REQUIRED_RECORDINGS || !speakerCategory}
                 >
                     Next
                 </Button>
@@ -235,19 +269,26 @@ const CalibrationModal = () => {
             modalContent = introStep;
     }
 
-    const handleOpen = () => setIsOpen(true)
-    const handleClose = () => setIsOpen(false)
+    const handleOpen = () => changeStep(INTRO_STEP)
     return (
         <>
-            <Button variant={"contained"} onClick={handleOpen}>Pablo</Button>
+            <Button sx={{ marginTop: '20px' }} variant={"contained"} onClick={handleOpen}>Recalibrate</Button>
             <Modal
                 open={currentStep !== DONE_STEP}
-                onClose={handleClose}
             >
                 <Box sx={style}>
                     <Typography variant="h2">Your Vocal Signature</Typography>
                     <Divider sx={{ margin: '16px 0' }} />
-                    {modalContent}
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        opacity: contentOpacity,
+                        transition: `opacity ${STEP_CHANGE_DURATION}ms ease-in-out`,
+                        // height: '100%'
+                        flexGrow: 1
+                    }}>
+                        {modalContent}
+                    </Box>
                 </Box>
             </Modal>
         </>
