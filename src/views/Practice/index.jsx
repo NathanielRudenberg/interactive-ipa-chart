@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Python from '../../components/Python';
+import Typography from '@mui/material/Typography';
 import VowelChart from '../../components/IPAChart/VowelChart';
 import UserVowelTester from '../../components/UserVowelTester';
-import Button from '@mui/material/Button';
 import CalibrationModal from '../../components/CalibrationModal';
 
 export default function Practice() {
@@ -14,7 +14,7 @@ export default function Practice() {
             <div id="plot-container" />
             {/* <Python /> */}
             <div className="page-text">
-                <h1>Practice Your Pronunciation</h1>
+                <Typography variant="h1">Practice Your Pronunciation</Typography>
                 <UserVowelTester setVowelValue={setUserVowels} />
                 <VowelChart extras={userVowels} />
             </div>
