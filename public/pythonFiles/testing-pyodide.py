@@ -38,6 +38,7 @@ window_length = 0.025  # Window length in seconds
 max_number_of_formants = 5.0
 maximum_formant = 5500.0
 pre_emphasis_from = 50.0
+analysis_time_step = window_length / 4
 
 
 def draw_spectrogram(spectrogram, dynamic_range=70):
@@ -59,18 +60,43 @@ def draw_spectrogram(spectrogram, dynamic_range=70):
 
 
 def draw_formants(formants, intensity, formant_dynamic_range=30.0):
-    n_formants = math.floor(max_number_of_formants)
-    times = formants.ts()
+    formant_table = parselmouth.praat.call(
+        formants, "Down to Table", True, True, 6, True, 15, True, 3, True
+    )
 
-    for formant_number in range(n_formants):
-        # Extract selected formant contour, and
-        # replace unvoiced samples by NaN to not plot
-        f = np.vectorize(lambda x: formants.get_value_at_time(formant_number + 1, x))
-        formant_values = f(times)
-        innerColor = "w" if formant_number % 2 == 1 else "#f00"
-        outerColor = "#f00" if formant_number % 2 == 1 else "w"
-        plt.plot(formants.ts(), formant_values, "o", markersize=3, color=outerColor)
-        plt.plot(formants.ts(), formant_values, "o", markersize=2, color=innerColor)
+    # Extract the intensity values from the table
+    frame_intensities = np.array(
+        [
+            float(
+                parselmouth.praat.call(formant_table, "Get value", i + 1, "intensity")
+            )
+            for i in range(formants.get_number_of_frames())
+        ]
+    )
+
+    # Calculate the threshold using the same logic as before, but with this new data
+    max_intensity = np.max(frame_intensities)
+    intensity_threshold = max_intensity / (10 ** (formant_dynamic_range / 10))
+
+    times = formants.ts()
+    n_formants = math.floor(max_number_of_formants)
+
+    for formant_number in range(1, n_formants + 1):
+        formant_values = [formants.get_value_at_time(formant_number, t) for t in times]
+        formant_values = np.array(formant_values)
+
+        # "Erase" the formant values for frames where the *internal* intensity is too low
+        for i, intensity_val in enumerate(frame_intensities):
+            if intensity_val < intensity_threshold:
+                formant_values[i] = np.nan
+
+        # Plotting style
+        innerColor = "w" if formant_number % 2 == 0 else "#f00"
+        outerColor = "#f00" if formant_number % 2 == 0 else "w"
+
+        plt.plot(times, formant_values, "o", markersize=3, color=outerColor, zorder=1)
+        plt.plot(times, formant_values, "o", markersize=2, color=innerColor, zorder=1)
+
     plt.ylim(0, maximum_frequency)
     plt.grid(False)
 
@@ -83,11 +109,16 @@ spectrogram = pre_emphasized_snd.to_spectrogram(
     maximum_frequency=maximum_frequency,
 )
 
-intensity = snd.to_intensity()
+intensity = snd.to_intensity(
+    time_step=analysis_time_step,
+    subtract_mean=True,
+    minimum_pitch=50.0,
+)
 
 # Extracting formants
 print("Extracting formants...")
 formants = snd.to_formant_burg(
+    time_step=analysis_time_step,
     max_number_of_formants=max_number_of_formants,
     maximum_formant=maximum_formant,
     window_length=window_length,
@@ -107,10 +138,11 @@ draw_formants(formants, intensity)
 plt.xlim([snd.xmin, snd.xmax])
 
 buf = io.BytesIO()
-plt.savefig(buf, format="png", bbox_inches='tight')
+plt.savefig(buf, format="png", bbox_inches="tight")
 buf.seek(0)
 img_str = base64.b64encode(buf.read()).decode("utf-8")
 
 print("Done.")
 
 img_str
+
