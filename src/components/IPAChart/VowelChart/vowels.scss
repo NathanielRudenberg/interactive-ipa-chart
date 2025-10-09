@@ -45,11 +45,13 @@ $section-height: 134px;
     font-family: 'Noto Sans', sans-serif;
     font-style: normal;
     background-color: $floral-white;
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
     &:hover {
         width: 75%;
         background-color: $hover-green;
+        z-index: 10;
     }
 }
