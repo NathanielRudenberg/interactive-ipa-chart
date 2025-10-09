@@ -16,29 +16,24 @@ def get_max_formant_setting(filepath):
     """
 
     max_formant = 5500.0
-    speaker_file_path = os.path.join(filepath, SPEAKER_METADATA_FILENAME)
 
-    if os.path.exists(speaker_file_path):
-        try:
-            with open(speaker_file_path, "r") as f:
-                speaker_flag = f.read().strip().upper()
+    speaker_flag = None
+    if "SPEAKER_TYPE" in globals():
+        speaker_flag = globals()["SPEAKER_TYPE"]
 
-            if speaker_flag == "M":
-                max_formant = 4500.0
-            elif speaker_flag == "F":
-                max_formant = 5500.0
-            elif speaker_flag == "C":
-                max_formant = 6000.0
-            # else: default 5500.0
+    match speaker_flag:
+        case "M":
+            max_formant = 4500.0
+        case "F":
+            max_formant = 5500.0
+        case "C":
+            max_formant = 6000.0
+        case _:
+            max_formant = 5500.0
 
-            print(
-                f"  -> Using max formant {max_formant}Hz based on '{speaker_flag}' in {SPEAKER_METADATA_FILENAME}."
-            )
-
-        except Exception as e:
-            print(
-                f"  -> WARNING: Could not read {SPEAKER_METADATA_FILENAME}. Using default 5500Hz. Error: {e}"
-            )
+    print(
+        f"  -> Using max formant {max_formant}Hz based on '{speaker_flag}' in Pyodide globals."
+    )
 
     return max_formant
 

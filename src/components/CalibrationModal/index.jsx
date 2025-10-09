@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
 import { ReactMediaRecorder } from 'react-media-recorder';
 import AudioRecorder from '../AudioRecorder/';
+import SpeakerTypeSelector from '../SpeakerTypeSelector/';
 import pythonCodeUrl from '../../services/user_vowelspace.py?url';
 import { fetchFile } from '@ffmpeg/util';
 import { useFFmpeg } from '../../hooks/useFFmpeg'
@@ -64,6 +65,7 @@ const CalibrationModal = () => {
 
             // Load and run the calibration script
             setIsRunning(true);
+            pyodide.setGlobal("SPEAKER_TYPE", speakerCategory);
             const pythonCode = await getCode();
             const jsonStringResult = await pyodide.run(pythonCode);
 
@@ -122,14 +124,14 @@ const CalibrationModal = () => {
         flexDirection: 'column',
         transform: 'translate(-50%, -50%)',
         width: 600,
-        height: 400,
+        height: 500,
         overflowY: 'auto',
         bgcolor: 'background.default',
         borderRadius: '8px',
-        // border: '2px solid #000',
         boxShadow: 24,
         textAlign: 'center',
         p: 4,
+        outline: 'none'
     };
 
     const introStep = (
@@ -140,21 +142,21 @@ const CalibrationModal = () => {
                 On the next screen, record yourself saying the following four vowel sounds:
             </Typography >
             <Typography variant='body1'>
-                <strong>i</strong> (as in <em>see</em>)
+                <strong>/i/</strong> (as in <em>see</em>)
             </Typography>
             <Typography variant='body1'>
-                <strong>u</strong> (as in <em>blue</em>),&nbsp;
+                <strong>/u/</strong> (as in <em>blue</em>),&nbsp;
             </Typography>
             <Typography variant='body1'>
-                <strong>a</strong> (as in <em>father</em>), and&nbsp;
+                <strong>/ɑ/</strong> (as in <em>father</em>), and&nbsp;
             </Typography>
             <Typography variant='body1'>
-                <strong>æ</strong> (as in <em>cat</em>).
+                <strong>/æ/</strong> (as in <em>cat</em>).
             </Typography>
-            <Alert severity='info'>
+            <Alert sx={{ marginTop: 'auto' }} severity='info'>
                 Tip: Record in a quiet room, and hold each sound for 1-2 seconds.
             </Alert>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'auto' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button
                     onClick={goToRecord}
                     disableRipple
@@ -232,12 +234,21 @@ const CalibrationModal = () => {
     );
 
     const calibrateStep = isRunning ? (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
             <Grid color="#CBD4C2" />
         </div>
     ) : (
-        <>
-            <Typography>Ready!</Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+            <Box
+                sx={{
+                    flexGrow: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+            >
+                <Typography variant="h4">Ready!</Typography>
+            </Box>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'auto' }}>
                 <Button
                     color="primary"
@@ -245,13 +256,12 @@ const CalibrationModal = () => {
                     onClick={done}
                     sx={{ marginTop: '8px' }}
                     disableRipple
-                    // endIcon={<ArrowForwardIcon />}
                     disabled={Object.keys(recordings).length < 4 || !isPyodideReady || !isFFmpegReady || isRunning}
                 >
                     Done
                 </Button>
             </Box>
-        </>
+        </Box>
     )
 
     let modalContent;
