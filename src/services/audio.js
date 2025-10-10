@@ -31,7 +31,7 @@ class AudioPlayer {
 
         const fullFileName = languageAudio[baseName];
         if (!fullFileName) {
-            console.error(`Error: Audio with name '${baseName}' not found for language '${language}'.`);
+            console.error(`Error: Audio with name '${baseName}' not found in manifest for language '${language}'.`);
             return;
         }
 
@@ -71,7 +71,7 @@ class AudioPlayer {
                 })
                 .catch(error => {
                     // Make sure future calls also fail if creation fails
-                    AudioPlayer.instancePromise = null; 
+                    AudioPlayer.instancePromise = null;
                     throw error;
                 });
         }
@@ -80,7 +80,7 @@ class AudioPlayer {
     }
 }
 
-const play = async(filename, language = 'default') => {
+const play = async (filename, language = 'default') => {
     try {
         const player = await AudioPlayer.getInstance();
         console.log("Player object", player);
