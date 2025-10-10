@@ -38,7 +38,7 @@ def get_max_formant_setting(filepath):
     return max_formant
 
 
-def analyze_vowel_formants(file_path, maximum_formant):
+def analyze_vowel_formants(file_path, maximum_formant, formant_dynamic_range=30.0):
     """
     Analyzes a single audio file to find the mean F1 and F2 values.
     Returns a tuple of (base_filename, data_dictionary) or (None, None).
@@ -51,6 +51,8 @@ def analyze_vowel_formants(file_path, maximum_formant):
     try:
         data, samplerate = sf.read(file_path)
         sound = parselmouth.Sound(data, sampling_frequency=samplerate)
+
+        # Create Formant object
         formants = sound.to_formant_burg(
             max_number_of_formants=max_number_of_formants,
             maximum_formant=maximum_formant,
@@ -58,8 +60,41 @@ def analyze_vowel_formants(file_path, maximum_formant):
             pre_emphasis_from=pre_emphasis_from,
         )
 
-        f1_mean = parselmouth.praat.call(formants, "Get mean", 1, 0, 0, "Hertz")
-        f2_mean = parselmouth.praat.call(formants, "Get mean", 2, 0, 0, "Hertz")
+        # Extract Praat's internal linear-scale intensity values
+        formant_table = parselmouth.praat.call(
+            formants, "Down to Table", True, True, 6, True, 15, True, 3, True
+        )
+        frame_intensities = np.array(
+            [
+                float(
+                    parselmouth.praat.call(
+                        formant_table, "Get value", i + 1, "intensity"
+                    )
+                )
+                for i in range(formants.get_number_of_frames())
+            ]
+        )
+
+        # Calculate the threshold for the linear intensity scale
+        max_intensity = np.max(frame_intensities)
+        intensity_threshold = max_intensity / (10 ** (formant_dynamic_range / 10))
+
+        # Collect formant values from the frames above the threshold
+        f1_voiced = []
+        f2_voiced = []
+        for i, intensity_val in enumerate(frame_intensities):
+            if intensity_val >= intensity_threshold:
+                time_of_frame = formants.get_time_from_frame_number(i + 1)
+                f1 = formants.get_value_at_time(1, time_of_frame)
+                f2 = formants.get_value_at_time(2, time_of_frame)
+
+                if not np.isnan(f1) and not np.isnan(f2):
+                    f1_voiced.append(f1)
+                    f2_voiced.append(f2)
+
+        # Calculate the mean of the voiced frames
+        f1_mean = np.mean(f1_voiced) if f1_voiced else 0.0
+        f2_mean = np.mean(f2_voiced) if f2_voiced else 0.0
 
         full_filename = os.path.basename(file_path)
         base_filename = os.path.splitext(full_filename)[0]
@@ -158,4 +193,3 @@ result = process_directory(AUDIO_ROOT_DIRECTORY)
 json_output = json.dumps(result) if result else "{}"
 
 json_output
-
