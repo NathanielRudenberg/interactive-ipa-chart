@@ -16,23 +16,25 @@ export default function VowelChart({ extras }) {
     const CHART_SECTION_HEIGHT = CHART_HEIGHT / 3;
 
     // Define the fixed bounds for the Z-score grid
-    const scaleFactor = 1.5;
-    const NORM_MIN_Z = -scaleFactor;
-    const NORM_MAX_Z = scaleFactor;
-    const NORM_RANGE = NORM_MAX_Z - NORM_MIN_Z;
+    // These values are the result of extensive guessing and checking, I guess
+    const NORM_MIN_Y = -1.3;
+    const NORM_MAX_Y = 2.0;
+    const NORM_MIN_X = -1.8;
+    const NORM_MAX_X = 2.6;
+    const NORM_CENTER_Y = NORM_MAX_Y - NORM_MIN_Y;
+    const NORM_CENTER_X = NORM_MAX_X - NORM_MIN_X;
 
     const getNormalizedCoordinates = (f1_norm, f2_norm) => {
-        const y_ratio_unflipped = (f1_norm - NORM_MIN_Z) / NORM_RANGE;
+        const y_ratio_unflipped = (f1_norm - NORM_MIN_Y) / NORM_CENTER_Y;
         const y_pos = CHART_HEIGHT * y_ratio_unflipped;
 
-        const x_ratio_unflipped = (f2_norm - NORM_MIN_Z) / NORM_RANGE;
+        const x_ratio_unflipped = (f2_norm - NORM_MIN_X) / NORM_CENTER_X;
         const x_ratio = 1 - x_ratio_unflipped;
         const x_pos = CHART_WIDTH * x_ratio;
 
         return {
-            // Clamping ensures the Z-scores stay within the visible boundaries
-            top: Math.max(0, Math.min(CHART_HEIGHT, y_pos)) - (45 / 2),
-            left: Math.max(0, Math.min(CHART_WIDTH, x_pos)) - (41 / 2)
+            top: y_pos - (45 / 2),
+            left: x_pos - (41 / 2)
         };
     };
 
