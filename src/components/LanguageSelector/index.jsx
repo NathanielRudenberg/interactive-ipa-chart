@@ -54,6 +54,14 @@ export default function LanguageSelector() {
                 keepMounted
                 open={Boolean(dropdownButton)}
                 onClose={handleCloseDropdown}
+                sx={{ zIndex: 5000 }}
+                slotProps={{
+                    paper: {
+                        style: {
+                            borderRadius: 0
+                        }
+                    }
+                }}
             >
                 {/* <DropMenuItem onSelect={handleSelectLanguage} value="french">French</DropMenuItem> */}
                 {/* <DropMenuItem onSelect={handleSelectLanguage} value="general-american-english">General American English</DropMenuItem> */}

@@ -1,6 +1,7 @@
 @import '../../../box-shadows.scss';
 
 .header {
+  z-index: 5000;
     width: 100%;
     position: relative;
     display: inline-flex;
