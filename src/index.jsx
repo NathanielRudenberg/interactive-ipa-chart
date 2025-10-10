@@ -19,25 +19,49 @@ const appTheme = createTheme(({
     },
     typography: {
         h1: {
-            fontSize: '2em',
-            fontWeight: 700,
+            fontSize: '2.5em',
+            fontWeight: 500,
             marginBlockStart: '0.67em',
-            marginBlockEnd: '0.67em'
+            marginBlockEnd: '0.67em',
+            letterSpacing: '0.08em'
         },
         h2: {
-            fontSize: '1.5em',
-            fontWeight: 700,
+            fontSize: '2em',
+            fontWeight: 500,
             marginBlockStart: '0.83em',
             marginBlockEnd: '0.83em'
         },
+        h3: {
+            fontSize: '1.67em',
+            fontWeight: 500,
+            marginBlockStart: '1em',
+            marginBlockEnd: '1em'
+        },
         h4: {
-            fontSize: '1em',
-            fontWeight: 700,
+            fontSize: '1.5em',
+            fontWeight: 500,
             marginBlockStart: '1.33em',
             marginBlockEnd: '1.33em'
         },
+        h5: {
+            fontSize: '1.25em',
+            fontWeight: 500,
+            marginBlockStart: '1.67em',
+            marginBlockEnd: '1.67em'
+        },
+        h6: {
+            fontSize: '1em',
+            fontWeight: 500,
+            marginBlockStart: '2.33em',
+            marginBlockEnd: '2.33em'
+        },
         body1: {
-            lineHeight: 1.8
+            lineHeight: 1.8,
+            fontSize: '1em'
+        },
+        body2: {
+            lineHeight: 1.6,
+            fontSize: '0.875em'
         },
         fontFamily: [
             'DejaVu Sans',
@@ -53,6 +77,19 @@ const appTheme = createTheme(({
             'Helvetica Neue',
             'sans-serif'
         ].join(',')
+    },
+    components: {
+        MuiButton: {
+            defaultProps: {
+                variant: 'contained',
+                disableRipple: true,
+            }
+        },
+        MuiToggleButton: {
+            defaultProps: {
+                disableRipple: true,
+            }
+        }
     }
 }))
 
