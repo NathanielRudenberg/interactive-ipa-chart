@@ -4,8 +4,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { styled } from '@mui/styles';
 
 const StyledToggleButton = styled(ToggleButton)({
-    padding: 24,
-    textTransform: 'none'
+    textTransform: 'none',
+    fontSize: '1rem',
 });
 
 export default function SpeakerTypeSelector({ type, setType }) {
@@ -16,17 +16,17 @@ export default function SpeakerTypeSelector({ type, setType }) {
             value={type}
             exclusive
             onChange={handleCategory}
-            aira-label='speaker category'
-            sx={{ margin: '0 auto', height: 32 }}
+            ari-label='speaker category'
+            sx={{ margin: '16px auto' }}
         >
             <StyledToggleButton value='F' aria-label='female'>
-                <Typography variant='h4'>Female</Typography>
+                Female
             </StyledToggleButton>
             <StyledToggleButton value='M' aria-label='male'>
-                <Typography variant='h4'>Male</Typography>
+                Male
             </StyledToggleButton>
             {/* <StyledToggleButton value='C' aria-label='child'> */}
-            {/*     <Typography variant='h4'>Child</Typography> */}
+            {/*     Child */}
             {/* </StyledToggleButton> */}
         </ToggleButtonGroup>
     )
