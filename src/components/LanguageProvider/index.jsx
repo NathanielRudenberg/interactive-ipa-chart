@@ -26,23 +26,23 @@ const LanguageProvider = ({ children }) => {
     };
 
     const handleClickDropdown = event => {
-        setDropdownButton(event.currentTarget);
-    }
+        setDropdownButton(dropdownButton ? null : event.currentTarget)
+    };
 
     const handleCloseDropdown = () => {
         setDropdownButton(null);
-    }
+    };
 
     const handleSelectLanguage = (item, value) => {
         setSelectedLanguageMenuItem(item);
         updateLanguage(value);
         handleCloseDropdown();
-    }
+    };
 
     const handleClear = () => {
         setSelectedLanguageMenuItem(null);
         clearSelectedLanguage();
-    }
+    };
 
     return (
         <LanguageContext.Provider
