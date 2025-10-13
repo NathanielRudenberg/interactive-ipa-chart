@@ -14,19 +14,16 @@ async function getCode() {
 }
 
 export default function UserVowelTester({ setVowelValue }) {
-    const [recording, setRecording] = useState({});
     const [isRunning, setIsRunning] = useState(false);
     const { ffmpeg, isFFmpegReady } = useFFmpeg();
     const { pyodide, isPyodideReady } = usePyodide();
 
-    const handleCalibrate = async () => {
+    const analyzeSound = async (wavBlob) => {
         try {
             // Store audio files in pyodide's virtual filesystem
-            for (const name in recording) {
-                const fileData = await recording[name].wavBlob.arrayBuffer();
-                pyodide.mkDir('/audio/userVowels');
-                pyodide.storeFile(`/audio/userVowels/vowel.wav`, new Uint8Array(fileData));
-            }
+            const fileData = await wavBlob.arrayBuffer();
+            pyodide.mkDir('/audio/userVowels');
+            pyodide.storeFile(`/audio/userVowels/vowel.wav`, new Uint8Array(fileData));
 
             // Load and run the calibration script
             setIsRunning(true);
@@ -65,13 +62,7 @@ export default function UserVowelTester({ setVowelValue }) {
             const wavBlob = new Blob([data.buffer], { type: 'audio/wav' });
             const wavUrl = URL.createObjectURL(wavBlob);
 
-            setRecording({
-                [recordingName]: {
-                    url: wavUrl,
-                    blob: blob,
-                    wavBlob: wavBlob,
-                }
-            });
+            analyzeSound(wavBlob)
         } catch (error) {
             console.error('Error processing recording:', error);
         }
@@ -79,21 +70,12 @@ export default function UserVowelTester({ setVowelValue }) {
 
     return (
         <div>
+            <p> Now, let's practice nailing those vowels!&nbsp; </p>
             <ReactMediaRecorder
                 audio
                 onStop={handleStop}
-                render={props => <AudioRecorder {...props} recordings={recording} />}
+                render={props => <AudioRecorder {...props} isDisabled={!isPyodideReady || !isFFmpegReady || isRunning} />}
             />
-            <p> Now, let's practice nailing those vowels!&nbsp;
-                <Button
-                    onClick={handleCalibrate}
-                    disabled={!isPyodideReady || isRunning || Object.keys(recording).length < 1}
-                    variant="contained"
-                    disableRipple
-                >
-                    Placeholder
-                </Button>
-            </p>
         </div >
     );
 }

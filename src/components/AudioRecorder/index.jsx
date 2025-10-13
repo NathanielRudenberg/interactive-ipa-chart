@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import MicIcon from '@mui/icons-material/Mic';
 import StopIcon from '@mui/icons-material/Stop';
 
-const AudioRecorder = ({ status, startRecording, stopRecording, recordings, setStatus, mediaBlobUrl }) => {
+const AudioRecorder = ({ status, startRecording, stopRecording, isDisabled, mediaBlobUrl }) => {
     let Icon;
     if (status === "recording") {
         Icon = StopIcon;
@@ -32,6 +32,7 @@ const AudioRecorder = ({ status, startRecording, stopRecording, recordings, setS
                 variant="contained"
                 color="secondary"
                 disableRipple
+                disabled={isDisabled}
             >
                 <Icon />
             </Button>
