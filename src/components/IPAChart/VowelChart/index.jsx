@@ -20,9 +20,9 @@ export default function VowelChart({ extras }) {
 
     // Define the fixed bounds for the Z-score grid
     // These values are the result of extensive guessing and checking, I guess
-    const NORM_MIN_Y = -1.3;
-    const NORM_MAX_Y = 2.0;
-    const NORM_MIN_X = -1.8;
+    const NORM_MIN_Y = -1.4;
+    const NORM_MAX_Y = 2.1;
+    const NORM_MIN_X = -1.7;
     const NORM_MAX_X = 2.6;
     const NORM_CENTER_Y = NORM_MAX_Y - NORM_MIN_Y;
     const NORM_CENTER_X = NORM_MAX_X - NORM_MIN_X;
