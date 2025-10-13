@@ -16,11 +16,12 @@ export default [
         path: '/about',
         component: About
     },
-    // {
-    //     name: 'Practice',
-    //     path: '/practice',
-    //     component: Practice
-    // },
+    {
+        name: 'Practice',
+        path: '/practice',
+        component: Practice,
+        featureFlag: 'vocal-practice-page'
+    },
     {
         name: 'Not Found',
         path: '*',

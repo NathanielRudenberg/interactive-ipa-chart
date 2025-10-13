@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material';
 import './index.css';
 import App from './App';
+import { FeatureFlagProvider } from './components/FeatureFlagContext';
 import * as serviceWorker from './serviceWorker';
 
 const appTheme = createTheme(({
@@ -97,7 +98,9 @@ const root = createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <ThemeProvider theme={appTheme}>
-            <App />
+            <FeatureFlagProvider>
+                <App />
+            </FeatureFlagProvider>
         </ThemeProvider>
     </React.StrictMode>
 )

@@ -3,13 +3,16 @@ import Vowel from './Vowel';
 import { specs, symbols } from '../../../services/phonemeSpecs';
 import vowelChartPositions from '../../../services/vowelChartLayout';
 import { useLanguage } from '../../LanguageProvider';
+import { useFeatureFlags } from '../../FeatureFlagContext';
 import './vowels.scss';
 
 export default function VowelChart({ extras }) {
     const { language, formantValues } = useLanguage();
+    const { flags } = useFeatureFlags();
     let languageName = language ? language : 'default';
     let vowels = specs[languageName].phonemes.filter(phone => phone.vowel);
     let vowelSymbols = symbols.vowels;
+    const isPracticeEnabled = flags['vocal-practice-page'].enabled;
 
     const CHART_WIDTH = 553;
     const CHART_HEIGHT = 418;
@@ -66,7 +69,7 @@ export default function VowelChart({ extras }) {
                 }
                 if (phonemes.length > 0) {
                     let vowelElement;
-                    if (languageName === 'default' || formantValues[vowelName] === undefined) {
+                    if (languageName === (isPracticeEnabled ? '' : 'default') || formantValues[vowelName] === undefined) {
                         vowelElement = (
                             <Vowel language={languageName} key={vowelName} name={vowelName} className={vowelName + " vowel"}>
                                 {phonemes.length > 0 ? phonemes[0].symbol : vowelSymbols[vowelName]}
