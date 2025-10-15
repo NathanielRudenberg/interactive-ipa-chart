@@ -15,6 +15,7 @@ import pythonCodeUrl from '../../services/user_vowelspace.py?url';
 import { fetchFile } from '@ffmpeg/util';
 import { useFFmpeg } from '../../hooks/useFFmpeg'
 import { usePyodide } from '../../hooks/usePyodide';
+import { useLanguage } from '../LanguageProvider/'
 
 const INTRO_STEP = 'intro';
 const RECORD_STEP = 'record';
@@ -24,12 +25,16 @@ const REQUIRED_RECORDINGS = 4;
 const STEP_CHANGE_DURATION = 200;
 
 const CalibrationModal = () => {
-    const [isOpen, setIsOpen] = useState(true);
-    const [currentStep, setCurrentStep] = useState(INTRO_STEP);
-    const [recordings, setRecordings] = useState({});
+    const {
+        calibrationRecordings,
+        setCalibrationRecordings,
+        currentCalibrationStep,
+        setCurrentCalibrationStep,
+        calibrationSpeakerCategory,
+        setCalibrationSpeakerCategory
+    } = useLanguage();
     const [isRunning, setIsRunning] = useState(false);
     const [contentOpacity, setContentOpacity] = useState(1);
-    const [speakerCategory, setSpeakerCategory] = useState(null);
     const [error, setError] = useState(null);
     const { ffmpeg, isFFmpegReady } = useFFmpeg();
     const { pyodide, isPyodideReady } = usePyodide();
@@ -37,7 +42,7 @@ const CalibrationModal = () => {
     const changeStep = (nextStep) => {
         setContentOpacity(0);
         setTimeout(() => {
-            setCurrentStep(nextStep);
+            setCurrentCalibrationStep(nextStep);
             setContentOpacity(1);
         }, STEP_CHANGE_DURATION); // This duration should match the CSS transition
     };
@@ -58,14 +63,14 @@ const CalibrationModal = () => {
     const handleCalibrate = async () => {
         try {
             // Store audio files in pyodide's virtual filesystem
-            for (const name in recordings) {
-                const fileData = await recordings[name].wavBlob.arrayBuffer();
+            for (const name in calibrationRecordings) {
+                const fileData = await calibrationRecordings[name].wavBlob.arrayBuffer();
                 pyodide.storeFile(`/audio/practiceCalibration/${name}.wav`, new Uint8Array(fileData));
             }
 
             // Load and run the calibration script
             setIsRunning(true);
-            pyodide.setGlobal("SPEAKER_TYPE", speakerCategory);
+            pyodide.setGlobal("SPEAKER_TYPE", calibrationSpeakerCategory);
             const pythonCode = await getCode();
             const jsonStringResult = await pyodide.run(pythonCode);
 
@@ -103,7 +108,7 @@ const CalibrationModal = () => {
             const wavBlob = new Blob([data.buffer], { type: 'audio/wav' });
             const wavUrl = URL.createObjectURL(wavBlob);
 
-            setRecordings(prevRecordings => ({
+            setCalibrationRecordings(prevRecordings => ({
                 ...prevRecordings,
                 [recordingName]: {
                     url: wavUrl,
@@ -133,6 +138,26 @@ const CalibrationModal = () => {
         p: 4,
         outline: 'none'
     };
+
+    const numberOfRecordings = Object.keys(calibrationRecordings).length;
+    const progressDots = (
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+            {[...Array(REQUIRED_RECORDINGS)].map((_, index) => (
+                <div
+                    key={`progress-dot-${index}`}
+                    style={{
+                        width: '15px',
+                        height: '15px',
+                        borderRadius: '50%',
+                        backgroundColor: index < numberOfRecordings ? '#4caf50' : '#f44366',
+                        transition: 'background-color 0.1s ease',
+                        margin: '0 5px'
+                    }}
+                >
+                </div>
+            ))}
+        </div>
+    )
 
     const introStep = (
         <>
@@ -171,40 +196,27 @@ const CalibrationModal = () => {
         </>
     );
 
-    const numberOfRecordings = Object.keys(recordings).length;
-    const progressDots = (
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
-            {[...Array(REQUIRED_RECORDINGS)].map((_, index) => (
-                <div
-                    key={`progress-dot-${index}`}
-                    style={{
-                        width: '15px',
-                        height: '15px',
-                        borderRadius: '50%',
-                        backgroundColor: index < numberOfRecordings ? '#4caf50' : '#f44366',
-                        transition: 'background-color 0.1s ease',
-                        margin: '0 5px'
-                    }}
-                >
-                </div>
-            ))}
-        </div>
-    )
-
     const recordStep = (
         <>
-            <Typography variant='h5'>Select Your Voice Profile</Typography>
-            <SpeakerTypeSelector type={speakerCategory} setType={setSpeakerCategory} />
-            {speakerCategory && <>
+            <Typography variant='body1' sx={{ fontSize: '1.3em' }}>Select Your Voice Profile</Typography>
+            <SpeakerTypeSelector type={calibrationSpeakerCategory} setType={setCalibrationSpeakerCategory} />
+            {calibrationSpeakerCategory && <>
+                <Typography variant='body1'>Please record your <b>/i/</b>,&nbsp;
+                    <b>/u/</b>,&nbsp;
+                    <b>/ɑ/</b>,
+                    and <b>/æ/</b> vowels.</Typography>
                 <ReactMediaRecorder
                     audio
                     onStop={handleStop}
-                    render={props => <AudioRecorder {...props} recordings={recordings} />}
+                    render={props => <AudioRecorder {...props} recordings={calibrationRecordings} />}
                 />
                 {progressDots}
             </>
             }
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
+            <Alert sx={{ marginTop: 'auto' }} severity='info'>
+                Tip: After recording the 4 corner vowels, you can add your whole vowel set for better accuracy.
+            </Alert>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Button
                     color="secondary"
                     variant="contained"
@@ -225,7 +237,7 @@ const CalibrationModal = () => {
                     sx={{ marginTop: '8px' }}
                     disableRipple
                     endIcon={<ArrowForwardIcon />}
-                    disabled={Object.keys(recordings).length < REQUIRED_RECORDINGS || !speakerCategory}
+                    disabled={Object.keys(calibrationRecordings).length < REQUIRED_RECORDINGS || !calibrationSpeakerCategory}
                 >
                     Next
                 </Button>
@@ -256,7 +268,7 @@ const CalibrationModal = () => {
                     onClick={done}
                     sx={{ marginTop: '8px' }}
                     disableRipple
-                    disabled={Object.keys(recordings).length < 4 || !isPyodideReady || !isFFmpegReady || isRunning}
+                    disabled={Object.keys(calibrationRecordings).length < 4 || !isPyodideReady || !isFFmpegReady || isRunning}
                 >
                     Done
                 </Button>
@@ -265,7 +277,7 @@ const CalibrationModal = () => {
     )
 
     let modalContent;
-    switch (currentStep) {
+    switch (currentCalibrationStep) {
         case INTRO_STEP:
             modalContent = introStep;
             break;
@@ -284,7 +296,7 @@ const CalibrationModal = () => {
         <>
             <Button sx={{ marginTop: '20px' }} variant={"contained"} onClick={handleOpen}>Recalibrate</Button>
             <Modal
-                open={currentStep !== DONE_STEP}
+                open={currentCalibrationStep !== DONE_STEP}
             >
                 <Box sx={style}>
                     <Typography variant="h2">Your Vocal Signature</Typography>

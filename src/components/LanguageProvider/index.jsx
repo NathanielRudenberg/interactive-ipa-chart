@@ -8,6 +8,9 @@ const LanguageProvider = ({ children }) => {
     const [selectedLanguageMenuItem, setSelectedLanguageMenuItem] = useState(null);
     const [dropdownButton, setDropdownButton] = useState(null);
     const [formantValues, setFormantValues] = useState({});
+    const [calibrationSpeakerCategory, setCalibrationSpeakerCategory] = useState(null);
+    const [calibrationRecordings, setCalibrationRecordings] = useState({});
+    const [currentCalibrationStep, setCurrentCalibrationStep] = useState('');
 
     useEffect(() => {
         const formants = apiClient.get(`/vowel-formants/${language || 'default'}`);
@@ -48,8 +51,10 @@ const LanguageProvider = ({ children }) => {
         <LanguageContext.Provider
             value={{
                 language, formantValues, dropdownButton, selectedLanguageMenuItem,
+                calibrationSpeakerCategory, calibrationRecordings, currentCalibrationStep,
                 handleClickDropdown, handleCloseDropdown, handleSelectLanguage,
-                handleClear
+                handleClear, setCalibrationSpeakerCategory, setCalibrationRecordings,
+                setCurrentCalibrationStep
             }}
         >
             {children}
