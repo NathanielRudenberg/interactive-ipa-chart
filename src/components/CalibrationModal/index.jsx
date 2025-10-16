@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Divider from '@mui/material/Divider';
-import { ThreeCircles, TailSpin, Grid, Audio } from 'react-loader-spinner';
+import { Grid } from 'react-loader-spinner';
 import { ReactMediaRecorder } from 'react-media-recorder';
 import AudioRecorder from '../AudioRecorder/';
 import SpeakerTypeSelector from '../SpeakerTypeSelector/';
