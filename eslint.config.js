@@ -12,7 +12,9 @@ export default defineConfig([
         extends: ["js/recommended"], // Extend recommended ESLint rules
         languageOptions: {
             globals: {
-                ...globals.node
+                ...globals.node,
+                ...globals.browser,
+                ...globals.worker
             }
         },
         rules: {
