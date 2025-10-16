@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { ReactMediaRecorder } from 'react-media-recorder';
+import Typography from '@mui/material/Typography';
 import pythonCodeUrl from '../../services/get_user_vowel_position.py?url';
 import { fetchFile } from '@ffmpeg/util';
 import { useFFmpeg } from '../../hooks/useFFmpeg';
@@ -70,11 +71,18 @@ export default function UserVowelTester({ setVowelValue }) {
 
     return (
         <div>
-            <p> Now, let's practice nailing those vowels!&nbsp; </p>
+            <Typography variant='body1'>Now that you've calibrated the tool to your voice, you can see how your voice sounds compared to a native speaker.</Typography>
             <ReactMediaRecorder
                 audio
                 onStop={handleStop}
-                render={props => <AudioRecorder {...props} isDisabled={!isPyodideReady || !isFFmpegReady || isRunning} />}
+                render={
+                    props =>
+                        <AudioRecorder
+                            {...props}
+                            isDisabled={!isPyodideReady || !isFFmpegReady || isRunning}
+                            sx={{ marginTop: '16px' }}
+                        />
+                }
             />
         </div >
     );
