@@ -8,7 +8,6 @@ async function loadPyodideAndPackages() {
         indexURL: "https://cdn.jsdelivr.net/pyodide/v0.28.3/full/",
     });
 
-
     // Fetch the audio file
     const audioTest = await fetch('pythonFiles/audio/the_north_wind_and_the_sun.wav');
     if (!audioTest.ok) {
@@ -26,6 +25,8 @@ async function loadPyodideAndPackages() {
 
     await pyodide.loadPackage("micropip");
     await pyodide.runPythonAsync(`
+                import sys
+                sys.path.append('/')
                 import micropip
                 await micropip.install('matplotlib')
                 await micropip.install('seaborn')

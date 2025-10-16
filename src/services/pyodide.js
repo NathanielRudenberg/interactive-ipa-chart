@@ -1,4 +1,5 @@
 import { loadPyodide } from "pyodide";
+import formantsCode from './pyodide_audio/formants.py?raw';
 
 export const Pyodide = (function () {
     let instance;
@@ -26,6 +27,7 @@ class PythonRunner {
         this._worker.onmessage = (event) => {
             const { id, ready, result, error, fileStored } = event.data;
             if (ready) {
+                this.storeFile('formants.py', formantsCode);
                 this._isReady = true;
                 this._readyCallbacks.forEach((callback) => callback());
                 this._readyCallbacks = [];
